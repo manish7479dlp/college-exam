@@ -1,6 +1,6 @@
 const mongoose = require("mongoose")
 
-const QuestionSchema = new mongoose.Schema({
+const DataStructureAlgorithmQuestionSchema = new mongoose.Schema({
     question: {
         type : String,
         unique : true,
@@ -28,4 +28,4 @@ const QuestionSchema = new mongoose.Schema({
     }
 
 })
-module.exports = new mongoose.model("question", QuestionSchema);
+module.exports = new mongoose.model("DataStructureAlgorithm_QUESTION", DataStructureAlgorithmQuestionSchema);
