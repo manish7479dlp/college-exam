@@ -16,7 +16,7 @@ const Math1Answer = require("./Routes/Answer/Firstyear/Math1AnswerRoute")
 const DSAQuestion = require("./Routes/Question/SecondYear/DataStructureAndAlgorithmQuestionRouter")
 const DSAAnswer = require("./Routes/Answer/SecondYear/DataStructureAlgorithmRoutes");
 
-const PORT = process.env | 8000
+const port = process.env.PORT || 8000 ;
 
 app.use(express.json());
 app.use(cors());
@@ -38,6 +38,6 @@ app.get("*" , (req , res) => {
     res.send("404 Page not found..")
 })
 
-app.listen(PORT , () => {
-    console.log("Connection to the server... Port number " + PORT);
+app.listen(port , () => {
+    console.log("Connection to the server... Port number " + port);
 })
