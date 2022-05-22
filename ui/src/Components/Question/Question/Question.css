@@ -1,0 +1,68 @@
+.mainQuestionContainer {
+    width: 90%;
+    margin-top: 5px;
+    padding: 15px;
+    box-shadow: 1px 1px 1px 1px rgb(196, 221, 244);
+    border-radius: 20px;
+    margin: auto;
+    /* border: 2px solid brown; */
+}
+
+.mainQuestionContainer .question {
+    display: inline;
+    margin-top: 5px;
+    margin-bottom:10px ;
+    font-size: 1.4rem;
+    font-weight: 680;
+    color: rgb(43, 43, 43);
+    
+    
+}
+.mainQuestionContainer .optionContainer {
+    margin-top: 20px;
+    margin-left: 100px;
+    /* border: 2px solid green; */
+}
+
+.mainQuestionContainer .optionContainer ol li {
+    list-style:upper-alpha;
+    font-size: 1.4rem;
+    margin-bottom: 20px;
+    transition: .1s;
+    cursor: pointer;
+}
+
+.mainQuestionContainer .optionContainer ol li label {
+    margin-left: 5px;
+    cursor: pointer;
+}
+
+.mainQuestionContainer .optionContainer ol li:hover {
+    border-radius: 20px;
+    /* background-color: rgb(36, 212, 36); */
+    color: rgb(14, 151, 7);
+    font-weight: 600;
+}
+
+.questionNavigationBtn {
+    width: 70%;
+    justify-content: space-between;
+    margin: auto;
+    padding: 10px;
+    /* border: 4px solid red; */
+}
+
+.questionNavigationBtn button {
+    font-size: 1.4rem;
+    font-weight: 600;
+    padding: 6px 18px;
+    border: none;
+    border-radius: 20px;
+    color: white;
+    background-color: purple;
+    transition: .4s;
+    box-shadow: 1px 1px 4px 3px rgb(188, 248, 68);
+}
+.questionNavigationBtn button:hover {
+    background-color: rgb(51, 201, 51);
+}

@@ -1,0 +1,32 @@
+.cardContainer {
+    flex-direction: column;
+    border: 1px solid wheat;
+    width: 380px;
+    padding: 20px;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.087);
+    backdrop-filter: blur(10px);
+}
+
+.cardContainer .cardHeading {
+    width: 100%;
+    height: 90px;
+    background-color: rgba(254, 96, 170, 0.502);
+    border-radius: 7px;
+    color: white;
+    font-size: 3rem;
+    padding: 8px;
+    border: 3px solid rgb(254, 255, 255);
+    text-shadow: 2px 2px 4px  rgb(76, 221, 71);
+    backdrop-filter: blur(100px);
+    
+}
+
+.cardContainer .cardContent {
+    font-family: 'Source Serif 4', serif;
+    font-size: 1.4rem;
+    margin-top: 8px;
+    margin-bottom: 7px;
+    color: white;
+    /* text-shadow: 1px 1px 2px rgb(249, 132, 214); */
+}

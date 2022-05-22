@@ -1,5 +1,6 @@
 const express = require('express');
-const cors = require('cors')
+const cors = require('cors');
+const path = require('path');
 const app = express();
 require("./DataBaseConfig/DBConfig");
 const StudentRouter = require("./Routes/Student/StudentRoutes");
@@ -13,12 +14,13 @@ const Math1Question = require("./Routes/Question/FirstYear/Math1QuestionRoute")
 const Math1Answer = require("./Routes/Answer/Firstyear/Math1AnswerRoute")
 
 const DSAQuestion = require("./Routes/Question/SecondYear/DataStructureAndAlgorithmQuestionRouter")
-const DSAAnswer = require("./Routes/Answer/SecondYear/DataStructureAlgorithmRoutes")
+const DSAAnswer = require("./Routes/Answer/SecondYear/DataStructureAlgorithmRoutes");
 
 const PORT = process.env | 8000
 
 app.use(express.json());
 app.use(cors());
+app.use(express.static(path.join(__dirname, "ui/build")));
 app.use(StudentRouter);
 app.use(TeacherRouter);
 app.use(BasicElectricalQuestion);

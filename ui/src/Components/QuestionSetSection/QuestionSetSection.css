@@ -1,0 +1,112 @@
+.questionSetSectionContainer {
+    height: calc(100vh - 70px);
+    background: url("../../Images/HomeBackground.jpg");
+    padding-top: 10px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+.questionSetSectionContainer .questionSetSection {
+    width: 60vw;
+    box-shadow: 1px 1px 7px 4px rgb(53, 195, 53);
+    padding: 20px;
+    border-radius: 20px;
+    margin: auto;
+    background-color: rgba(0, 79, 128, 0.178);
+    backdrop-filter: blur(4px);
+}
+
+.questionSetSection .questionHeading {
+    color: white;
+    text-align: center;
+    font-size: 2.4rem;
+    text-shadow: 2px 3px 4px  rgb(24, 212, 33);
+}
+::placeholder {
+    color: rgba(255, 255, 255, 0.479);
+}
+.questionSetSection label {
+    color: white;
+    font-size: 1.6rem;
+    font-weight: 550;
+}
+.questionSetSection .question {
+    width: 90%;
+    margin-top: 5px;
+    border-radius: 20px;
+    outline: none;
+    border: none;
+    text-align: center;
+    font-size: 1.5rem;
+    padding: 15px 8px;
+    color: white;
+    font-weight: 600;
+    margin-bottom: 5px;
+    background-color: transparent;
+    border: 2px solid white;
+}
+
+.questionSetSection ol li {
+    list-style: upper-alpha;
+    color: white;
+    font-weight: 600;
+    list-style-position: inside;
+    margin-left: 10px;
+    margin-bottom: 15px;
+    font-size: 1.5rem;
+}
+
+.questionSetSection ol  .opt1 {
+    margin-top: 10px;
+}
+
+.questionSetSection ol li input {
+    padding: 10px;
+    border-radius: 20px;
+    text-align: center;
+    color: white;
+    outline: none;
+    width: 70%;
+    font-weight: 600;
+    font-size: 1.4rem;
+    background-color: transparent;
+    border: 2px solid white;
+}
+
+.answerAndSubmitContainer {
+    justify-content: space-evenly;
+    width: 80%;
+    margin: auto;
+}
+
+.answerAndSubmitContainer .answer {
+    padding: 10px;
+    border-radius: 20px;
+    text-align: center;
+    color: white;
+    font-size: 1.5rem;
+    font-weight: 600;
+    outline: none;
+    border: none;
+    width: 80px;
+    text-transform: capitalize;
+    background-color: transparent;
+    border: 4px solid rgb(35, 209, 35);
+}
+
+.answerAndSubmitContainer button {
+    border-radius: 20px;
+    font-size: 1.5rem;
+    background-color: purple;
+    font-weight: 600;
+    color: white;
+    padding: 10px 28px;
+    border: none;
+    transition: .5s;
+    box-shadow: 2px 2px 2px 1px rgb(112, 179, 218);
+}
+
+.answerAndSubmitContainer button:hover {
+    background-color: rgb(38, 195, 38);
+}

@@ -1,0 +1,49 @@
+.headerContainer {
+    width: 100vw;
+    height: var(--headerHeight);
+    background-color: var(--headerBackground);
+    text-align: center;
+
+}
+
+.headerContainer .clgName {
+    text-transform: capitalize;
+    font-size: 2rem;
+    color: white;
+}
+
+/* Responsive code start */
+@media screen and (max-width: 850px) {
+    .headerContainer .clgName {
+        font-size: 1.8rem;
+    }
+}
+
+@media screen and (max-width: 730px) {
+    .headerContainer .clgName {
+        font-size: 1.7rem;
+    }
+}
+
+ @media screen and (max-width: 630px) {
+    .headerContainer .clgName {
+        font-size: 1.5rem;
+    }
+}
+
+@media screen and (max-width: 570px) {
+    .headerContainer .clgName {
+        font-size: 1.4rem;
+        padding: 2px 6px;
+    }
+}
+@media screen and (max-width: 530px) {
+    .headerContainer .clgName {
+        font-size: 1.6rem;
+    }
+}
+@media screen and (max-width: 330px) {
+    .headerContainer .clgName {
+        font-size: 1.3rem;
+    }
+}

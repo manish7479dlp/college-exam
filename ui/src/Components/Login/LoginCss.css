@@ -1,0 +1,42 @@
+.studentContainer {
+    height: calc(100vh - 70px);
+    background-color: grey;
+}
+
+.studentLoginContainer {
+    width: 550px;
+    flex-direction: column;
+    border-radius: 20px;
+    padding: 20px;
+    background-color: purple;
+}
+
+.studentLoginContainer div {
+    margin: 10px;
+}
+
+.studentContainer h1 {
+    color: white;
+    margin-bottom: 20px;
+    padding-bottom: 6px;
+    border-bottom: 2px solid white;
+    border-radius: 4px;
+}
+
+.studentContainer .studentLoginContainer p {
+    color: white;
+    font-size: 1.4rem;
+    margin-bottom: 8px;
+    font-weight: 600;
+}
+
+.studentContainer .studentLoginContainer input {
+    padding: 10px;
+    text-align: center;
+    border-radius: 20px;
+    outline: none;
+    width: 300px;
+    border: none;
+    font-size: 1.4rem;
+    font-weight: 600;
+}

@@ -1,0 +1,9 @@
+.loginDashboardContainer {
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    height: calc(100vh - 70px);
+    background: url("../../../Images/HomeBackground.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}

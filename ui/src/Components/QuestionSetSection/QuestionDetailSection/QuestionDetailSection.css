@@ -1,0 +1,30 @@
+.questionDetailSectionContainer {
+    width: 60vw;
+    height: calc(100vh - 70px);
+    /* flex-direction: column; */
+    /* justify-content: start; */
+    border: 2px solid brown;
+    margin: 0 auto;
+    
+}
+.questionDetailSectionContainer div label {
+    font-size: 1.5rem;
+    margin: 15px !important;
+    font-weight: 700;
+}
+
+.questionDetailSectionContainer .innerQuestionDetailSectionContainer {
+    /* border: 2px solid green; */
+    padding: 20px;
+    text-align: center;
+    margin-top: 20px;
+}
+.questionDetailSectionContainer .innerQuestionDetailSectionContainer label {
+    padding-bottom: 10px;
+    /* border: 2px solid black; */
+}
+
+.questionDetailSectionContainer .innerQuestionDetailSectionContainer select , input {
+    font-size: 1.3rem;
+    margin-bottom: 10px;
+}
