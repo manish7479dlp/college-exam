@@ -11,6 +11,10 @@ const PhysicsQuestion = require("./Routes/Question/FirstYear/PhysicsQuestionRout
 const PhysicsAnswer = require("./Routes/Answer/Firstyear/PhysicsAnswerRoute");
 const Math1Question = require("./Routes/Question/FirstYear/Math1QuestionRoute")
 const Math1Answer = require("./Routes/Answer/Firstyear/Math1AnswerRoute")
+
+const DSAQuestion = require("./Routes/Question/SecondYear/DataStructureAndAlgorithmQuestionRouter")
+const DSAAnswer = require("./Routes/Answer/SecondYear/DataStructureAlgorithmRoutes")
+
 const PORT = process.env | 8000
 
 app.use(express.json());
@@ -23,6 +27,9 @@ app.use(PhysicsQuestion);
 app.use(PhysicsAnswer);
 app.use(Math1Question);
 app.use(Math1Answer);
+
+app.use(DSAQuestion);
+app.use(DSAAnswer);
 
 app.get("*" , (req , res) => {
     res.status(404);
