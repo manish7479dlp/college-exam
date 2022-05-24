@@ -19,9 +19,9 @@ const QuestionContainer = () => {
   useEffect(() => {
     setSubjectName(JSON.parse(sessionStorage.getItem("ExamSubjectName")));
 
-    // if (subjectName) {
-    //   fetchQuestion();
-    // }
+    if (subjectName) {
+      fetchQuestion();
+    }
   }, [subjectName]);
 
   const fetchQuestion = async () => {
