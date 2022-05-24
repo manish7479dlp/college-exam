@@ -16,12 +16,16 @@ import StudentLoginPrivateComponent from "./Components/PrivateComponent/StudentL
 import TeacherLoginPrivateComponent from "./Components/PrivateComponent/TeacherLoginPrivateComponent";
 import ExamStarterPage from "./Components/Question/ExamStarterPage/ExamStarterPage";
 import QuestionDetailSection from "./Components/QuestionSetSection/QuestionDetailSection/QuestionDetailSection"
+import Marks from "./Components/StudentMarks/Marks";
 function App() {
   return (
     <>
       <BrowserRouter>
         <ToastContainer position="top-center" theme="colored" />
         <Routes>
+          
+          <Route path="/studentmarks" element = {<Marks/>} />
+
           <Route path="/" element={<Home />} />
           <Route path="/logindashboard" element={<LoginDashboard />} />
           <Route path="/studentlogin" element={<StudentLogin />} />

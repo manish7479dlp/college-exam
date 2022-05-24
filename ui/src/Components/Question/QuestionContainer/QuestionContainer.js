@@ -5,7 +5,7 @@ import ContentName from "../../Heading/ContentName";
 import Question from "../Question/Question";
 import StudentDetails from "../../Cards/StudentDetails";
 import { toast } from "react-toastify";
-import { Navigate, useNavigate } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 
 const QuestionContainer = () => {
   const apibaseURL = process.env.REACT_APP_API_URL || '';
@@ -14,16 +14,14 @@ const QuestionContainer = () => {
   const [loading, setLoading] = useState(true);
   const [quesNumber, setQuesNumber] = useState(1);
   const [subjectName, setSubjectName] = useState("");
-  const Navigate  = useNavigate();
-
+  // const Navigate  = useNavigate();
 
   useEffect(() => {
     setSubjectName(JSON.parse(sessionStorage.getItem("ExamSubjectName")));
-    // setLoading(true);
-    if (subjectName) {
-      fetchQuestion();
-    }
-    // setLoading(false);
+
+    // if (subjectName) {
+    //   fetchQuestion();
+    // }
   }, [subjectName]);
 
   const fetchQuestion = async () => {
@@ -90,7 +88,7 @@ const QuestionContainer = () => {
           console.log(marksSheet);
           sumitMarks(marksSheet);
           toast.success("Answer Submitted Successfully.");
-          Navigate("/")
+          Navigate("/");
         }
       }
     };
@@ -131,6 +129,7 @@ const QuestionContainer = () => {
           },
           body: JSON.stringify(marksSheet),
         });
+        console.log(response);
       } catch (error) {
         console.log(error);
       }

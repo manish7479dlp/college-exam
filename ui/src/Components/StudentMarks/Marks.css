@@ -1,0 +1,70 @@
+.marksFilter {
+    width: 100vw;
+    height: 70px;
+    /* background-color: skyblue; */
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    /* border: 2px solid skyblue; */
+    border-radius: 20px;
+    
+    
+}
+
+.postionFixed {
+    position: sticky;
+    top: 0px;
+    margin: 0px;
+    padding:0px;
+    /* background-color: magenta; */
+    background-color: white;
+}
+
+.studentMarksHeading {
+    font-size: 4rem;
+    text-align: center;
+    /* border: 2px solid brown; */
+    padding: 10px;
+    color: purple;
+    text-shadow: 2px 2px 5px rgb(62, 61, 61);
+}
+
+.marksFilter div {
+    font-size: 1.5rem;
+}
+
+
+.marksFilter select {
+    text-align: center;
+    font-size: 1.5rem;
+}
+
+.marksContainer {
+    /* border: 2px solid red; */
+    padding: 10px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.marksContainer table th {
+    font-size: 2rem;
+    padding: 10px 35px;
+    /* margin: 20px; */
+}
+
+.marksContainer table tr {
+    border-radius: 20px;
+}
+
+
+.marksContainer table td {
+    font-size: 1.6rem;
+    padding: 5px;
+}
+
+tr:nth-child(even) {
+    background-color: rgb(192, 190, 190);
+}
+

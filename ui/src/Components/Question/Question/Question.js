@@ -1,8 +1,8 @@
 import "./Question.css";
 
-const Question = (props) => {
-  const { question, opt1, opt2, opt3, opt4, answer } = props.data;
-
+const Question = (props) => { 
+    const { question, opt1, opt2, opt3, opt4} = props.data;
+    
   return (
     <>
       <div className="mainQuestionContainer">
