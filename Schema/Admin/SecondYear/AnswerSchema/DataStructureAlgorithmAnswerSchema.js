@@ -17,6 +17,11 @@ const DataStructureAndAlgorithmAnswerSchema = new mongoose.Schema(
             type: Number,
             require: true,
             trim: true
+        },
+        department: {
+            type: String,
+            require: true,
+            trim: true
         }
     }
 )

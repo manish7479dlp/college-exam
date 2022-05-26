@@ -115,8 +115,10 @@ const QuestionContainer = () => {
         name: StudentDetail.name,
         universityRoll: StudentDetail.universityRoll,
         marks,
+        department: StudentDetail.department
       };
-
+       
+      console.log(marksSheet);
       return marksSheet;
     };
 

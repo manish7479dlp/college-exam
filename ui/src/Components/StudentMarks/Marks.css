@@ -68,3 +68,16 @@ tr:nth-child(even) {
     background-color: rgb(192, 190, 190);
 }
 
+.removeMarksBtn {
+    padding: 10px 15px;
+    border:none;
+    border-radius: 20px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    transition: .3s;
+}
+.removeMarksBtn:hover {
+    background-color: green;
+    color:white;
+}
+

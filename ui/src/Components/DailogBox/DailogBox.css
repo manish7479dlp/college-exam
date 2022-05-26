@@ -1,13 +1,13 @@
 .dailogboxContainer {
     width: 550px;
-    height: 200px;
+    height: 350px;
     /* border: 2px solid brown; */
     border-radius: 20px;
     padding: 10px;
     background-color: rgb(172, 172, 172);
-    display: none;
-    /* display: flex; */
+    /* display: none; */
     flex-direction: column;
+    /* display: flex; */
     /* margin-top: -400px; */
 }
 

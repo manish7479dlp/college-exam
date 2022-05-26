@@ -24,4 +24,15 @@ router.post("/data_structure_and_algorithm_answer", async (req, res) => {
   }
 });
 
+router.delete("/data_structure_and_algorithm_answer" , async(req , res) => {
+  try {
+    const response = await DSA.deleteMany({department : "CSE"})
+    res.send(respond);
+  } catch (error) {
+    console.log(error);
+    res.send(error);
+    
+  }
+})
+
 module.exports = router;

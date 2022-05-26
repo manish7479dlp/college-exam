@@ -2,12 +2,12 @@ import react, { useState } from "react";
 import "./DailogBox.css";
 import { useNavigate } from "react-router-dom";
 
-const DailogBox = (props) => {
+const DailogBox = () => {
   const Navigate = useNavigate();
 
   return (
     <>
-      <div className="center dailogboxContainer" style={props.display}>
+      <div className="center dailogboxContainer" >
         <h2>Choose Any One of the follwoing...</h2>
         <button
           onClick={() => {

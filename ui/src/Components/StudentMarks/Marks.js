@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { toast } from "react-toastify";
 import Header from "../Heading/Header";
+import { useNavigate } from "react-router-dom";
 import "./Marks.css";
 
 const Marks = () => {
@@ -9,7 +10,31 @@ const Marks = () => {
   const [Data, setData] = useState(initialData);
   const [isDisable, setDisable] = useState(true);
   const [loading, setLoading] = useState(true);
-  // const [Marks, setMarks] = useState([]);
+  const [Marks, setMarks] = useState([]);
+  const Navigate = useNavigate();
+
+  const removeMarks = () => {
+    if (Marks.length === 0) {
+      toast.error("No Marks Found..");
+    } else {
+      const inputPassword = window.prompt("Enter Your Password.");
+      const tDeatils = JSON.parse(sessionStorage.getItem("TeacherDetail"));
+      if (inputPassword === tDeatils.password) {
+        try {
+          let subject = subjectNameConverter(Data.subject);
+          subject = subject + "_answer";
+          const url = `${apibaseURL}/${subject}`;
+          const response = fetch(url, { method: "DELETE" });
+          setMarks([]);
+          toast.info("Successfully Deleted.");
+        } catch {
+          toast.warning("Some Technical Problem Found..");
+        }
+      } else {
+        toast.warning("Incorrect Password.");
+      }
+    }
+  };
 
   const fetchMarks = async (subjectName) => {
     try {
@@ -20,11 +45,11 @@ const Marks = () => {
       console.log(subject);
 
       const url = `${apibaseURL}/${subject}`;
-    //   console.log(url);
+      //   console.log(url);
       const response = await fetch(url);
       const result = await response.json();
-      console.log(result);
-      // setMarks(result);
+
+      setMarks(result);
       setLoading(false);
     } catch (error) {
       setLoading(false);
@@ -98,7 +123,7 @@ const Marks = () => {
               disabled={isDisable}
             >
               <option value="#">***Choose Any One***</option>
-              <option value={"Data Stducture and Algorithm"}>DSA</option>
+              <option value={"Data Structure and Algorithm"}>DSA</option>
               <option value={"Basic Electdic"}>Basic Electdic</option>
               <option value={"CA"}>CA</option>
               <option value={"Math1"}>Math1</option>
@@ -116,6 +141,10 @@ const Marks = () => {
       <option value={"Automata"}>Automata</option> */}
             </select>
           </div>
+
+          <button className="removeMarksBtn" onClick={removeMarks}>
+            Remove Marks
+          </button>
         </div>
       </div>
 
@@ -132,204 +161,16 @@ const Marks = () => {
                 <th>Marks</th>
               </tr>
 
-              <tr>
-                <td>Manish Kumar</td>
-                <td>10600120008</td>
-                <td>CSE</td>
-                <td>10</td>
-              </tr>
-              <tr>
-                <td>Anish Kumar</td>
-                <td>10600120008</td>
-                <td>CSE</td>
-                <td>10</td>
-              </tr>
-              <tr>
-                <td>Rahul Kumar</td>
-                <td>10600120008</td>
-                <td>CSE</td>
-                <td>10</td>
-              </tr>
-              <tr>
-                <td>Manish Kumar</td>
-                <td>10600120008</td>
-                <td>CSE</td>
-                <td>10</td>
-              </tr>
-              <tr>
-                <td>Anish Kumar</td>
-                <td>10600120008</td>
-                <td>CSE</td>
-                <td>10</td>
-              </tr>
-              <tr>
-                <td>Rahul Kumar</td>
-                <td>10600120008</td>
-                <td>CSE</td>
-                <td>10</td>
-              </tr>
-              <tr>
-                <td>Manish Kumar</td>
-                <td>10600120008</td>
-                <td>CSE</td>
-                <td>10</td>
-              </tr>
-              <tr>
-                <td>Anish Kumar</td>
-                <td>10600120008</td>
-                <td>CSE</td>
-                <td>10</td>
-              </tr>
-              <tr>
-                <td>Rahul Kumar</td>
-                <td>10600120008</td>
-                <td>CSE</td>
-                <td>10</td>
-              </tr>
-              <tr>
-                <td>Manish Kumar</td>
-                <td>10600120008</td>
-                <td>CSE</td>
-                <td>10</td>
-              </tr>
-              <tr>
-                <td>Anish Kumar</td>
-                <td>10600120008</td>
-                <td>CSE</td>
-                <td>10</td>
-              </tr>
-              <tr>
-                <td>Rahul Kumar</td>
-                <td>10600120008</td>
-                <td>CSE</td>
-                <td>10</td>
-              </tr>
-              <tr>
-                <td>Manish Kumar</td>
-                <td>10600120008</td>
-                <td>CSE</td>
-                <td>10</td>
-              </tr>
-              <tr>
-                <td>Anish Kumar</td>
-                <td>10600120008</td>
-                <td>CSE</td>
-                <td>10</td>
-              </tr>
-              <tr>
-                <td>Rahul Kumar</td>
-                <td>10600120008</td>
-                <td>CSE</td>
-                <td>10</td>
-              </tr>
-              <tr>
-                <td>Manish Kumar</td>
-                <td>10600120008</td>
-                <td>CSE</td>
-                <td>10</td>
-              </tr>
-              <tr>
-                <td>Anish Kumar</td>
-                <td>10600120008</td>
-                <td>CSE</td>
-                <td>10</td>
-              </tr>
-              <tr>
-                <td>Rahul Kumar</td>
-                <td>10600120008</td>
-                <td>CSE</td>
-                <td>10</td>
-              </tr>
-              <tr>
-                <td>Manish Kumar</td>
-                <td>10600120008</td>
-                <td>CSE</td>
-                <td>10</td>
-              </tr>
-              <tr>
-                <td>Anish Kumar</td>
-                <td>10600120008</td>
-                <td>CSE</td>
-                <td>10</td>
-              </tr>
-              <tr>
-                <td>Rahul Kumar</td>
-                <td>10600120008</td>
-                <td>CSE</td>
-                <td>10</td>
-              </tr>
-              <tr>
-                <td>Manish Kumar</td>
-                <td>10600120008</td>
-                <td>CSE</td>
-                <td>10</td>
-              </tr>
-              <tr>
-                <td>Anish Kumar</td>
-                <td>10600120008</td>
-                <td>CSE</td>
-                <td>10</td>
-              </tr>
-              <tr>
-                <td>Rahul Kumar</td>
-                <td>10600120008</td>
-                <td>CSE</td>
-                <td>10</td>
-              </tr>
-              <tr>
-                <td>Manish Kumar</td>
-                <td>10600120008</td>
-                <td>CSE</td>
-                <td>10</td>
-              </tr>
-              <tr>
-                <td>Anish Kumar</td>
-                <td>10600120008</td>
-                <td>CSE</td>
-                <td>10</td>
-              </tr>
-              <tr>
-                <td>Rahul Kumar</td>
-                <td>10600120008</td>
-                <td>CSE</td>
-                <td>10</td>
-              </tr>
-              <tr>
-                <td>Manish Kumar</td>
-                <td>10600120008</td>
-                <td>CSE</td>
-                <td>10</td>
-              </tr>
-              <tr>
-                <td>Anish Kumar</td>
-                <td>10600120008</td>
-                <td>CSE</td>
-                <td>10</td>
-              </tr>
-              <tr>
-                <td>Rahul Kumar</td>
-                <td>10600120008</td>
-                <td>CSE</td>
-                <td>10</td>
-              </tr>
-              <tr>
-                <td>Manish Kumar</td>
-                <td>10600120008</td>
-                <td>CSE</td>
-                <td>10</td>
-              </tr>
-              <tr>
-                <td>Anish Kumar</td>
-                <td>10600120008</td>
-                <td>CSE</td>
-                <td>10</td>
-              </tr>
-              <tr>
-                <td>Rahul Kumar</td>
-                <td>10600120008</td>
-                <td>CSE</td>
-                <td>10</td>
-              </tr>
+              {Marks.map((elm, idx) => {
+                return (
+                  <tr key={idx}>
+                    <td>{elm.name}</td>
+                    <td>{elm.universityRoll}</td>
+                    <td>{elm.department}</td>
+                    <td>{elm.marks}</td>
+                  </tr>
+                );
+              })}
             </tbody>
           </table>
         </div>

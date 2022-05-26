@@ -15,17 +15,15 @@ const TeacherLogin = () => {
   useEffect(() => {
     // const loginCheck = localStorage.getItem("StudentDetail");
     const auth = sessionStorage.getItem("TeacherDetail");
-    
+
     if (auth !== null) {
       // Navigate("/dailogbox");
       if (display.display === "none") {
         setDisplay((pre) => {
           return { display: "flex" };
         });
-      } 
+      }
     }
-
-
   });
   const initialData = {
     userId: "",
@@ -55,7 +53,7 @@ const TeacherLogin = () => {
             setDisplay((pre) => {
               return { display: "flex" };
             });
-          } 
+          }
         } else {
           toast.error("Invalid Password.");
         }
@@ -76,8 +74,8 @@ const TeacherLogin = () => {
   return (
     <>
       <Header />
-      <div className="center dailogContainer">
-        <DailogBox display={display} />
+      <div className="center dailogContainer" style={display}>
+        <DailogBox />
       </div>
       <div className="center studentContainer">
         <form onSubmit={onSubmit}>
