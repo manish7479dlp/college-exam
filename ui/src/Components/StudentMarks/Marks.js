@@ -124,21 +124,14 @@ const Marks = () => {
             >
               <option value="#">***Choose Any One***</option>
               <option value={"Data Structure and Algorithm"}>DSA</option>
-              <option value={"Basic Electdic"}>Basic Electdic</option>
+              <option value={"Basic Electric"}>Basic Electric</option>
               <option value={"CA"}>CA</option>
               <option value={"Math1"}>Math1</option>
               <option value={"Physics"}>Physics</option>
               <option value={"Environmental Science"}>EVS</option>
               <option value={"Biology"}>Biology</option>
               <option value={"Automata"}>Automata</option>
-              {/* <option value={"Data Stducture and Algorithm"}>DSA</option>
-      <option value={"Computer Organization"}>CO</option>
-      <option value={"CA"}>CA</option>
-      <option value={"Design and Analysis of Algorithm"}>DAA</option>
-      <option value={"Maths"}>Maths</option>
-      <option value={"Environmental Science"}>EVS</option>
-      <option value={"Biology"}>Biology</option>
-      <option value={"Automata"}>Automata</option> */}
+              
             </select>
           </div>
 

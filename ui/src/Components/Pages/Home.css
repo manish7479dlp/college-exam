@@ -44,3 +44,191 @@
 .homeBody .rightContent {
     /* width: 80%; */
 }
+
+
+/* Responsive code begin */
+
+@media screen and (max-width : 1496px) {
+    .homeBody .rightContent img {
+        max-width: 44vw;
+    }
+}
+
+@media screen and (max-width : 1365px) {
+    .homeBody {
+        justify-content: space-evenly;
+        padding: 4px 20px;
+    }
+    .homeBody .leftContent {
+        width: 50vw;
+    }
+    .homeBody .rightContent {
+        width: 45vw;
+        /* max-width: 48vw; */
+    }
+}
+
+@media screen and (max-width : 1150px) {
+    .homeBody .rightContent img {
+        max-width: 48vw;
+    }
+    .homeBody .leftContent {
+        width: 48vw;
+    }
+
+    .homeBody .leftContent .title {
+        font-size: 3rem;
+    }
+
+    .homeBody .leftContent .discription {
+        font-size: 1.3rem;
+    }
+}
+
+@media screen and (max-width : 1050px) {
+    
+    .homeBody .rightContent img {
+        max-width: 45vw;
+    }
+    .homeBody .leftContent {
+        width: 45vw;
+    }
+
+    .homeBody .leftContent .title {
+        font-size: 2.7rem;
+    }
+    
+    .homeBody .leftContent .discription {
+        font-size: 1.2rem;
+    }
+}
+
+@media screen and (max-width : 930px) {
+
+    .homeBody .leftContent {
+        width: 55vw;
+    }
+    .homeBody .leftContent img {
+        width: 45vw;
+    }
+    
+    .homeBody .leftContent .title {
+        font-size: 2.5rem;
+    }
+    .homeBody .leftContent .discription {
+        font-size: 1.1rem;
+    }
+}
+
+@media screen and (max-width : 890px) {
+    .homeBody .rightContent {
+        display: none;
+    }
+    .homeBody .leftContent {
+        width: 100vw;
+    }
+
+    .homeBody .leftContent .title {
+        font-size: 3.8rem;
+    }
+
+    .homeBody .leftContent .discription {
+        font-size: 1.5rem;
+    }
+}
+
+@media screen and (max-width : 650px) {
+    .homeBody .leftContent .title {
+        font-size: 3.4rem;
+    }
+    .homeBody .leftContent .discription {
+        font-size: 1.4rem;
+    }
+}
+@media screen and (max-width : 600px) {
+    .homeBody .leftContent .title {
+        font-size: 3.2rem;
+    }
+    .homeBody .leftContent .discription {
+        font-size: 1.2rem;
+    }
+}
+@media screen and (max-width : 520px) {
+    .homeBody .leftContent .title {
+        font-size: 3rem;
+    }
+    .homeBody .leftContent .discription {
+        font-size: 1.2rem;
+    }
+    .homeBody .leftContent {
+        padding: 10px;
+    }
+}
+
+@media screen and (max-width : 490px) {
+    .homeBody .leftContent .title {
+        font-size: 2.8rem;
+    }
+}
+@media screen and (max-width : 470px) {
+    .homeBody .leftContent .discription {
+        font-size: 1.1rem;
+    }
+}
+@media screen and (max-width : 460px) {
+    .homeBody .leftContent .title {
+        font-size: 2.6rem;
+    }
+}
+@media screen and (max-width : 430px) {
+    .homeBody .leftContent .title {
+        font-size: 2.4rem;
+    }
+    .homeBody .leftContent .discription {
+        font-size: 1rem;
+    }
+}
+@media screen and (max-width : 400px) {
+    .homeBody .leftContent .title {
+        font-size: 3rem;
+    }
+    .homeBody .leftContent .discription {
+        font-size: 1.3rem;
+    }
+}
+@media screen and (max-width : 370px) {
+    .homeBody .leftContent .title {
+        font-size: 2.9rem;
+    }
+    .homeBody .leftContent .discription {
+        font-size: 1.2rem;
+    }
+}
+@media screen and (max-width : 350px) {
+    .homeBody .leftContent .title {
+        font-size: 2.7rem;
+    }
+    
+}
+@media screen and (max-width : 330px) {
+    .homeBody .leftContent .title {
+        font-size: 2.6rem;
+    }
+}
+@media screen and (max-width : 303px) {
+    .homeBody .leftContent .title {
+        font-size: 2.4rem;
+    }
+    .homeBody .leftContent .discription {
+        font-size: 1.1rem;
+    }
+}
+
+@media screen and (max-width : 280px) {
+    .homeBody .leftContent .title {
+        font-size:  2.2rem;
+    }
+    .homeBody .leftContent .discription {
+        font-size: 1rem;
+    }
+}
