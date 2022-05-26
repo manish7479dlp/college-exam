@@ -32,11 +32,11 @@ app.use(Math1Answer);
 
 app.use(DSAQuestion);
 app.use(DSAAnswer);
-
+/*
 app.get("*" , (req , res) => {
     res.status(404);
     res.send("404 Page not found..")
-})
+}) */
 
 app.listen(port , () => {
     console.log("Connection to the server... Port number " + port);

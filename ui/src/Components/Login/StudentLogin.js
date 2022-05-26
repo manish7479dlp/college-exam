@@ -26,7 +26,7 @@ const StudentLogin = () => {
     try {
       const url = `${apibaseURL}/student/${Data.universityRoll}`;
       event.preventDefault();
-
+      console.log(url);
       // const response = await fetch(url, { method: "GET" }); // it also work find
       const response = await fetch(url);
       // This code return the response in array of object formate..

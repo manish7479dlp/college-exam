@@ -4,20 +4,28 @@ import Button from "../Buttons/Button";
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
+import DailogBox from "../DailogBox/DailogBox";
 
 const TeacherLogin = () => {
-  const apibaseURL = process.env.REACT_APP_API_URL || '';
+  const apibaseURL = process.env.REACT_APP_API_URL || "";
 
   const Navigate = useNavigate();
+  const [display, setDisplay] = useState({ display: "none" });
 
   useEffect(() => {
     // const loginCheck = localStorage.getItem("StudentDetail");
     const auth = sessionStorage.getItem("TeacherDetail");
+    
     if (auth !== null) {
-      Navigate("/questiondetailsection");
+      // Navigate("/dailogbox");
+      if (display.display === "none") {
+        setDisplay((pre) => {
+          return { display: "flex" };
+        });
+      } 
     }
 
-    console.log(auth);
+
   });
   const initialData = {
     userId: "",
@@ -43,7 +51,11 @@ const TeacherLogin = () => {
           sessionStorage.setItem("TeacherDetail", JSON.stringify(finalData[0]));
           toast.success("Valid User.");
           setData(initialData);
-          Navigate("/questiondetailsection");
+          if (display.display === "none") {
+            setDisplay((pre) => {
+              return { display: "flex" };
+            });
+          } 
         } else {
           toast.error("Invalid Password.");
         }
@@ -64,6 +76,9 @@ const TeacherLogin = () => {
   return (
     <>
       <Header />
+      <div className="center dailogContainer">
+        <DailogBox display={display} />
+      </div>
       <div className="center studentContainer">
         <form onSubmit={onSubmit}>
           <div className="center studentLoginContainer">

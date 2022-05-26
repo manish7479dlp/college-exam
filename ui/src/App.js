@@ -17,6 +17,7 @@ import TeacherLoginPrivateComponent from "./Components/PrivateComponent/TeacherL
 import ExamStarterPage from "./Components/Question/ExamStarterPage/ExamStarterPage";
 import QuestionDetailSection from "./Components/QuestionSetSection/QuestionDetailSection/QuestionDetailSection"
 import Marks from "./Components/StudentMarks/Marks";
+import DailogBox from "./Components/DailogBox/DailogBox";
 function App() {
   return (
     <>
@@ -25,6 +26,7 @@ function App() {
         <Routes>
           
           <Route path="/studentmarks" element = {<Marks/>} />
+          <Route path="/dailogbox" element = {<DailogBox/>}/>
 
           <Route path="/" element={<Home />} />
           <Route path="/logindashboard" element={<LoginDashboard />} />

@@ -9,6 +9,8 @@
     border-radius: 20px;
     padding: 20px;
     background-color: purple;
+    /* position: relative;
+    z-index: 10px; */
 }
 
 .studentLoginContainer div {
@@ -39,4 +41,12 @@
     border: none;
     font-size: 1.4rem;
     font-weight: 600;
+}
+
+.dailogContainer {
+    position: absolute; 
+    top: 0px;
+    /* height: calc(100vh - 70px); */
+    
+    
 }

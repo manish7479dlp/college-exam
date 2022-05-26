@@ -5,7 +5,8 @@ import ContentName from "../../Heading/ContentName";
 import Question from "../Question/Question";
 import StudentDetails from "../../Cards/StudentDetails";
 import { toast } from "react-toastify";
-import { Navigate, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+
 
 const QuestionContainer = () => {
   const apibaseURL = process.env.REACT_APP_API_URL || '';
@@ -14,7 +15,9 @@ const QuestionContainer = () => {
   const [loading, setLoading] = useState(true);
   const [quesNumber, setQuesNumber] = useState(1);
   const [subjectName, setSubjectName] = useState("");
+
    const Navigate  = useNavigate();
+
 
   useEffect(() => {
     setSubjectName(JSON.parse(sessionStorage.getItem("ExamSubjectName")));
