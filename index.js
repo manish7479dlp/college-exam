@@ -23,9 +23,6 @@ var publicFolder = path.resolve(__dirname, "./ui/build");
 app.use(express.json());
 app.use(cors());
 app.use(express.static(path.join(publicFolder)));
-app.all("/*", function (req, res) {
-    res.sendFile("index.html", { root: publicFolder });
-});
 
 app.use(StudentRouter);
 app.use(TeacherRouter);
@@ -38,12 +35,18 @@ app.use(Math1Answer);
 
 app.use(DSAQuestion);
 app.use(DSAAnswer);
-/*
-app.get("*" , (req , res) => {
-    res.status(404);
-    res.send("404 Page not found..")
-}) */
 
-app.listen(port , () => {
+// Serve frontend
+app.all("/*", function (req, res) {
+    res.sendFile("index.html", { root: publicFolder });
+});
+
+// Error 404 for no route
+app.get("*", (req, res) => {
+    res.status(404);
+    res.send("404 Page not found..");
+});
+
+app.listen(port, () => {
     console.log("Connection to the server... Port number " + port);
-})
+});
