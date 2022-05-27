@@ -3,7 +3,33 @@
     justify-content: space-evenly;
     height: calc(100vh - 70px);
     background: url("../../../Images/HomeBackground.jpg");
-    background-repeat: no-repeat;
+    /* background-repeat: no-repeat; */
     background-position: center;
     background-size: cover;
+}
+
+/* Responsive Code start */
+
+@media screen and (max-width : 1150px) {
+    .loginDashboardContainer {
+        height: auto;
+        padding: 50px;
+        flex-direction: row-reverse;
+        /* margin-bottom: 50px; */
+    }
+}
+
+@media screen and (max-width : 900px) {
+    .loginDashboardContainer {
+        padding: 20px;
+    }
+}
+
+@media screen and (max-width : 785px) {
+    .loginDashboardContainer {
+        padding: 15px;
+    }
+}
+@media screen and (max-width : 740px) {
+    
 }

@@ -38,7 +38,7 @@ const LoginDashboard = () => {
           name={"Log in"}
           heading={"Student Log-in"}
           content={
-            "It is Student Login Section. Where Student Login and Go a Head For Examination."
+            "It is Student Login Section. Where Student Login and Go a Head For Examination. And It's a MCQ (Multiple Choice Based Examination)"
           }
           onClick={onClick}
         />
