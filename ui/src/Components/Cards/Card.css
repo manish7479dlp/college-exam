@@ -1,32 +1,141 @@
 .cardContainer {
-    flex-direction: column;
-    border: 1px solid wheat;
-    width: 380px;
-    padding: 20px;
-    border-radius: 10px;
-    background: rgba(255, 255, 255, 0.087);
-    backdrop-filter: blur(10px);
+  flex-direction: column;
+  border: 1px solid wheat;
+  width: 380px;
+  padding: 20px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.087);
+  backdrop-filter: blur(10px);
 }
 
 .cardContainer .cardHeading {
-    width: 100%;
-    height: 90px;
-    background-color: rgba(254, 96, 170, 0.502);
-    border-radius: 7px;
-    color: white;
-    font-size: 3rem;
-    padding: 8px;
-    border: 3px solid rgb(254, 255, 255);
-    text-shadow: 2px 2px 4px  rgb(76, 221, 71);
-    backdrop-filter: blur(100px);
-    
+  width: 100%;
+  height: 90px;
+  background-color: rgba(254, 96, 170, 0.502);
+  border-radius: 7px;
+  color: white;
+  font-size: 3rem;
+  padding: 8px;
+  border: 3px solid rgb(254, 255, 255);
+  text-shadow: 2px 2px 4px rgb(76, 221, 71);
+  backdrop-filter: blur(100px);
 }
 
 .cardContainer .cardContent {
-    font-family: 'Source Serif 4', serif;
-    font-size: 1.4rem;
-    margin-top: 8px;
-    margin-bottom: 7px;
-    color: white;
-    /* text-shadow: 1px 1px 2px rgb(249, 132, 214); */
+  font-family: "Source Serif 4", serif;
+  font-size: 1.4rem;
+  margin-top: 8px;
+  margin-bottom: 7px;
+  color: white;
+  text-align: center;
+  /* border: 2px solid red; */
+  /* text-shadow: 1px 1px 2px rgb(249, 132, 214); */
+}
+
+/* Responsive Code start */
+
+@media screen and (max-width: 1320px) {
+  .cardContainer .cardHeading {
+    font-size: 2.5rem;
+  }
+  .cardContainer .cardContent {
+    font-size: 1.3rem;
+  }
+  .cardContainer {
+    width: 360px;
+  }
+}
+
+@media screen and (max-width: 1150px) {
+  .cardContainer {
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+}
+
+@media screen and (max-width: 785px) {
+  .cardContainer {
+    width: 350px;
+  }
+}
+
+@media screen and (max-width: 740px) {
+  .cardContainer {
+    width: 500px;
+  }
+
+  .cardContainer .cardHeading {
+    font-size: 3rem;
+  }
+  .cardContainer .cardContent {
+    font-size: 1.3rem;
+  }
+}
+@media screen and (max-width: 550px) {
+  .cardContainer {
+    width: 440px;
+  }
+}
+@media screen and (max-width: 450px) {
+  .cardContainer {
+    width: 350px;
+  }
+  .cardContainer .cardHeading {
+      font-size: 2.5rem;
+      height: 80px;
+  }
+}
+@media screen and (max-width: 355px) {
+  .cardContainer {
+    width: 280px;
+  }
+  .cardContainer .cardHeading {
+      font-size: 2rem;
+      height: 70px;
+  }
+  .cardContainer .cardContent {
+      font-size: 1.2rem;
+  }
+}
+@media screen and (max-width: 301px) {
+  .cardContainer {
+    width: 280px;
+  }
+  .cardContainer .cardHeading {
+      font-size: 1.9rem;
+  }
+  
+}
+@media screen and (max-width: 294px) {
+  .cardContainer {
+    width: 250px;
+  }
+  .cardContainer .cardHeading {
+      font-size: 1.7rem;
+  }
+  .cardContainer .cardContent {
+      font-size: 1rem;
+  }
+  
+}
+@media screen and (max-width: 272px) {
+  .cardContainer {
+    width: 240px;
+  }
+  .cardContainer .cardHeading {
+      font-size: 1.6rem;
+  }
+  
+}
+@media screen and (max-width: 262px) {
+  .cardContainer {
+    width: 230px;
+  }
+  .cardContainer .cardHeading {
+      font-size: 1.4rem;
+  }
+  .cardContainer .cardContent {
+      font-size: 1rem;
+  }
+  
 }
