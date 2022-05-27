@@ -47,3 +47,12 @@
         font-size: 1.3rem;
     }
 }
+@media screen and (max-width: 260px) {
+    .headerContainer {
+        width: 100vw;
+        height: 90px;
+    }
+    .headerContainer .clgName {
+        font-size: 1.2rem;
+    }
+}

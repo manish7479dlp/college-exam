@@ -10,7 +10,7 @@
 
 /* Responsive Code start */
 
-@media screen and (max-width : 1150px) {
+@media screen and (max-width: 1150px) {
     .loginDashboardContainer {
         height: auto;
         padding: 50px;
@@ -19,17 +19,14 @@
     }
 }
 
-@media screen and (max-width : 900px) {
+@media screen and (max-width: 900px) {
     .loginDashboardContainer {
         padding: 20px;
     }
 }
 
-@media screen and (max-width : 785px) {
+@media screen and (max-width: 785px) {
     .loginDashboardContainer {
         padding: 15px;
     }
-}
-@media screen and (max-width : 740px) {
-    
 }

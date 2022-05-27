@@ -17,7 +17,7 @@ const Home = () => {
       <Header />
       <div className="center homeBody">
         <div className="center leftContent">
-          <h2 className="title">MCET Online Exam Plateform</h2>
+          <h2 className="title">MCET Online <i>Exam</i> Plateform</h2>
           <p className="discription">
             Hey, This is MCET Online Exam Plateform. In This Plateform All the
             Student's of MCET have to give CA - (1 ,2 3, 4) Examination, In

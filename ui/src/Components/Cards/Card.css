@@ -6,6 +6,7 @@
   border-radius: 10px;
   background: rgba(255, 255, 255, 0.087);
   backdrop-filter: blur(10px);
+  /* background-color: red; */
 }
 
 .cardContainer .cardHeading {
@@ -59,7 +60,7 @@
   }
 }
 
-@media screen and (max-width: 740px) {
+@media screen and (max-width: 743px) {
   .cardContainer {
     width: 500px;
   }
@@ -71,12 +72,13 @@
     font-size: 1.3rem;
   }
 }
-@media screen and (max-width: 550px) {
+@media screen and (max-width: 553px) {
   .cardContainer {
     width: 440px;
+    /* background: red; */
   }
 }
-@media screen and (max-width: 450px) {
+@media screen and (max-width: 453px) {
   .cardContainer {
     width: 350px;
   }
@@ -85,19 +87,25 @@
       height: 80px;
   }
 }
-@media screen and (max-width: 355px) {
+@media screen and (max-width : 381px) {
+  .cardContainer {
+    width: 330px;
+  }
+}
+
+@media screen and (max-width: 361px) {
   .cardContainer {
     width: 280px;
   }
   .cardContainer .cardHeading {
-      font-size: 2rem;
+      font-size: 1.8rem;
       height: 70px;
   }
   .cardContainer .cardContent {
       font-size: 1.2rem;
   }
 }
-@media screen and (max-width: 301px) {
+@media screen and (max-width: 303px) {
   .cardContainer {
     width: 280px;
   }
@@ -106,7 +114,7 @@
   }
   
 }
-@media screen and (max-width: 294px) {
+@media screen and (max-width: 297px) {
   .cardContainer {
     width: 250px;
   }
@@ -133,6 +141,30 @@
   }
   .cardContainer .cardHeading {
       font-size: 1.4rem;
+  }
+  .cardContainer .cardContent {
+      font-size: 1rem;
+  }
+  
+}
+@media screen and (max-width: 230px) {
+  .cardContainer {
+    width: 200px;
+  }
+  .cardContainer .cardHeading {
+      font-size: 1rem;
+  }
+  .cardContainer .cardContent {
+      font-size: 1rem;
+  }
+  
+}
+@media screen and (max-width: 230px) {
+  .cardContainer {
+    width: 200px;
+  }
+  .cardContainer .cardHeading {
+      font-size: 1rem;
   }
   .cardContainer .cardContent {
       font-size: 1rem;

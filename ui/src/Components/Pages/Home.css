@@ -206,7 +206,10 @@
 }
 @media screen and (max-width : 350px) {
     .homeBody .leftContent .title {
-        font-size: 2.7rem;
+        font-size: 2.8rem;
+    }
+    .homeBody .leftContent .discription {
+        font-size: 1.1rem;
     }
     
 }

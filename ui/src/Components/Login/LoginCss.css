@@ -1,6 +1,6 @@
 .studentContainer {
     height: calc(100vh - 70px);
-    background-color: grey;
+    background-color: rgb(161, 210, 247);
 }
 
 .studentLoginContainer {
@@ -8,7 +8,7 @@
     flex-direction: column;
     border-radius: 20px;
     padding: 20px;
-    background-color: purple;
+    background-color: #219F94;
     /* position: relative;
     z-index: 10px; */
 }
@@ -30,7 +30,6 @@
     font-size: 1.4rem;
     margin-bottom: 8px;
     font-weight: 600;
-    
 }
 
 .studentContainer .studentLoginContainer input {
@@ -45,10 +44,52 @@
 }
 
 .dailogContainer {
-    position: absolute; 
+    position: absolute;
     /* top: 0px; */
     height: calc(100vh - 70px);
     display: none;
-    
-    
+}
+
+/* Responsive code begin */
+
+@media screen and (max-width: 600px) {
+    .studentLoginContainer {
+        width: 500px;
+    }
+}
+
+@media screen and (max-width: 540px) {
+    .studentLoginContainer {
+        width: 440px;
+    }
+}
+
+@media screen and (max-width: 460px) {
+    .studentLoginContainer {
+        width: 360px;
+    }
+}
+@media screen and (max-width: 400px) {
+    .studentLoginContainer {
+        padding: 20px 10px;
+    }
+    .studentLoginContainer {
+        width: 320px;
+    }
+}
+@media screen and (max-width: 350px) {
+    .studentLoginContainer {
+        width: 300px;
+    }
+    .studentContainer .studentLoginContainer input {
+        width: 260px;
+    }
+}
+@media screen and (max-width: 350px) {
+    .studentLoginContainer {
+        width: 280px;
+    }
+    .studentContainer .studentLoginContainer input {
+        width: 240px;
+    }
 }
