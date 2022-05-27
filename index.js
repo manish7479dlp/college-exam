@@ -1,26 +1,32 @@
-const express = require('express');
-const cors = require('cors');
-const path = require('path');
+const express = require("express");
+const cors = require("cors");
+const path = require("path");
 const app = express();
 require("./DataBaseConfig/DBConfig");
 const StudentRouter = require("./Routes/Student/StudentRoutes");
-const TeacherRouter = require("./Routes/Teacher/TeacherRoutes")
+const TeacherRouter = require("./Routes/Teacher/TeacherRoutes");
 
 const BasicElectricalQuestion = require("./Routes/Question/FirstYear/BasicElectricalQuestionRoute");
-const BasicElectricalAnswer = require("./Routes/Answer/Firstyear/BasicElectricalAnswerRoutes")
-const PhysicsQuestion = require("./Routes/Question/FirstYear/PhysicsQuestionRoute")
+const BasicElectricalAnswer = require("./Routes/Answer/Firstyear/BasicElectricalAnswerRoutes");
+const PhysicsQuestion = require("./Routes/Question/FirstYear/PhysicsQuestionRoute");
 const PhysicsAnswer = require("./Routes/Answer/Firstyear/PhysicsAnswerRoute");
-const Math1Question = require("./Routes/Question/FirstYear/Math1QuestionRoute")
-const Math1Answer = require("./Routes/Answer/Firstyear/Math1AnswerRoute")
+const Math1Question = require("./Routes/Question/FirstYear/Math1QuestionRoute");
+const Math1Answer = require("./Routes/Answer/Firstyear/Math1AnswerRoute");
 
-const DSAQuestion = require("./Routes/Question/SecondYear/DataStructureAndAlgorithmQuestionRouter")
+const DSAQuestion = require("./Routes/Question/SecondYear/DataStructureAndAlgorithmQuestionRouter");
 const DSAAnswer = require("./Routes/Answer/SecondYear/DataStructureAlgorithmRoutes");
 
-const port = process.env.PORT || 8000 ;
+const port = process.env.PORT || 8000;
+
+var publicFolder = path.resolve(__dirname, "./ui/build");
 
 app.use(express.json());
 app.use(cors());
-app.use(express.static(path.join(__dirname, "ui/build")));
+app.use(express.static(path.join(publicFolder)));
+app.all("/*", function (req, res) {
+    res.sendFile("index.html", { root: publicFolder });
+});
+
 app.use(StudentRouter);
 app.use(TeacherRouter);
 app.use(BasicElectricalQuestion);
