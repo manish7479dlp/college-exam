@@ -20,9 +20,12 @@
     }
     .contentNameContainer {
         width: 92%;
+        margin-top: 1px;
+        /* border: 2px solid red; */
     }
 }
 @media screen and (max-width: 620px) {
+    
     .contentNameContainer h1 {
         font-size: 2.1rem;
     }
@@ -42,7 +45,7 @@
         width: 98%;
     }
     .contentNameContainer h1 {
-        padding: 5px 5px;
+        padding: 3px 5px;
     }
 }
 @media screen and (max-width: 475px) {
