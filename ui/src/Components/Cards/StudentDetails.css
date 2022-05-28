@@ -21,3 +21,21 @@
     padding: 2px;
     /* color: white; */
 }
+
+/* Responsive code begin */
+
+@media screen and (max-width : 1250px) {
+    .studentDetailContainer {
+        width: 290px;
+    }
+}
+
+@media screen and (max-width: 310px) {
+    .studentDetailContainer {
+        width: 270px;
+    }
+    .studentDetailContainer p {
+        font: 1.29;
+        font-weight: 530;
+    }
+}

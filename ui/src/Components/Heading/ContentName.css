@@ -7,6 +7,76 @@
 }
 .contentNameContainer h1 {
     font-size: 2.5rem;
-    color: rgb(77, 153, 184);  
-    text-shadow: 2px 2px  4px rgb(107, 184, 40);
+    color: rgb(77, 153, 184);
+    text-shadow: 2px 2px 4px rgb(107, 184, 40);
+}
+
+/* Responsive code start */
+
+@media screen and (max-width: 780px) {
+    .contentNameContainer h1 {
+        font-size: 2.3rem;
+    }
+    .contentNameContainer {
+        width: 92%;
+    }
+}
+@media screen and (max-width: 620px) {
+    .contentNameContainer h1 {
+        font-size: 2.1rem;
+    }
+}
+@media screen and (max-width: 560px) {
+    .contentNameContainer h1 {
+        font-size: 2rem;
+    }
+}
+@media screen and (max-width: 540px) {
+    .contentNameContainer h1 {
+        font-size: 1.8rem;
+    }
+}
+@media screen and (max-width: 500px) {
+    .contentNameContainer {
+        width: 98%;
+    }
+    .contentNameContainer h1 {
+        padding: 5px 5px;
+    }
+}
+@media screen and (max-width: 475px) {
+    .contentNameContainer h1 {
+        font-size: 1.6rem;
+    }
+}
+@media screen and (max-width: 430px) {
+    .contentNameContainer h1 {
+        padding: 0px;
+        font-size: 1.5rem;
+    }
+}
+@media screen and (max-width: 415px) {
+    .contentNameContainer h1 {
+        font-size: 1.48rem;
+    }
+}
+@media screen and (max-width: 380px) {
+    .contentNameContainer h1 {
+        font-size: 1.4rem;
+    }
+}
+@media screen and (max-width: 360px) {
+    .contentNameContainer h1 {
+        font-size: 1.3rem;
+    }
+}
+@media screen and (max-width: 335px) {
+    .contentNameContainer h1 {
+        font-size: 1.2rem;
+    }
+}
+@media screen and (max-width: 315px) {
+    .contentNameContainer h1 {
+        font-size: 1.1rem;
+    }
 }

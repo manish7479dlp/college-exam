@@ -11,12 +11,10 @@
 .mainQuestionContainer .question {
     display: inline;
     margin-top: 5px;
-    margin-bottom:10px ;
+    margin-bottom: 10px;
     font-size: 1.4rem;
     font-weight: 680;
     color: rgb(43, 43, 43);
-    
-    
 }
 .mainQuestionContainer .optionContainer {
     margin-top: 20px;
@@ -25,10 +23,10 @@
 }
 
 .mainQuestionContainer .optionContainer ol li {
-    list-style:upper-alpha;
+    list-style: upper-alpha;
     font-size: 1.4rem;
     margin-bottom: 20px;
-    transition: .1s;
+    transition: 0.1s;
     cursor: pointer;
 }
 
@@ -60,9 +58,79 @@
     border-radius: 20px;
     color: white;
     background-color: purple;
-    transition: .4s;
+    transition: 0.4s;
     box-shadow: 1px 1px 4px 3px rgb(188, 248, 68);
 }
 .questionNavigationBtn button:hover {
     background-color: rgb(51, 201, 51);
+}
+
+/* Responsive code begin */
+
+@media screen and (max-width: 1250px) {
+    .mainQuestionContainer {
+        width: 96%;
+    }
+}
+
+@media screen and (max-width: 885px) {
+    .mainQuestionContainer {
+        width: 98%;
+    }
+    .mainQuestionContainer .question {
+        font-size: 1.3rem;
+    }
+    .mainQuestionContainer .optionContainer ol li {
+        font-size: 1.3rem;
+    }
+}
+
+@media screen and (max-width: 885px) {
+    .mainQuestionContainer .optionContainer ol li {
+        font-size: 1.26rem;
+    }
+}
+@media screen and (max-width: 655px) {
+    .mainQuestionContainer .optionContainer {
+        margin-left: 50px;
+    }
+    .questionNavigationBtn {
+        width: 85%;
+    }
+}
+@media screen and (max-width: 445px) {
+    .questionNavigationBtn {
+        width: 90%;
+    }
+}
+@media screen and (max-width: 425px) {
+    .questionNavigationBtn {
+        width: 95%;
+    }
+    .questionNavigationBtn button {
+        font-weight: 550;
+    }
+}
+
+@media screen and (max-width : 340px) {
+    .questionNavigationBtn {
+        width: 99%;
+    }
+    .questionNavigationBtn button {
+        font-size: 1.3rem;
+        font-weight: 530;
+    }
+    .mainQuestionContainer .optionContainer {
+        margin-left: 40px;
+    }
+    
+}
+
+@media screen and (max-width : 330px) {
+    .mainQuestionContainer .question {
+        font-size: 1.2rem;
+    }
+    .mainQuestionContainer .optionContainer ol li {
+        font-size: 1.19rem;
+    }
 }

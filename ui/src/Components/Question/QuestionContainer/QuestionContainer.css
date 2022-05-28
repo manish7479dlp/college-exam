@@ -1,3 +1,8 @@
+.questionContainerFullContainer {
+    background-color: #F2DDC1;
+    width: 100vw;
+    height: 100%;
+}
 .questionContainer {
     width: 72vw;
     height: calc(100vh - 70px);
@@ -7,6 +12,39 @@
     /* margin: auto; */
     /* border: 4px solid red; */
 }
+
+.toggleDetail {
+    /* background-color: red; */
+    color: white;
+    font-size: 1.5rem;
+    font-weight: 600;
+    padding: 10px;
+    position: absolute;
+    top: 66px;
+    right: 5px;
+    box-shadow: 2px 2px 3px gray;
+    border-radius: 20px;
+    border: 1px solid white;
+    background-color: #f55353;
+    padding: 3px 16px;
+    z-index: 2;
+    transition: 0.4s ease-in-out;
+    display: none;
+}
+
+.toggleDetail:hover {
+    background-color: green;
+}
+
+#toggleDetail {
+    display: none;
+}
+
+#toggleDetail:checked + .questionDetailsContainer {
+    margin-left: -312px;
+    /* display: none; */
+}
+
 .questionContainer .examInfo {
     width: 80%;
     margin: auto;
@@ -22,7 +60,6 @@
     box-shadow: 2px 2px 2px 2px rgb(55, 80, 86);
     border-radius: 20px;
     padding: 5px 15px;
-    
 }
 
 .questionDetailsContainer {
@@ -33,8 +70,9 @@
     position: absolute;
     left: 0px;
     padding: 10px;
-    background-color: #EEF2FF;
+    background-color: #eef2ff;
     box-shadow: 2px 2px 5px 5px rgb(148, 148, 148);
+    transition: 0.3s;
 }
 
 .questionDetailsContainer .questionListContainer {
@@ -62,4 +100,103 @@
 }
 .active {
     background-color: rgb(5, 216, 5) !important;
+}
+
+/* Responsive code begin. */
+
+@media screen and (max-width: 1300px) {
+    .questionContainer .examInfo {
+        width: 85%;
+    }
+}
+@media screen and (max-width: 1250px) {
+    .questionContainer {
+        width: 80vw;
+    }
+    .questionDetailsContainer {
+        /* display: none; */
+        width: 310px;
+        /* padding: 20px; */
+    }
+    .toggleDetail {
+        display: block;
+    }
+    .questionContainer .examInfo {
+        width: 96%;
+        /* justify-content: space-evenly; */
+    }
+    .questionContainer {
+        position: static;
+        margin: auto;
+    }
+}
+@media screen and (max-width: 980px) {
+    .questionContainer {
+        width: 90vw;
+    }
+}
+
+@media screen and (max-width: 850px) {
+    .questionContainer .examInfo p {
+        font-size: 1.1rem;
+        font-weight: 550;
+    }
+}
+
+@media screen and (max-width: 780px) {
+    .questionContainer .examInfo {
+        justify-content: space-around;
+    }
+    .questionContainer .examInfo .studentName {
+        display: none;
+    }
+}
+
+@media screen and (max-width : 600px) {
+    .questionDetailsContainer {
+        justify-content: space-around;
+    }
+    
+}
+
+@media screen and (max-width: 540px) {
+    .questionContainer .examInfo {
+        width: 99%;
+    }
+    .questionContainer .examInfo p {
+        font-size: 1rem;
+    }
+}
+@media screen and (max-width: 430px) {
+    .questionContainer .examInfo {
+        width: 100%;
+        flex-direction: column;
+        margin: 10px 0px;
+    }
+    .questionContainer .examInfo p {
+        font-size: 1.3rem;
+        font-weight: 550;
+    }
+
+    .questionContainer .examInfo .examDuration {
+        margin-bottom: 16px;
+    }
+}
+@media screen and (max-width: 430px) {
+    .questionContainer .examInfo {
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 310px) {
+    .questionDetailsContainer {
+        width: 290px;
+    }
+    .questionDetailsContainer .questionListContainer {
+        width: 270px;
+    }
+
+    .questionListContainer p {
+        color: red;
+    }
 }
