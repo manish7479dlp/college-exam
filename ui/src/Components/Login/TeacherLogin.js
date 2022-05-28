@@ -31,6 +31,9 @@ const TeacherLogin = () => {
   };
   const [Data, setData] = useState(initialData);
 
+  // console.log(Data.userId);
+  console.log(Data.universityRoll);
+
   const onSubmit = async (event) => {
     try {
       const url = `${apibaseURL}/teacher/${Data.userId}`;
@@ -75,7 +78,10 @@ const TeacherLogin = () => {
     <>
       <Header />
       <div className="center dailogContainer" style={display}>
-        <DailogBox />
+        <DailogBox opt1={"Question Set Section"} opt2 = {"Student Marks Section "}
+        opt1Url = {"/questiondetailsection"}
+        opt2Url = {"/studentmarks"}
+      />
       </div>
       <div className="center studentContainer">
         <form onSubmit={onSubmit}>
@@ -87,7 +93,7 @@ const TeacherLogin = () => {
                 type="number"
                 name="userId"
                 onChange={onInputChangeHandler}
-                value={Data.universityRoll}
+                value= {Data.userId} // if we write Data.universityRoll it also work. why is it word i dont know.
                 required
               />
             </div>

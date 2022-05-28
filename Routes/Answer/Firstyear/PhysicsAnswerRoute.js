@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const PhysicsAnswer = require("../../../Schema/Admin/FirstYear/AnswerSchema/PhysicsAnswerSchema");
+const PhysicsAnswer = require("../../../Schema/QuestionDetails/FirstYear/AnswerSchema/PhysicsAnswerSchema");
 
 router.get("/physics_answer", async (req, res) => {
   try {

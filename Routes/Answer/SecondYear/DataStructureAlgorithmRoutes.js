@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const DSA = require("../../../Schema/Admin/SecondYear/AnswerSchema/DataStructureAlgorithmAnswerSchema");
+const DSA = require("../../../Schema/QuestionDetails/SecondYear/AnswerSchema/DataStructureAlgorithmAnswerSchema");
 
 router.get("/data_structure_and_algorithm_answer", async (req, res) => {
   try {

@@ -1,7 +1,7 @@
 const express = require("express")
 const app = express();
 const router = express.Router();
-const BasicElectricQuestion = require("../../../Schema/Admin/FirstYear/QuestionSchema/BasicElectricalQuestionSchema")
+const BasicElectricQuestion = require("../../../Schema/QuestionDetails/FirstYear/QuestionSchema/BasicElectricalQuestionSchema")
 
 router.get("/basic_electric_question" , async (req , res) => {
     try {

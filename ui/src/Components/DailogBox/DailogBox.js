@@ -2,7 +2,7 @@ import react, { useState } from "react";
 import "./DailogBox.css";
 import { useNavigate } from "react-router-dom";
 
-const DailogBox = () => {
+const DailogBox = ({opt1 , opt2 , opt1Url , opt2Url}) => {
   const Navigate = useNavigate();
 
   return (
@@ -11,17 +11,17 @@ const DailogBox = () => {
         <h2>Choose Any One of the follwoing...</h2>
         <button
           onClick={() => {
-            Navigate("/questiondetailsection");
+            Navigate(opt1Url);
           }}
         >
-          Question Set Section
+          {opt1}
         </button>
         <button
           onClick={() => {
-            Navigate("/studentmarks");
+            Navigate(opt2Url);
           }}
         >
-          Student Marks Section
+          {opt2}
         </button>
       </div>
     </>

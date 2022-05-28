@@ -1,7 +1,7 @@
 const express = require("express")
 const app = express();
 const router = express.Router();
-const Math1Question = require("../../../Schema/Admin/FirstYear/QuestionSchema/Math1QuestionSchema")
+const Math1Question = require("../../../Schema/QuestionDetails/FirstYear/QuestionSchema/Math1QuestionSchema")
 
 router.get("/math1_question" , async (req , res) => {
     try {

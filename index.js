@@ -5,6 +5,7 @@ const app = express();
 require("./DataBaseConfig/DBConfig");
 const StudentRouter = require("./Routes/Student/StudentRoutes");
 const TeacherRouter = require("./Routes/Teacher/TeacherRoutes");
+const AdminRouter = require("./Routes/Admin/AdminRoute");
 
 const BasicElectricalQuestion = require("./Routes/Question/FirstYear/BasicElectricalQuestionRoute");
 const BasicElectricalAnswer = require("./Routes/Answer/Firstyear/BasicElectricalAnswerRoutes");
@@ -26,6 +27,7 @@ app.use(express.static(path.join(publicFolder)));
 
 app.use(StudentRouter);
 app.use(TeacherRouter);
+app.use(AdminRouter);
 app.use(BasicElectricalQuestion);
 app.use(BasicElectricalAnswer);
 app.use(PhysicsQuestion);
