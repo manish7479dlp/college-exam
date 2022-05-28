@@ -9,6 +9,7 @@
     font-size: 2.5rem;
     color: rgb(77, 153, 184);
     text-shadow: 2px 2px 4px rgb(107, 184, 40);
+    text-align: center;
 }
 
 /* Responsive code start */
@@ -46,7 +47,7 @@
 }
 @media screen and (max-width: 475px) {
     .contentNameContainer h1 {
-        font-size: 1.6rem;
+        font-size: 1.7rem;
     }
 }
 @media screen and (max-width: 430px) {
@@ -55,7 +56,7 @@
         font-size: 1.5rem;
     }
 }
-@media screen and (max-width: 415px) {
+/* @media screen and (max-width: 415px) {
     .contentNameContainer h1 {
         font-size: 1.48rem;
     }
@@ -74,9 +75,9 @@
     .contentNameContainer h1 {
         font-size: 1.2rem;
     }
-}
+} */
 @media screen and (max-width: 315px) {
     .contentNameContainer h1 {
-        font-size: 1.1rem;
+        font-size: 1.4rem;
     }
 }
