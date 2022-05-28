@@ -31,11 +31,10 @@
         width: 290px;
     }
 }
-
-@media screen and (max-width : 360px) {
+@media screen and (max-width : 480px) {
     .studentDetailContainer p {
+        /* width: 290px; */
         font-size: 1.3rem;
-        /* color: red; */
     }
 }
 

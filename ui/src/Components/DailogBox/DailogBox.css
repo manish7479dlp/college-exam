@@ -11,6 +11,10 @@
     /* margin-top: -400px; */
 }
 
+.dailogboxContainer h2 {
+    text-align: center;
+}
+
 
 
 .dailogboxContainer button {
@@ -28,4 +32,47 @@
 .dailogboxContainer button:hover {
     background-color: green;
     color: white;
+}
+/* Responsive code begin */
+
+@media screen and (max-width: 600px) {
+    .dailogboxContainer {
+        width: 500px;
+    }
+}
+
+@media screen and (max-width: 540px) {
+    .dailogboxContainer {
+        width: 440px;
+    }
+}
+
+@media screen and (max-width: 460px) {
+    .dailogboxContainer {
+        width: 360px;
+    }
+}
+@media screen and (max-width: 400px) {
+    .dailogboxContainer {
+        padding: 20px 10px;
+    }
+    .dailogboxContainer {
+        width: 320px;
+    }
+}
+@media screen and (max-width: 350px) {
+    .dailogboxContainer {
+        width: 300px;
+    }
+    .studentContainer .dailogboxContainer input {
+        width: 260px;
+    }
+}
+@media screen and (max-width: 350px) {
+    .dailogboxContainer {
+        width: 280px;
+    }
+    .studentContainer .dailogboxContainer input {
+        width: 240px;
+    }
 }
