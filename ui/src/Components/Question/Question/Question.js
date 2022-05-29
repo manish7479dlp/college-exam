@@ -2,6 +2,11 @@ import "./Question.css";
 
 const Question = (props) => { 
     const { question, opt1, opt2, opt3, opt4} = props.data;
+
+    const onChange = () => {
+      // defalutChecked();
+      console.log("hii");
+    }
     
   return (
     <>
@@ -11,7 +16,17 @@ const Question = (props) => {
           {question}
         </p>
         <div className="optionContainer">
-          <ol>
+          <ol >
+              <input
+                type="radio"
+                // id="x"
+                name="option"
+                // onClick={props.onOptionChange}
+                checked
+                onChange = {()=>{}}
+                style = {{display : "none"}} 
+              />
+          
             <li>
               <input
                 type="radio"
