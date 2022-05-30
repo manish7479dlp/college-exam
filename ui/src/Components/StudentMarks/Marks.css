@@ -176,4 +176,7 @@ tr:nth-child(even) {
     .studentMarksHeading {
         font-size: 2.6rem;
     }
+    .marksContainer {
+        margin-bottom: 10px;
+    }
 }
