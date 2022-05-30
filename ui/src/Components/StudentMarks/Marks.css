@@ -5,18 +5,16 @@
     display: flex;
     justify-content: space-evenly;
     align-items: center;
-    /* border: 2px solid skyblue; */
+    /* border: 8px solid red; */
     border-radius: 20px;
-    
-    
 }
 
 .postionFixed {
     position: sticky;
     top: 0px;
     margin: 0px;
-    padding:0px;
-    /* background-color: magenta; */
+    padding: 0px;
+    background-color: magenta;
     background-color: white;
 }
 
@@ -33,10 +31,14 @@
     font-size: 1.5rem;
 }
 
-
 .marksFilter select {
     text-align: center;
     font-size: 1.5rem;
+}
+.marksFilter select option {
+    /* text-align: center !important; */
+    /* background-color: red; */
+    /* border: 2px solid purple; */
 }
 
 .marksContainer {
@@ -58,7 +60,6 @@
     border-radius: 20px;
 }
 
-
 .marksContainer table td {
     font-size: 1.6rem;
     padding: 5px;
@@ -70,14 +71,109 @@ tr:nth-child(even) {
 
 .removeMarksBtn {
     padding: 10px 15px;
-    border:none;
+    border: none;
     border-radius: 20px;
     font-size: 1.2rem;
     font-weight: bold;
-    transition: .3s;
+    transition: 0.3s;
 }
 .removeMarksBtn:hover {
     background-color: green;
-    color:white;
+    color: white;
 }
 
+/* Responsive code begin.. */
+
+@media screen and (max-width: 1180px) {
+    .marksFilter div {
+        font-size: 1.3rem;
+    }
+
+    .marksFilter select {
+        text-align: center;
+        font-size: 1.3rem;
+    }
+
+    .marksContainer table {
+        display: block;
+        width: 90vw;
+        overflow-x: scroll;
+        /* display: none; */
+    }
+}
+
+@media screen and (max-width: 1000px) {
+    .marksFilter {
+        height: auto;
+        flex-direction: column;
+        margin-top: 0px;
+        margin-bottom: 5px;
+        /* border: 2px solid red; */
+    }
+    .marksFilter div,
+    button {
+        margin-bottom: 20px;
+    }
+
+    .marksFilter div,
+    select {
+        font-size: 1.5rem;
+    }
+    .marksContainer table th {
+        font-size: 1.8rem;
+    }
+}
+
+@media screen and (max-width: 470px) {
+    .studentMarksHeading {
+        font-size: 3.8rem;
+    }
+    .marksFilter div {
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        /* margin-top: 10px; */
+    }
+
+    .marksFilter label {
+        margin-bottom: 12px;
+    }
+
+    .marksFilter label {
+        font-size: 1.7rem;
+        font-weight: 600;
+    }
+
+    .marksFilter select {
+        text-align: center;
+        font-size: 1.5rem;
+    }
+    .marksContainer table th {
+        font-size: 1.8rem;
+        /* color: red; */
+    }
+}
+
+@media screen and (max-width: 430px) {
+    .studentMarksHeading {
+        font-size: 3.4rem;
+    }
+    .marksFilter select {
+        font-size: 1.4rem;
+    }
+}
+@media screen and (max-width: 370px) {
+    .studentMarksHeading {
+        font-size: 2.9rem;
+    }
+}
+@media screen and (max-width: 330px) {
+    .studentMarksHeading {
+        font-size: 2.7rem;
+    }
+}
+@media screen and (max-width: 300px) {
+    .studentMarksHeading {
+        font-size: 2.6rem;
+    }
+}

@@ -98,7 +98,7 @@ const Marks = () => {
       <div className="postionFixed">
         <h1 className="studentMarksHeading">Student Marks</h1>
 
-        <div className="marksFilter">
+        <div className="center marksFilter">
           <div>
             <label>Semester Number: </label>
             <select name="semester" value={Data.semester} onChange={onChange}>
@@ -142,7 +142,7 @@ const Marks = () => {
       </div>
 
       {loading === true ? (
-        <h1>Loading...</h1>
+        <h1 className="center" style={{color: "red"}}>Loading...</h1>
       ) : (
         <div className="marksContainer">
           <table>
