@@ -4,13 +4,15 @@ import { useState } from "react";
 import {toast} from "react-toastify"
 
 const StudentInfoDetails = () => {
+  const apibaseURL = process.env.REACT_APP_API_URL || '';
   const initialData = { universityRoll: "", name: "", department: "", dob: "" };
   const [inputData, setInputData] = useState(initialData);
 
   const onSubmit = async (event) => {
     try {
+      const url = `${apibaseURL}/student`
       event.preventDefault();
-      const response = await fetch("http://localhost:8000/student", {
+      const response = await fetch(url, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
