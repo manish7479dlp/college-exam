@@ -4,6 +4,7 @@ import "./ExamStarterPage.css";
 
 const ExamStarterPage = () => {
   const Navigate = useNavigate();
+  const STUDETN_SEMESTER = JSON.parse(sessionStorage.getItem("StudentDetail")).semester;
 
   // const subjectName = ["Data Structure and Algorithm" ,"Basic Electric", "Maths" , "Biology" , "Environmental Science" , "Theory of Computation" , "Computer Architecture" ];
   const firstSemester = [

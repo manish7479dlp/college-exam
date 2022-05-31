@@ -1,6 +1,10 @@
 const mongoose = require("mongoose");
 
 const StudentSchema = new mongoose.Schema({
+    semester: {
+      type: Number,
+      required: true
+    },
     universityRoll : {
         type: Number,
         unique: true,
@@ -11,10 +15,6 @@ const StudentSchema = new mongoose.Schema({
         required: true
     },
     department: {
-        type: String,
-        required: true
-    },
-    dob: {
         type: String,
         required: true
     },

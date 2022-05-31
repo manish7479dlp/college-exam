@@ -12,6 +12,7 @@ const StudentDetails = () => {
                 <p className="studentUniversityRoll">Univ-Roll: {StudentDetail ? StudentDetail.universityRoll : "****"}</p>
                 <p className="studentName">Name: {StudentDetail ? StudentDetail.name : "****"}</p>
                 <p className="studentDepartment">Department: {StudentDetail ? StudentDetail.department : "****"}</p>
+                <p className="studentDepartment">Semester: {StudentDetail ? StudentDetail.semester : "****"}</p>
            </div>
         </>
     )
