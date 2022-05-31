@@ -110,3 +110,46 @@
 .answerAndSubmitContainer button:hover {
     background-color: rgb(38, 195, 38);
 }
+
+/* Responsive code begin */
+
+@media screen  and (max-width: 1150px){
+    .questionSetSectionContainer .questionSetSection{
+        width: 90vw;
+        /* border: 2px solid brown; */
+    }
+}
+@media screen  and (max-width: 800px){
+    .questionSetSectionContainer .questionSetSection {
+        width :96%;
+    }
+}
+
+@media screen and (max-width : 600px) {
+    .questionSetSectionContainer {
+        height: auto;
+        background-repeat: repeat;
+    }
+    
+    .questionSetSectionContainer .questionSetSection {
+        width: 100%;
+        margin-left: 5px;
+        margin-right: 5px;
+    }
+    .answerAndSubmitContainer {
+        width: 96%;
+        align-items: center;
+        /* border: 2px solid brown; */
+    }
+}
+
+@media screen and (max-width : 340px) {
+    .questionSetSection .questionHeading {
+        font-size: 2.2rem;
+        margin-bottom: 10px;
+    }
+    .answerAndSubmitContainer button {
+        margin-top: 15px;
+    }
+    
+}

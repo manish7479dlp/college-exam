@@ -79,7 +79,7 @@ const QuestionSetSection = () => {
               name="question"
               value={data.question}
               onChange={onInputChange}
-              placeholder="How are you?"
+              // placeholder="How are you?"
             />
             <ol>
               <li className="opt1">
@@ -88,7 +88,7 @@ const QuestionSetSection = () => {
                   name="opt1"
                   value={data.opt1}
                   onChange={onInputChange}
-                  placeholder="Fine."
+                  // placeholder="Fine."
                 />
               </li>
               <li className="opt2">
@@ -97,7 +97,7 @@ const QuestionSetSection = () => {
                   name="opt2"
                   value={data.opt2}
                   onChange={onInputChange}
-                  placeholder="Not Fine."
+                  // placeholder="Not Fine."
                 />
               </li>
               <li className="opt3">
@@ -106,7 +106,7 @@ const QuestionSetSection = () => {
                   name="opt3"
                   value={data.opt3}
                   onChange={onInputChange}
-                  placeholder="Not Well."
+                  // placeholder="Not Well."
                 />
               </li>
               <li className="opt4">
@@ -115,7 +115,7 @@ const QuestionSetSection = () => {
                   name="opt4"
                   value={data.opt4}
                   onChange={onInputChange}
-                  placeholder="None of these."
+                  // placeholder="None of these."
                 />
               </li>
             </ol>
