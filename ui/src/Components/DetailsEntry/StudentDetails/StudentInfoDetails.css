@@ -1,12 +1,13 @@
 .studentDetailsUIContainer {
+    width: 100vw;
     height: 90vh;
     justify-content: space-evenly;
     background-color: gray;
-    /* border: 2px solid green; */
+    /* border: 2px solid red; */
 }
 
 .studentDetailsContainer {
-    width: 45vw;
+    width: 800px;
     /* height: 85vh; */
     padding: 30px;
     padding: 20px;
@@ -83,5 +84,38 @@
 
   .studentDetailsContainer form .addData input:hover {
       background-color: green;
+  }
+
+  /*  Responsive code  begin */
+
+  @media screen and (max-width : 840px) {
+      .studentDetailsUIContainer .studentDetailsContainer {
+          width: 100%;
+      }
+  }
+
+  @media screen and (max-width: 700px) {
+
+      .studentDetailsContainer .studentInputDetails input {
+          width: 80%;
+      }
+  }
+  @media screen and (max-width: 450px) {
+
+      .studentDetailsContainer .studentInputDetails input {
+          width: 93%;
+      }
+  }
+  @media screen and (max-width: 370px) {
+
+    .studentDetailsContainer .title {
+        font-size: 2.1rem;
+    }
+  }
+  @media screen and (max-width: 310px) {
+
+    .studentDetailsContainer .title {
+        font-size: 1.8rem;
+    }
   }
 
