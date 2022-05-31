@@ -5,7 +5,7 @@ import {toast} from "react-toastify"
 
 const StudentInfoDetails = () => {
   const apibaseURL = process.env.REACT_APP_API_URL || '';
-  const initialData = { universityRoll: "", name: "", department: "", dob: "" };
+  const initialData = { universityRoll: "", name: "", department: "" , semester: ""};
   const [inputData, setInputData] = useState(initialData);
 
   const onSubmit = async (event) => {
@@ -47,6 +47,25 @@ const StudentInfoDetails = () => {
           <h1 className="title">Student Details</h1>
           <form onSubmit={onSubmit}>
             <div className="studentInputDetails ">
+            <div>
+                        <label>Semester Number: </label>
+                        <br/>
+                        <select
+                            name="semester"
+                            value={inputData.semester}
+                            onChange={onInputChange}
+                        >
+                            <option value="#">***Choose Any One***</option>
+                            <option value={1}>1</option>
+                            <option value={2}>2</option>
+                            <option value={3}>3</option>
+                            <option value={4}>4</option>
+                            <option value={5}>5</option>
+                            <option value={6}>6</option>
+                            <option value={7}>7</option>
+                            <option value={8}>8</option>
+                        </select>
+                    </div>
               <label htmlFor="universityRoll">UniversityRoll: </label>
               <input
                 type="number"
@@ -77,7 +96,7 @@ const StudentInfoDetails = () => {
                 required
               />
 
-              <label htmlFor="dateOfBirth">Date of Birth: </label>
+              {/* <label htmlFor="dateOfBirth">Date of Birth: </label>
               <input
                 type="date"
                 onChange={onInputChange}
@@ -85,7 +104,7 @@ const StudentInfoDetails = () => {
                 name="dob"
                 id="dateOfBirth"
                 required
-              />
+              /> */}
             </div>
 
             <div className="addData">

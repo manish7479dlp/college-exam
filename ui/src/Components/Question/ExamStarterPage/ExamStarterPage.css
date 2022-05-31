@@ -23,3 +23,14 @@
     background-color: white;
 
 }
+
+.examstarterpageContainer .exam {
+    border: 2px solid gold;
+}
+
+.examstarterpageContainer .todayExam {
+    border-width: 5px;
+    border-color: purple;
+    /* background-color: white; */
+    font-size: 2rem;
+}

@@ -25,13 +25,22 @@ const ExamStarterPage = () => {
         <ol className="subjectList">
           {firstSemester.map((elm, idx) => {
             return (
-              <li
+              elm === "Physics" ? <li
+              className="todayExam exam"
                 key={idx}
                 onClick={() => {
                   getExamSubjectName(elm);
                 }}
               >
-                {elm}{" "}
+                {elm}
+              </li> : <li
+              className="exam"
+                key={idx}
+                onClick={() => {
+                  getExamSubjectName(elm);
+                }}
+              >
+                {elm}
               </li>
             );
           })}
