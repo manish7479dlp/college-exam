@@ -102,6 +102,10 @@
   }
   @media screen and (max-width: 450px) {
 
+    .studentDetailsUIContainer {
+        height: auto;
+    }
+
       .studentDetailsContainer .studentInputDetails input {
           width: 93%;
       }
