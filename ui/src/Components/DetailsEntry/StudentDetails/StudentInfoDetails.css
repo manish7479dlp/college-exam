@@ -48,7 +48,7 @@
     color: white;
     /* color: rgb(10, 94, 150); */
   }
-  .studentDetailsContainer .studentInputDetails input , select {
+  .studentDetailsContainer .studentInputDetails input , .studentDetailsContainer .studentInputDetails select {
       width: 60%;
       padding: 10px;
       border:none;
@@ -96,7 +96,7 @@
 
   @media screen and (max-width: 700px) {
 
-      .studentDetailsContainer .studentInputDetails input ,select {
+      .studentDetailsContainer .studentInputDetails input , .studentDetailsContainer .studentInputDetails select {
           width: 80%;
       }
   }
@@ -106,7 +106,7 @@
         height: auto;
     }
 
-      .studentDetailsContainer .studentInputDetails input ,select {
+      .studentDetailsContainer .studentInputDetails input ,.studentDetailsContainer .studentInputDetails select {
           width: 93%;
       }
       

@@ -1,6 +1,6 @@
 .questionDetailSectionContainer {
     width: 60vw;
-    height: calc(100vh - 70px);
+    /* height: calc(100vh - 70px); */
     margin: 0 auto;
     /* flex-direction: column; */
     /* justify-content: start; */
