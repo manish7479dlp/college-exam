@@ -1,5 +1,5 @@
 .questionSetSectionContainer {
-    /* height: calc(100vh - 70px); */
+    height: calc(100vh - var(--headerHeight));
     background: url("../../Images/HomeBackground.jpg");
     padding-top: 10px;
     background-repeat: no-repeat;

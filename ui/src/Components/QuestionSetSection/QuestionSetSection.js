@@ -46,7 +46,7 @@ const QuestionSetSection = () => {
         body: JSON.stringify(data),
       });
       // console.log("Status code is : " + response.status);
-      // const result = await response.json();
+      const result = await response.json();
       console.log(result);
       if (response.status !== 200) {
         toast.warning("Question is not Added..");
