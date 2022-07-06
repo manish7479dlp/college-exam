@@ -7,6 +7,7 @@ const StudentRouter = require("./Routes/Student/StudentRoutes");
 const TeacherRouter = require("./Routes/Teacher/TeacherRoutes");
 const AdminRouter = require("./Routes/Admin/AdminRoute");
 
+const ExamDetails = require("./Routes/ExamDetails/ExamDetailsRoute");
 const BasicElectricalQuestion = require("./Routes/Question/FirstYear/BasicElectricalQuestionRoute");
 const BasicElectricalAnswer = require("./Routes/Answer/Firstyear/BasicElectricalAnswerRoutes");
 const PhysicsQuestion = require("./Routes/Question/FirstYear/PhysicsQuestionRoute");
@@ -28,6 +29,9 @@ app.use(express.static(path.join(publicFolder)));
 app.use(StudentRouter);
 app.use(TeacherRouter);
 app.use(AdminRouter);
+
+app.use(ExamDetails);
+
 app.use(BasicElectricalQuestion);
 app.use(BasicElectricalAnswer);
 app.use(PhysicsQuestion);

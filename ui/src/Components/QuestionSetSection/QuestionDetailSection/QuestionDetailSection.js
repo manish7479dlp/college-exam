@@ -8,13 +8,14 @@ import { toast } from "react-toastify";
 
 const QuestionDetailSection = () => {
   const Navigate = useNavigate();
-  const initialData = { semester: "", subject: "", examStartTime: "" };
+  const initialData = { semester: "", subject: "", examStartTime: "" , examDate: "" };
   const [Data, setData] = useState(initialData);
 
    // set the exam details into the (QuestionDetails key in session stroage..)
   const onClick = () => {
-    if (Data.examStartTime && Data.semester && Data.subject) {
-      sessionStorage.setItem("QuestionDetails", JSON.stringify(Data));
+    if (Data.examStartTime && Data.semester && Data.subject && Data.examDate) {
+      const department =  JSON.parse(sessionStorage.getItem("TeacherDetail")).department;
+      sessionStorage.setItem("QuestionDetails", JSON.stringify({...Data , department }));
       Navigate("/questionsetsection");
     } else {
       toast.warning("Please fill all the fields..");
@@ -55,7 +56,7 @@ const QuestionDetailSection = () => {
             <option value= "#">***Choose Any One***</option>
             <option value={"Data Structure and Algorithm"}>DSA</option>
             <option value={"Basic Electric"}>Basic Electric</option>
-            <option value={"CA"}>CA</option>
+            <option value={"Computer Architecture"}>CA</option>
             <option value={"Math1"}>Math1</option>
             <option value={"Physics"}>Physics</option>
             <option value={"Environmental Science"}>EVS</option>
@@ -72,6 +73,15 @@ const QuestionDetailSection = () => {
           </select>
 
           <br />
+
+          <label>Exam Date: </label>
+          <input
+            type="date"
+            name="examDate"
+            value={Data.examDate}
+            onChange={onChange}
+          />
+          <br/>
 
           <label>Exam Start Time: </label>
           <input
