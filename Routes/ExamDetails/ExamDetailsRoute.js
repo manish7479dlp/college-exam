@@ -41,10 +41,11 @@ router.get("/exam_details/:department" , async (req , res) => {
 router.get("/exam_details/:department/:semester", async (req , res) => {
   try {
     // const temp = req.params.semesterNumber;
-    console.log(req.params);
+    // console.log(req.params);
     const response = await ExamDetails.find(req.params);
     const CurrentDate = getCurrentDate();
     const result = response.filter((data) => {
+      // console.log(data);
       return data.examDate === CurrentDate;
     })
     console.log(result);

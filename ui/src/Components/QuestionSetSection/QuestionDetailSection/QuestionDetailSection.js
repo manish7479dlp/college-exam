@@ -7,20 +7,50 @@ import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 
 const QuestionDetailSection = () => {
+  const apibaseURL = process.env.REACT_APP_API_URL || "";
+  const studentDetails = JSON.parse(sessionStorage.getItem("StudentDetail"));
+
   const Navigate = useNavigate();
   const initialData = { semester: "", subject: "", examStartTime: "" , examDate: "" };
   const [Data, setData] = useState(initialData);
 
    // set the exam details into the (QuestionDetails key in session stroage..)
-  const onClick = () => {
+  const onClick =  () => {
     if (Data.examStartTime && Data.semester && Data.subject && Data.examDate) {
       const department =  JSON.parse(sessionStorage.getItem("TeacherDetail")).department;
       sessionStorage.setItem("QuestionDetails", JSON.stringify({...Data , department }));
+      setExamDetails();
       Navigate("/questionsetsection");
     } else {
       toast.warning("Please fill all the fields..");
     }
   };
+
+  const setExamDetails = async () => {
+    try {
+      const url = `${apibaseURL}/${"exam_details"}`;
+      const department =  JSON.parse(sessionStorage.getItem("TeacherDetail")).department;
+      const finalData = {...Data , department};
+      // console.log(finalData);
+      
+      const response = await fetch(url, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(finalData),
+      });
+      if (response.status !== 200) {
+        toast.warning("Question is not Added..");
+        console.log(response);
+      } else {
+        toast.success("Question Details Added Successfully.");
+        setData(initialData);
+      }
+    } catch(err) {
+      console.log(err);
+    }
+  }
 
   const onChange = (event) => {
     const { name, value } = event.target;

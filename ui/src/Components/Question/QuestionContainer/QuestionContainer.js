@@ -18,12 +18,16 @@ const QuestionContainer = () => {
     const Navigate = useNavigate();
 
     useEffect(() => {
-        setSubjectName(JSON.parse(sessionStorage.getItem("ExamSubjectName")));
+        setSubjectName(JSON.parse(sessionStorage.getItem("subjectName")));
 
         if (subjectName) {
             fetchQuestion();
+        } else {
+           setLoading(false);
         }
     }, [subjectName]);
+
+    
 
     const fetchQuestion = async () => {
         try {
