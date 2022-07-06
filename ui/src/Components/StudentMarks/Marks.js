@@ -133,37 +133,56 @@ const Marks = () => {
                             {Data.semester === "1" && (
                                 <optgroup label="1st-Sem-Subject">
                                     <option
-                                        value={"Data Structure and Algorithm"}
+                                        value={"Physics"}
                                     >
-                                        DSA
+                                        Physics
                                     </option>
-                                    <option value={"Basic Electric"}>
-                                        Basic Electric
+                                    <option value={"Maths"}>
+                                        Maths
+                                    </option>
+                                    <option value={"Basic Electrical Engineering"}>
+                                        Basic Electrical 
                                     </option>
                                 </optgroup>
                             )}
                             {Data.semester === "2" && (
                                 <optgroup label="2nd-Sem-Subject">
                                     <option
-                                        value={"Data Structure and Algorithm"}
+                                        value={"Chemistry"}
                                     >
-                                        DSA
+                                        Chemistry
                                     </option>
-                                    <option value={"Basic Electric"}>
-                                        Basic Electric
+                                    <option value={"Maths"}>
+                                        Maths
+                                    </option>
+                                    <option value={"English"}>
+                                        English
+                                    </option>
+                                    <option value={"C Language"}>
+                                        C Language
                                     </option>
                                 </optgroup>
                             )}
 
                             {Data.semester === "3" && (
                                 <optgroup label="3rd-Sem-Subject">
-                                    <option value={"CA"}>CA</option>
+                                    <option value={"Maths"}>Maths</option>
+                                    <option value={"Data Structure and Algorithm"}>DSA</option>
+                                    <option value={"Economics"}>Economics</option>
+                                    <option value={"Digital Electronics"}>Digital Electronics</option>
+                                    <option value={"Computer Organization"}>Computer Organization</option>
                                 </optgroup>
                             )}
 
                             {Data.semester === "4" && (
                                 <optgroup label="4th-Sem-Subject">
-                                    <option value={"CA"}>CA</option>
+                                    <option value={"Environmental Science"}>EVS</option>
+                                    <option value={"Biology"}>Biology</option>
+                                    <option value={"Design and Analysis for Algorithm"}>DAA</option>
+                                    <option value={"Automata Theory"}>Automata Theory</option>
+                                    <option value={"Computer Architecture"}>Computer Architecture</option>
+                                    <option value={"Discrete Mathematics"}>Discrete Mathematics</option>
+
                                 </optgroup>
                             )}
 
