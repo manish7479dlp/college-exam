@@ -1,36 +1,84 @@
-.examstarterpageContainer {
-    flex-direction: column;
-    height: calc(100vh - 70px);
-    background-color: gray;
+.examStarterPageContainer {
+    width: 100%;
+    height: calc(100vh - var(--headerHeight));
+    background-color: rgb(238, 252, 255);
+    /* border: 2px solid brown; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
-.examstarterpageContainer .subjectList {
-    margin: 20px;
+
+.instructionContainer {
+    height: 80vh;
+    width: 1200px;
+    border: 1px solid green;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.instructionContainer .subjectName {
+    padding: 15px 0px 15px 22px;
+    font-size: 1.8rem;
+    font-weight: 500;
+    background-color: rgb(213, 213, 213);
+}
+
+.instructionContainer h2 {
+    font-size: 2.7rem;
+    font-weight: 500;
+    margin: 20px 0px 20px 22px;
+}
+
+.instructionContainer .instructionDescription {
+    padding: 0 22px;
+    /* font-size: 1.1rem; */
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+.instructionContainer .examInformationContainer {
+    width: 98%;
+    border: 2px solid rgb(177, 176, 176);
+    margin: 18px auto;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.instructionContainer .examInformationContainer h3 {
+    padding: 14px;
+    background-color: rgb(213, 213, 213);
     font-size: 1.5rem;
-    color: white;
-    font-weight: 400;
-    /* padding: 5px; */
 }
 
-.examstarterpageContainer .subjectList li {
-    margin-bottom: 10px;
+.instructionContainer .examInformationContainer p {
+    display: inline-block;
+    width: 40%;
+    padding: 15px 10px;
+    text-align: left;
+    margin-left: 27px;
+    font-size: 1.1rem;
+    border-bottom: 2px solid gainsboro;
+}
+
+.instructionContainer .examInformationContainer .btnContainer {
+    margin-top: 10px;
+    text-align: center;
+
+}
+
+.instructionContainer .examInformationContainer .btnContainer button {
+    border: none;
+    padding: 5px 8px;
+    border-radius: 5px;
+    font-size: 1rem;
     cursor: pointer;
-    list-style-position: inside;
-    padding: 2px 10px;
-    border-radius: 20px;
-}
-.examstarterpageContainer .subjectList li:hover {
-    color: green;
-    background-color: white;
-
 }
 
-.examstarterpageContainer .exam {
-    border: 2px solid gold;
+.instructionContainer .examInformationContainer .btnContainer .bthome {
+    background-color: rgb(223, 208, 8);
+    margin-right: 10px;
+}
+.instructionContainer .examInformationContainer .btnContainer .sexam {
+    background-color: rgb(3, 182, 9);
+    color: white;
+    margin-left: 10px;
 }
 
-.examstarterpageContainer .todayExam {
-    border-width: 5px;
-    border-color: purple;
-    /* background-color: white; */
-    font-size: 2rem;
-}

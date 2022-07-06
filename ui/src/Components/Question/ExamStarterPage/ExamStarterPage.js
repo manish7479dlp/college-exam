@@ -3,53 +3,61 @@ import Header from "../../Heading/Header";
 import "./ExamStarterPage.css";
 
 const ExamStarterPage = () => {
-  const Navigate = useNavigate();
-  const STUDETN_SEMESTER = JSON.parse(sessionStorage.getItem("StudentDetail")).semester;
+    const Navigate = useNavigate();
 
-  // const subjectName = ["Data Structure and Algorithm" ,"Basic Electric", "Maths" , "Biology" , "Environmental Science" , "Theory of Computation" , "Computer Architecture" ];
-  const firstSemester = [
-    "Basic Electric",
-    "Math1",
-    "Physics",
-    "Data Structure And Algorithm",
-  ];
-  // this function set the examSubjectName the sessionStorage with key (ExamSubjectName)
-  const getExamSubjectName = (ExamSubjectName) => {
-    sessionStorage.setItem("ExamSubjectName", JSON.stringify(ExamSubjectName));
-    Navigate("/question");
-  };
+    const startExam = () => {
+      Navigate("/question");
+    }
 
-  return (
-    <>
-      <Header />
-      <div className="center examstarterpageContainer">
-        <ol className="subjectList">
-          {firstSemester.map((elm, idx) => {
-            return (
-              elm === "Physics" ? <li
-              className="todayExam exam"
-                key={idx}
-                onClick={() => {
-                  getExamSubjectName(elm);
-                }}
-              >
-                {elm}
-              </li> : <li
-              className="exam"
-                key={idx}
-                onClick={() => {
-                  getExamSubjectName(elm);
-                }}
-              >
-                {elm}
-              </li>
-            );
-          })}
-        </ol>
-        {/* <Button name = "Start Exam" onClick = {onClick}/> */}
-      </div>
-    </>
-  );
+    const backToHome = () => {
+      Navigate("/");
+    }
+
+    return (
+        <>
+            <Header />
+            <div className="examStarterPageContainer">
+                <div className="instructionContainer">
+                    <div className="subjectName">
+                        Data Structure and Algorithm
+                    </div>
+
+                    <h2>Exam Instruction</h2>
+
+                    <p className="instructionDescription">
+                        This is a remote invigilated/ proctored exam of{" "}
+                        <strong>{30} questions of 1 mark</strong> each. Total
+                        time given will be <strong>{90} minutes.</strong> Please
+                        login {10} to {15} min before scheduled start time to
+                        complete your login process early. You need to take this
+                        exam using a <strong>Chrome browser</strong> on Windows
+                        laptop.Any presence of another person or movement away
+                        from the browser tab is not allowed during the duration
+                        of the exam.
+                        <strong>
+                            If any such malpractice is noted during / after the
+                            exam then the candidates exam maybe cancelled.
+                        </strong>
+                    </p>
+
+                    <div className="examInformationContainer">
+                        <h3>Exam Information</h3>
+
+                        <p>Examination: {"Data Structure And Algorithm"}</p>
+                        <p>Current User: {"Manish Kumar"}</p>
+                        <p>Total Screen/Questions: {20}</p>
+                        <p>Total Duration: {30} Minutes</p>
+                        <p>Marks: {20}</p>
+
+                        <div className="subjectName btnContainer">
+                            <button className="bthome" onClick={backToHome}>Back To Home</button>
+                            <button className="sexam" onClick={startExam}>Start Exam</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </>
+    );
 };
 
 export default ExamStarterPage;
