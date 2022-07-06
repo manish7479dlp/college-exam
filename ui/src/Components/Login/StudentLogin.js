@@ -7,6 +7,7 @@ import { useNavigate } from "react-router-dom";
 
 const StudentLogin = () => {
   const apibaseURL = process.env.REACT_APP_API_URL || '';
+
   const Navigate = useNavigate();
 
   useEffect(() => {
