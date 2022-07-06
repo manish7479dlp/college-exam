@@ -27,6 +27,17 @@ router.get("/exam_details", async (req, res) => {
   }
 });
 
+router.get("/exam_details/:department" , async (req , res) => {
+  try {
+    const response = await ExamDetails.find(req.params);
+    console.log(response);
+    res.send(response);
+  } catch (error) {
+    console.log(error);
+    res.send(error);
+  }
+})
+
 router.get("/exam_details/:department/:semester", async (req , res) => {
   try {
     // const temp = req.params.semesterNumber;
