@@ -6,6 +6,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    font-family: LatoWeb,sans-serif !important;
+
 }
 
 .instructionContainer {
@@ -32,7 +34,9 @@
 .instructionContainer .instructionDescription {
     padding: 0 22px;
     /* font-size: 1.1rem; */
-    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    /* font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif; */
+    /* font-family: LatoWeb,sans-serif !important; */
+
 }
 .instructionContainer .examInformationContainer {
     width: 98%;
@@ -80,5 +84,21 @@
     background-color: rgb(3, 182, 9);
     color: white;
     margin-left: 10px;
+}
+
+.bthbtn {
+    border: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: white;
+    background-color: rgb(3, 182, 9);
+    margin-top: 20px;
+    transition: .4s;
+}
+
+.bthbtn:hover {
+    box-shadow: 2px 1px 8px 2px purple;
 }
 

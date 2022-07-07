@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import Header from "../../Heading/Header";
 import "./ExamStarterPage.css";
+import ErrorHandling from "../../404/index";
 
 const ExamStarterPage = () => {
     const apibaseURL = process.env.REACT_APP_API_URL || "";
@@ -35,29 +36,31 @@ const ExamStarterPage = () => {
     };
 
     const getCurrentTime = () => {
-      const DateObject = new Date();
-      let hour = DateObject.getHours();
-      let minute = DateObject.getMinutes();
-      
-      hour = (hour >= 1 && hour <= 9) ? "0" + hour : hour;
-      minute = (minute >= 1 && minute <= 9) ? "0" + minute : minute;
+        const DateObject = new Date();
+        let hour = DateObject.getHours();
+        let minute = DateObject.getMinutes();
 
-      const result = hour + ":" + minute;
+        hour = hour >= 1 && hour <= 9 ? "0" + hour : hour;
+        minute = minute >= 1 && minute <= 9 ? "0" + minute : minute;
 
-      return result;
-    }
+        const result = hour + ":" + minute;
 
+        return result;
+    };
 
     const startExam = () => {
-        sessionStorage.setItem("subjectName", JSON.stringify(examDetails.subject));
+        sessionStorage.setItem(
+            "subjectName",
+            JSON.stringify(examDetails.subject)
+        );
         const currTime = getCurrentTime();
-        
-        if(currTime >= examDetails.examStartTime) {
-          Navigate("/question");
+
+        if (currTime >= examDetails.examStartTime) {
+            Navigate("/question");
         } else {
-          toast.error("Exam is not start yet");
+            toast.error("Exam is not start yet");
         }
-        
+
         // Navigate("/question");
     };
 
@@ -67,9 +70,23 @@ const ExamStarterPage = () => {
 
     if (loading) {
         return <h1>Loading...</h1>;
-    } else if(examDetails == null) {
-      return <h1 >No Exam Found..</h1>
-    } 
+    } else if (examDetails == null) {
+        return (
+            <>
+                <ErrorHandling
+                    title={"Hey"}
+                    description={"Today"}
+                    extraDes={"there is no exam found"}
+                ></ErrorHandling>
+
+                <div className="center">
+                <button className="bthbtn" onClick={backToHome}>Back to Home</button>
+
+                </div>
+
+            </>
+        );
+    }
 
     return (
         <>

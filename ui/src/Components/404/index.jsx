@@ -2,15 +2,21 @@ import React from "react";
 import "./style.css";
 
 // 404 page funtional component and add go to home link
-const NotFound = () => (
+const NotFound = ({title, description , extraDes }) => (
     <>
-        <div className="number">404</div>
+        <div className="number">{title}</div>
         <div className="text">
-            <span>Ooops...</span>
+            <span>{description}</span>
             <br />
-            page not found
+            {extraDes}
         </div>
     </>
 );
+
+NotFound.defaultProps = {
+    title: "404",
+    description: "Ooops...",
+    extraDes: "page not found"
+}
 
 export default NotFound;
