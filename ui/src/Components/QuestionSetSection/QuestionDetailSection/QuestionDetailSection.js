@@ -16,9 +16,12 @@ const QuestionDetailSection = () => {
         semester: "",
         subject: "",
         examStartTime: "",
+        examDuration: "",
         examDate: "",
     };
     const [Data, setData] = useState(initialData);
+
+    const examEndTimeCollection = [20 , 25 , 30 , 35 ,40 , 45 , 50 , 55 , 60 , 70 , 90];
 
     // set the exam details into the (QuestionDetails key in session stroage..)
     const onClick = () => {
@@ -74,7 +77,7 @@ const QuestionDetailSection = () => {
       const { name, value } = event.target;
 
       if (value >= "0" && value <= "9") {
-          toast.warning("Select the Subject Name..");
+        //   toast.warning("Select the Subject Name..");
           setDisable(false);
       } else {
           setDisable(true);
@@ -223,6 +226,24 @@ const QuestionDetailSection = () => {
                         value={Data.examStartTime}
                         onChange={onChange}
                     />
+
+                    <br />
+
+                    <label>Exam Duration: </label>
+                    
+
+                    <select value={Data.examDuration} name = "examDuration" onChange={onChange}>
+                        <option value="#">***Choose Any One***</option>
+                        <option value= "20">20 minutes</option>
+                        <option value= "25">25 minutes</option>
+                        <option value= "30">30 minutes</option>
+                        <option value= "35">35 minutes</option>
+                        <option value= "40">40 minutes</option>
+                        <option value= "45">45 minutes</option>
+                        <option value= "50">50 minutes</option>
+                        <option value= "55">55 minutes</option>
+                        <option value= "60">60 minutes</option>
+                    </select>
 
                     <br />
 
