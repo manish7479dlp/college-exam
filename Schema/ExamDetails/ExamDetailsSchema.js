@@ -20,7 +20,11 @@ const ExamDetailsSchema = new mongoose.Schema({
     },
     department: {
         type: String,
-        requier: true
+        required: true
+    },
+    examDuration: {
+        type: String,
+        required: true
     }
 });
 module.exports = new mongoose.model("ExamDetails", ExamDetailsSchema);
