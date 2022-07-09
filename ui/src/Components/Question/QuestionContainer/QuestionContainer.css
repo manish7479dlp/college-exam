@@ -104,6 +104,11 @@
     background-color: rgb(5, 216, 5) !important;
 }
 
+.secondCounter {
+    /* display: inline; */
+    color: red;
+}
+
 /* Responsive code begin. */
 
 @media screen and (max-width: 1300px) {

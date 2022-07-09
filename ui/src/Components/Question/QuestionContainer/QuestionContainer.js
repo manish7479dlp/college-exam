@@ -14,20 +14,56 @@ const QuestionContainer = () => {
     const [loading, setLoading] = useState(true);
     const [quesNumber, setQuesNumber] = useState(1);
     const [subjectName, setSubjectName] = useState("");
+    const [examDurationLeft, setExamDurationLeft] = useState(-1);
 
     const Navigate = useNavigate();
+    let StudentDetail = sessionStorage.getItem("StudentDetail");
+    StudentDetail = JSON.parse(StudentDetail);
 
     useEffect(() => {
         setSubjectName(JSON.parse(sessionStorage.getItem("subjectName")));
 
         if (subjectName) {
             fetchQuestion();
+            fetchExamDuration();
         } else {
-           setLoading(false);
+            setLoading(false);
         }
     }, [subjectName]);
 
+
+    // this code is used to make time left counter but there is bug...
     
+    // useEffect(() => {
+    //     const interval = setInterval(() => {
+    //         setExamDurationLeft((pre) => {
+    //             return pre - 1;
+    //         });
+    //     }, 1000);
+    //     // console.log(examDurationLeft);
+
+    //     return () => clearInterval(interval);
+    // }, [examDurationLeft]);
+
+
+
+    const fetchExamDuration = async () => {
+        try {
+            const studentDetails = JSON.parse(
+                sessionStorage.getItem("StudentDetail")
+            );
+            const url = `${apibaseURL}/${"exam_duration_left"}/${
+                studentDetails.department
+            }/${studentDetails.semester}`;
+            // console.log(url);
+            const response = await fetch(url);
+            const result = await response.json();
+            // console.log(result.edl);
+            setExamDurationLeft(result.edl * 60); // edl = examDurationLeft
+        } catch (error) {
+            console.log(error);
+        }
+    };
 
     const fetchQuestion = async () => {
         try {
@@ -64,9 +100,73 @@ const QuestionContainer = () => {
         return res;
     }
 
-    // let StudentDetail = localStorage.getItem("StudentDetail");
-    let StudentDetail = sessionStorage.getItem("StudentDetail");
-    StudentDetail = JSON.parse(StudentDetail);
+    const onAnswerCheck = () => {
+        let marks = 0;
+        for (let i = 1; i <= data.length; i++) {
+            let answerDetail = localStorage.getItem(i);
+            localStorage.removeItem(i);
+            if (answerDetail) {
+                answerDetail = JSON.parse(answerDetail);
+                if (answerDetail.universal === answerDetail.predict) {
+                    marks++;
+                }
+            }
+        }
+
+        console.log(marks);
+
+        const marksSheet = {
+            name: StudentDetail.name,
+            universityRoll: StudentDetail.universityRoll,
+            marks,
+            department: StudentDetail.department,
+        };
+
+        console.log(marksSheet);
+        return marksSheet;
+    };
+
+    const sumitMarks = async (marksSheet) => {
+        try {
+            let subject = subjectNameConverter(subjectName);
+            subject = subject + "_answer";
+            const answernUrl = `${apibaseURL}/${subject}`;
+            const response = await fetch(answernUrl, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(marksSheet),
+            });
+            console.log(response);
+        } catch (error) {
+            console.log(error);
+        }
+    };
+
+    const switchToQuestionNumber = (ques) => {
+        setQuesNumber(ques);
+    };
+
+    const onOptionChange = (event) => {
+        const studentAnswerDetail = {
+            questionNumber: quesNumber,
+            universal: "everi" + data[quesNumber - 1].answer + "nning",
+            predict: "everi" + event.target.id + "nning",
+        };
+
+        localStorage.setItem(quesNumber, JSON.stringify(studentAnswerDetail));
+    };
+
+    // if the exam time is complete this code is executed and question is automatically submitted.
+
+    if (examDurationLeft == 0) {
+        const marksSheet = onAnswerCheck();
+        console.log(marksSheet);
+        sumitMarks(marksSheet);
+        toast.success("Answer Submitted Successfully.");
+        Navigate("/examstarterpage");
+    }
 
     if (loading) {
         return <h1>Loading..</h1>;
@@ -102,74 +202,13 @@ const QuestionContainer = () => {
             }
         };
 
-        const onAnswerCheck = () => {
-            let marks = 0;
-            for (let i = 1; i <= data.length; i++) {
-                let answerDetail = localStorage.getItem(i);
-                localStorage.removeItem(i);
-                if (answerDetail) {
-                    answerDetail = JSON.parse(answerDetail);
-                    if (answerDetail.universal === answerDetail.predict) {
-                        marks++;
-                    }
-                }
-            }
-
-            console.log(marks);
-
-            const marksSheet = {
-                name: StudentDetail.name,
-                universityRoll: StudentDetail.universityRoll,
-                marks,
-                department: StudentDetail.department,
-            };
-
-            console.log(marksSheet);
-            return marksSheet;
-        };
-
-        const sumitMarks = async (marksSheet) => {
-            try {
-                let subject = subjectNameConverter(subjectName);
-                subject = subject + "_answer";
-                const answernUrl = `${apibaseURL}/${subject}`;
-                const response = await fetch(answernUrl, {
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/json",
-                    },
-                    body: JSON.stringify(marksSheet),
-                });
-                console.log(response);
-            } catch (error) {
-                console.log(error);
-            }
-        };
-
-        const switchToQuestionNumber = (ques) => {
-            setQuesNumber(ques);
-        };
-
-        const onOptionChange = (event) => {
-            const studentAnswerDetail = {
-                questionNumber: quesNumber,
-                universal: "everi" + data[quesNumber - 1].answer + "nning",
-                predict: "everi" + event.target.id + "nning",
-            };
-
-            localStorage.setItem(
-                quesNumber,
-                JSON.stringify(studentAnswerDetail)
-            );
-        };
-
         return (
             <div className="questionContainerFullContainer">
                 <Header />
                 <label className="toggleDetail" htmlFor="toggleDetail">
                     x
                 </label>
-                    <input id="toggleDetail" type="checkbox" />
+                <input id="toggleDetail" type="checkbox" />
                 <div className="center questionDetailsContainer">
                     <StudentDetails />
                     <div className="center questionListContainer">
@@ -195,8 +234,22 @@ const QuestionContainer = () => {
                     <ContentName title={subjectName} />
 
                     <div className="center examInfo">
-                        <p className="examDuration">Exam Duration: 45 Min</p>
-                        <p className="examTimeLeft">Time Left: 36 Min</p>
+                        <p className="examDuration">
+                            Exam Duration:{" "}
+                            {
+                                JSON.parse(
+                                    sessionStorage.getItem("QuestionDetails")
+                                ).examDuration
+                            }{" "}
+                            Min
+                        </p>
+                        <p className="examTimeLeft">
+                            Time Left: {parseInt(examDurationLeft / 60)} :{" "}
+                            <span className="secondCounter">
+                                {examDurationLeft % 60}
+                            </span>{" "}
+                            Min
+                        </p>
                         <p className="studentName">
                             Name: {StudentDetail ? StudentDetail.name : "*****"}
                         </p>
