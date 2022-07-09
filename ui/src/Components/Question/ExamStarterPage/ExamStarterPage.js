@@ -12,7 +12,7 @@ const ExamStarterPage = () => {
     const Navigate = useNavigate();
     const [examDetails, setExamDetails] = useState();
     const [loading, setLoading] = useState(true);
-    const [examAuth , setExamAuth] = useState([]);
+    const [examAuth, setExamAuth] = useState([]);
 
     useEffect(() => {
         fetchExamDetails();
@@ -36,15 +36,17 @@ const ExamStarterPage = () => {
 
     const fetchExamAuth = async () => {
         try {
-            const subjectName = subjectNameConverter(examDetails.subject) + "_answer"
+            const subjectName =
+                subjectNameConverter(examDetails.subject) + "_answer";
             const url = `${apibaseURL}/${subjectName}/${studentDetails.universityRoll}`;
             const response = await fetch(url);
             const result = await response.json();
-            console.log(result);
+            console.log();
+            setExamAuth(result);
         } catch (error) {
             console.log(error);
         }
-    }
+    };
 
     const fetchExamDetails = async () => {
         try {
@@ -82,10 +84,7 @@ const ExamStarterPage = () => {
             "subjectName",
             JSON.stringify(examDetails.subject)
         );
-        sessionStorage.setItem(
-            "QuestionDetails",
-            JSON.stringify(examDetails)
-        );
+        sessionStorage.setItem("QuestionDetails", JSON.stringify(examDetails));
         const currTime = getCurrentTime();
 
         if (currTime >= examDetails.examStartTime) {
@@ -101,10 +100,10 @@ const ExamStarterPage = () => {
         Navigate("/");
     };
 
-    if(examDetails) {
+    if (examDetails) {
         // console.log(examDetails);
         fetchExamAuth();
-    } 
+    }
 
     if (loading) {
         return <h1>Loading...</h1>;
@@ -118,10 +117,10 @@ const ExamStarterPage = () => {
                 ></ErrorHandling>
 
                 <div className="center">
-                <button className="bthbtn" onClick={backToHome}>Back to Home</button>
-
+                    <button className="bthbtn" onClick={backToHome}>
+                        Back to Home
+                    </button>
                 </div>
-
             </>
         );
     }
@@ -159,14 +158,25 @@ const ExamStarterPage = () => {
                         <p>Total Screen/Questions: {20}</p>
                         <p>Total Duration: {30} Minutes</p>
                         <p>Marks: {20}</p>
-
+                        {examAuth.length !== 0 && (
+                            <p className="examAuth">
+                                Exam Status:{" "}
+                                <span>You have already Submitted.</span>
+                            </p>
+                        )
+                        }
                         <div className="subjectName btnContainer">
                             <button className="bthome" onClick={backToHome}>
                                 Back To Home
                             </button>
-                            <button disabled = {false} className="sexam" onClick={startExam}>
+                            {
+                                examAuth.length === 0 && <button
+                                className="sexam"
+                                onClick={startExam}
+                            >
                                 Start Exam
                             </button>
+                            }
                         </div>
                     </div>
                 </div>
