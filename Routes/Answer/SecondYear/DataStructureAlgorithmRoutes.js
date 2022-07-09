@@ -12,6 +12,18 @@ router.get("/data_structure_and_algorithm_answer", async (req, res) => {
   }
 });
 
+// by the help of this router we check student already given exam or not..
+router.get("/data_structure_and_algorithm_answer/:universityRoll", async (req , res) => {
+  try {
+    const response = await DSA.find(req.params).select({universityRoll});
+    console.log(response);
+    res.send(response);
+  } catch (error) {
+    console.log(error);
+    res.send(error);
+  }
+})
+
 router.post("/data_structure_and_algorithm_answer", async (req, res) => {
   try {
     const response = await DSA(req.body);
