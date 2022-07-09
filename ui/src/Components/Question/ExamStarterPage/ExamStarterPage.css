@@ -6,13 +6,24 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    font-family: LatoWeb,sans-serif !important;
+    font-family: LatoWeb, sans-serif !important;
+}
 
+:root {
+    --instructionContainerWidth: 1200px;
+    --instructionContainerHeight: 80vh;
+    --subjectName: 1.8rem;
+    --subjectNameFontWeight: 500;
+    --instructionContainerH2FontSize: 2.7rem;
+    --instructionContainerH2FontWeight: 500;
+    --examInformationContainerWidth: 98%;
+    --examInformationContainerH3FontSize: 1.5rem;
+    --examInformationContainerPWidth: 40%;
 }
 
 .instructionContainer {
-    height: 80vh;
-    width: 1200px;
+    height: var(--instructionContainerHeight);
+    width: var(--instructionContainerWidth);
     border: 1px solid green;
     border-radius: 10px;
     overflow: hidden;
@@ -20,14 +31,14 @@
 
 .instructionContainer .subjectName {
     padding: 15px 0px 15px 22px;
-    font-size: 1.8rem;
-    font-weight: 500;
+    font-size: var(--subjectName);
+    font-weight: var(--subjectNameFontWeight);
     background-color: rgb(213, 213, 213);
 }
 
 .instructionContainer h2 {
-    font-size: 2.7rem;
-    font-weight: 500;
+    font-size: var(--instructionContainerH2FontSize);
+    font-weight: var(--instructionContainerH2FontWeight);
     margin: 20px 0px 20px 22px;
 }
 
@@ -36,10 +47,9 @@
     /* font-size: 1.1rem; */
     /* font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif; */
     /* font-family: LatoWeb,sans-serif !important; */
-
 }
 .instructionContainer .examInformationContainer {
-    width: 98%;
+    width: var(--examInformationContainerWidth);
     border: 2px solid rgb(177, 176, 176);
     margin: 18px auto;
     border-radius: 10px;
@@ -49,12 +59,12 @@
 .instructionContainer .examInformationContainer h3 {
     padding: 14px;
     background-color: rgb(213, 213, 213);
-    font-size: 1.5rem;
+    font-size: var(--examInformationContainerH3FontSize);
 }
 
 .instructionContainer .examInformationContainer p {
     display: inline-block;
-    width: 40%;
+    width: var(--examInformationContainerPWidth);
     padding: 15px 10px;
     text-align: left;
     margin-left: 27px;
@@ -65,7 +75,7 @@
 .instructionContainer .examInformationContainer .btnContainer {
     margin-top: 10px;
     text-align: center;
-
+    /* background-color: red; */
 }
 
 .instructionContainer .examInformationContainer .btnContainer button {
@@ -95,14 +105,69 @@
     color: white;
     background-color: rgb(3, 182, 9);
     margin-top: 20px;
-    transition: .4s;
+    transition: 0.4s;
 }
 
 .bthbtn:hover {
     box-shadow: 2px 1px 8px 2px purple;
 }
 
-.examAuth span{
-  color: rgb(216, 36, 36);
+.examAuth span {
+    color: rgb(216, 36, 36);
 }
 
+/*  Responsive code begin */
+
+@media screen and (max-width: 1300px) {
+    :root {
+        --instructionContainerWidth: 1100px;
+    }
+}
+@media screen and (max-width: 1250px) {
+    :root {
+        --instructionContainerWidth: 1050px;
+    }
+}
+@media screen and (max-width: 1100px) {
+    :root {
+        --instructionContainerWidth: 100%;
+    }
+}
+@media screen and (max-width: 700px) {
+    :root {
+        --subjectName: 1.6rem;
+        --instructionContainerH2FontSize: 2.4rem;
+    }
+    .instructionContainer .examInformationContainer .btnContainer {
+        height:65px;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    :root {
+        --subjectName: 1.3rem;
+        --instructionContainerH2FontSize: 2rem;
+    }
+    .instructionContainer .examInformationContainer p {
+        display: block;
+        width: 100%;
+        text-align: center;
+        /* border: 2px solid red; */
+        margin-left: 0px;
+        padding: 5px 8px;
+    }
+}
+
+@media  screen and (max-width: 450px) {
+    /* .instructionContainer .examInformationContainer {
+        width: var(--examInformationContainerWidth);
+        border: 2px solid rgb(177, 176, 176);
+        margin: 18px auto;
+        border-radius: 10px;
+        overflow: hidden;
+    } */
+
+    :root {
+      --instructionContainerHeight: auto;  
+    }
+}
