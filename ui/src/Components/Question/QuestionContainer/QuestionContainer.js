@@ -198,7 +198,7 @@ const QuestionContainer = () => {
                     console.log(marksSheet);
                     sumitMarks(marksSheet);
                     toast.success("Answer Submitted Successfully.");
-                    Navigate("/");
+                    Navigate("/examstarterpage");
                 }
             }
         };
