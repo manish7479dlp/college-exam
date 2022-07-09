@@ -167,10 +167,11 @@ const QuestionContainer = () => {
         toast.success("Answer Submitted Successfully.");
         Navigate("/examstarterpage");
     }
+    
 
     if (loading) {
         return <h1>Loading..</h1>;
-    } else if (data.length === 0) {
+    } else if (data.length === 0 || !JSON.parse(sessionStorage.getItem("QuestionDetails"))) {
         return <h1>No Question Found..</h1>;
     } else {
         const preQuestion = () => {

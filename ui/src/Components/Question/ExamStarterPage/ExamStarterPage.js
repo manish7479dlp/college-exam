@@ -12,10 +12,39 @@ const ExamStarterPage = () => {
     const Navigate = useNavigate();
     const [examDetails, setExamDetails] = useState();
     const [loading, setLoading] = useState(true);
+    const [examAuth , setExamAuth] = useState([]);
 
     useEffect(() => {
         fetchExamDetails();
+        // examDetails && fetchExamAuth();
     }, []);
+
+    function subjectNameConverter(subject) {
+        subject = subject.toLowerCase();
+        let res = "";
+        for (let i = 0; i < subject.length; i++) {
+            let ch = subject.charAt(i);
+            if (ch === " ") {
+                res += "_";
+            } else {
+                res += ch;
+            }
+        }
+
+        return res;
+    }
+
+    const fetchExamAuth = async () => {
+        try {
+            const subjectName = subjectNameConverter(examDetails.subject) + "_answer"
+            const url = `${apibaseURL}/${subjectName}/${studentDetails.universityRoll}`;
+            const response = await fetch(url);
+            const result = await response.json();
+            console.log(result);
+        } catch (error) {
+            console.log(error);
+        }
+    }
 
     const fetchExamDetails = async () => {
         try {
@@ -23,7 +52,7 @@ const ExamStarterPage = () => {
             const url = `${apibaseURL}/${"exam_details"}/${
                 studentDetails.department
             }/${studentDetails.semester}`;
-            console.log(url);
+            // console.log(url);
             const response = await fetch(url);
             const result = await response.json();
             // console.log(result[0]);
@@ -53,6 +82,10 @@ const ExamStarterPage = () => {
             "subjectName",
             JSON.stringify(examDetails.subject)
         );
+        sessionStorage.setItem(
+            "QuestionDetails",
+            JSON.stringify(examDetails)
+        );
         const currTime = getCurrentTime();
 
         if (currTime >= examDetails.examStartTime) {
@@ -67,6 +100,11 @@ const ExamStarterPage = () => {
     const backToHome = () => {
         Navigate("/");
     };
+
+    if(examDetails) {
+        // console.log(examDetails);
+        fetchExamAuth();
+    } 
 
     if (loading) {
         return <h1>Loading...</h1>;
@@ -126,7 +164,7 @@ const ExamStarterPage = () => {
                             <button className="bthome" onClick={backToHome}>
                                 Back To Home
                             </button>
-                            <button className="sexam" onClick={startExam}>
+                            <button disabled = {false} className="sexam" onClick={startExam}>
                                 Start Exam
                             </button>
                         </div>
