@@ -16,8 +16,15 @@ const ExamStarterPage = () => {
 
     useEffect(() => {
         fetchExamDetails();
+
         // examDetails && fetchExamAuth();
     }, []);
+
+    useEffect(() => {
+        fetchExamAuth();
+    }, [examDetails]);
+
+    console.log(examAuth);
 
     function subjectNameConverter(subject) {
         subject = subject.toLowerCase();
@@ -36,13 +43,15 @@ const ExamStarterPage = () => {
 
     const fetchExamAuth = async () => {
         try {
-            const subjectName =
-                subjectNameConverter(examDetails.subject) + "_answer";
-            const url = `${apibaseURL}/${subjectName}/${studentDetails.universityRoll}`;
-            const response = await fetch(url);
-            const result = await response.json();
-            console.log();
-            setExamAuth(result);
+            
+                const subjectName =
+                    subjectNameConverter(examDetails.subject) + "_answer";
+                const url = `${apibaseURL}/${subjectName}/${studentDetails.universityRoll}`;
+                const response = await fetch(url);
+                const result = await response.json();
+                console.log();
+                setExamAuth(result);
+            
         } catch (error) {
             console.log(error);
         }
@@ -57,8 +66,10 @@ const ExamStarterPage = () => {
             // console.log(url);
             const response = await fetch(url);
             const result = await response.json();
-            // console.log(result[0]);
+            // console.log(result);
+
             setExamDetails(result[0]);
+
             setLoading(false);
         } catch (err) {
             setLoading(false);
@@ -99,11 +110,6 @@ const ExamStarterPage = () => {
     const backToHome = () => {
         Navigate("/");
     };
-
-    if (examDetails) {
-        // console.log(examDetails);
-        fetchExamAuth();
-    }
 
     if (loading) {
         return <h1>Loading...</h1>;
@@ -163,20 +169,16 @@ const ExamStarterPage = () => {
                                 Exam Status:{" "}
                                 <span>You have already Submitted.</span>
                             </p>
-                        )
-                        }
+                        )}
                         <div className="subjectName btnContainer">
                             <button className="bthome" onClick={backToHome}>
                                 Back To Home
                             </button>
-                            {
-                                examAuth.length === 0 && <button
-                                className="sexam"
-                                onClick={startExam}
-                            >
-                                Start Exam
-                            </button>
-                            }
+                            {examAuth.length === 0 && (
+                                <button className="sexam" onClick={startExam}>
+                                    Start Exam
+                                </button>
+                            )}
                         </div>
                     </div>
                 </div>
