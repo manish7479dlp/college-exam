@@ -139,7 +139,7 @@
         --instructionContainerH2FontSize: 2.4rem;
     }
     .instructionContainer .examInformationContainer .btnContainer {
-        height:65px;
+        height: 65px;
     }
 }
 
@@ -158,16 +158,35 @@
     }
 }
 
-@media  screen and (max-width: 450px) {
-    /* .instructionContainer .examInformationContainer {
-        width: var(--examInformationContainerWidth);
-        border: 2px solid rgb(177, 176, 176);
-        margin: 18px auto;
-        border-radius: 10px;
-        overflow: hidden;
-    } */
-
-    :root {
-      --instructionContainerHeight: auto;  
+@media screen and (max-width: 450px) {
+    .examStarterPageContainer {
+        height: auto;
     }
+
+    .instructionContainer {
+        height: auto;
+    }
+
+}
+
+@media screen and (max-width: 380px) {
+    :root {
+        
+        --subjectName: 1.2rem;
+        --instructionContainerH2FontSize: 1.8rem;
+        --examInformationContainerH3FontSize: 1.3rem;
+    }
+    .instructionContainer .examInformationContainer p {
+        font-size: 1rem;
+    }
+}
+@media screen and (max-width: 330px) {
+    :root {
+        
+        --subjectName: 1.1rem;
+        --instructionContainerH2FontSize: 1.4rem;
+        --examInformationContainerH3FontSize: 1.2rem;
+    }
+
+    
 }
