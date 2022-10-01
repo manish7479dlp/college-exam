@@ -2,6 +2,7 @@ const mongoose = require("mongoose");
 const bcrypt = require("bcrypt");
 const studentModel = require("../models/student/studentModel");
 
+//get particular student on the basis of id
 const getParticularStudent = async (req, res) => {
     try {
         const universityRoll = req.params.universityRoll;
@@ -30,6 +31,7 @@ const getParticularStudent = async (req, res) => {
     }
 };
 
+//register new student
 const registerStudent = async (req, res) => {
     try {
         const { semester, universityRoll, name, department } = req.body;
@@ -65,6 +67,7 @@ const registerStudent = async (req, res) => {
     }
 };
 
+//get All student
 const getAllStudentDetails = async (req, res) => {
     try {
         const response = await studentModel.find().select("-password");
@@ -79,6 +82,7 @@ const getAllStudentDetails = async (req, res) => {
     }
 };
 
+//delete particular student on the basis of id
 const deleteParticularStudent = async (req, res) => {
     try {
         const _id = req.params._id;
@@ -98,6 +102,7 @@ const deleteParticularStudent = async (req, res) => {
     }
 };
 
+//update particular student on the basis of id
 const updateParticularStudent = async (req, res) => {
     try {
         const { semester, universityRoll, name, department } = req.body;
@@ -117,7 +122,7 @@ const updateParticularStudent = async (req, res) => {
                     universityRoll,
                     name,
                     department,
-                    password
+                    password,
                 },
             }
         );
@@ -136,10 +141,38 @@ const updateParticularStudent = async (req, res) => {
     }
 };
 
+//student login
+const studentLogIn = async (req, res) => {
+    try {
+        const { universityRoll, password } = req.body;
+
+        const response = await studentModel.findOne({ universityRoll });
+        if (response) {
+            const isMatch = await bcrypt.compare(password, response.password);
+            
+            if (isMatch) {
+                res.send({
+                    status: true,
+                    messgae: "Valid User",
+                    response: response,
+                });
+            } else {
+                res.send({ status: false, message: "Invalid Details" });
+            }
+        } else {
+            res.send({ status: false, message: "Invalid Details" });
+        }
+    } catch (error) {
+        console.log(error);
+        res.send(error);
+    }
+};
+
 module.exports = {
     getParticularStudent,
     registerStudent,
     getAllStudentDetails,
     deleteParticularStudent,
     updateParticularStudent,
+    studentLogIn,
 };

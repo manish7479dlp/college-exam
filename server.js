@@ -25,6 +25,7 @@ app.post("/student", studentController.registerStudent)
 app.get("/student", studentController.getAllStudentDetails)
 app.delete("/student/:_id", studentController.deleteParticularStudent)
 app.patch("/student/:_id", studentController.updateParticularStudent)
+app.post("/student-login" , studentController.studentLogIn)
 
 
 
