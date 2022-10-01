@@ -1,11 +1,13 @@
 const mongoose = require("mongoose");
-require("dotenv").config();
 
-const dbConfig = async (dbName) => {
+//create data base
+const dbConfig = async (mongoDbUrl) => {
   try {
-    await mongoose.connect(dbName);
+    await mongoose.connect(mongoDbUrl);
     console.log("DataBase Conntected Successfully.");
   } catch (error) {
     console.log(error);
   }
 }
+
+module.exports = dbConfig;
