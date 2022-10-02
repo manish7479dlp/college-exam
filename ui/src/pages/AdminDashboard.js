@@ -1,26 +1,44 @@
-import react , {useState} from "react"
+import react, { useState } from "react";
+import {toast} from "react-toastify"
 import "./AdminDashboardStyle.css";
 
 const AdminDashboard = () => {
-  const initialData = {
-    name : "",
-    department : "",
-    year : "",
-    universityRoll : ""
-  }
+    const initialData = {
+        name: "",
+        department: "",
+        year: "",
+        universityRoll: "",
+    };
 
-  const [inputFieldData , setInputFieldData] = useState(initialData);
+    const [inputFieldData, setInputFieldData] = useState(initialData);
 
-  const onChangeHandler = (event) => {
-     setInputFieldData((preData) => {
-        return {...preData , [event.target.name] : event.target.value}
-     })
-  }
+    const onChangeHandler = (event) => {
+        setInputFieldData((preData) => {
+            return { ...preData, [event.target.name]: event.target.value };
+        });
+    };
 
-  const submitStudentDetails = () => {
-    console.log(inputFieldData);
-  }
-    
+    const submitStudentDetails = async () => {
+        const url = "http://localhost:8000/api/student";
+
+        const response = await fetch(url, {
+            method: "POST",
+            headers: {
+                "Content-type": "application/json",
+            },
+            body: JSON.stringify(inputFieldData),
+        });
+
+        const result = await response.json();
+
+        if (result.status) {
+            toast.success(result.message);
+            setInputFieldData(initialData);
+        } else {
+            toast.error(result.message);
+        }
+    };
+
     return (
         <div className="adminDashboardContainer">
             <div className="adminDashboardHeader">
@@ -49,19 +67,33 @@ const AdminDashboard = () => {
                         <div>
                             <label>University Roll:</label>
                             <br />
-                            <input type="number" name = "universityRoll" value = {inputFieldData.universityRoll} onChange = {onChangeHandler}/>
+                            <input
+                                type="number"
+                                name="universityRoll"
+                                value={inputFieldData.universityRoll}
+                                onChange={onChangeHandler}
+                            />
                         </div>
 
                         <div>
                             <label>Name:</label>
                             <br />
-                            <input type="text" name = "name" value = {inputFieldData.name} onChange = {onChangeHandler}/>
+                            <input
+                                type="text"
+                                name="name"
+                                value={inputFieldData.name}
+                                onChange={onChangeHandler}
+                            />
                         </div>
 
                         <div>
                             <label>Department:</label>
                             <br />
-                            <select name = "department" value = {inputFieldData.department} onChange = {onChangeHandler}>
+                            <select
+                                name="department"
+                                value={inputFieldData.department}
+                                onChange={onChangeHandler}
+                            >
                                 <option>**Choose**</option>
                                 <option value={"CE"}>CE</option>
                                 <option value={"EE"}>EE</option>
@@ -73,7 +105,11 @@ const AdminDashboard = () => {
                         <div>
                             <label>Year:</label>
                             <br />
-                            <select name = "year" value = {inputFieldData.year} onChange = {onChangeHandler}>
+                            <select
+                                name="year"
+                                value={inputFieldData.year}
+                                onChange={onChangeHandler}
+                            >
                                 <option>**Choose**</option>
                                 <option value={1}>1st</option>
                                 <option value={2}>2nd</option>
@@ -82,12 +118,16 @@ const AdminDashboard = () => {
                             </select>
                         </div>
 
-                        <div id = "submitButtonContainer">
-                            <button type="submit" onClick={submitStudentDetails}>Submit</button>
+                        <div id="submitButtonContainer">
+                            <button
+                                type="submit"
+                                onClick={submitStudentDetails}
+                            >
+                                Submit
+                            </button>
                         </div>
 
                         {/* <button type="submit">Submit</button> */}
-
                     </div>
                 </div>
             </div>
