@@ -34,32 +34,44 @@ const getParticularTeacher = async (req, res) => {
 //register new teacher
 const registerTeacher = async (req, res) => {
     try {
-        const { userId, name, department , subject } = req.body;
+        const { userId, name, department, subject } = req.body;
 
-        // password = starting 4 digits of user id and first name of the student
-        let password =
-            req.body.userId.toString().substring(0, 4) +
-            name.split(" ")[0].toLowerCase();
+        const validationCheck = await teacherModel.findOne({ userId });
 
-        // encrypt the password
-        password = await bcrypt.hash(password, 10);
-
-        if (userId && subject && name && department) {
-            const response = new teacherModel({
-                userId,
-                subject,
-                name,
-                department,
-                password,
-            });
-            const result = await response.save();
-            console.log(result);
-            res.status(201).send({
-                status: true,
-                message: "Details Inserted Sucessfully",
+        if (validationCheck) {
+            res.send({
+                status: false,
+                message: "User Id is already Used",
             });
         } else {
-            res.send({ status: false, message: "All fields are required." });
+            // password = starting 4 digits of user id and first name of the student
+            let password =
+                req.body.userId.toString().substring(0, 4) +
+                name.split(" ")[0].toLowerCase();
+
+            // encrypt the password
+            password = await bcrypt.hash(password, 10);
+
+            if (userId && subject && name && department) {
+                const response = new teacherModel({
+                    userId,
+                    subject,
+                    name,
+                    department,
+                    password,
+                });
+                const result = await response.save();
+                console.log(result);
+                res.status(201).send({
+                    status: true,
+                    message: "Details Inserted Sucessfully",
+                });
+            } else {
+                res.send({
+                    status: false,
+                    message: "All fields are required.",
+                });
+            }
         }
     } catch (error) {
         console.log(error);
@@ -149,7 +161,7 @@ const teacherLogIn = async (req, res) => {
         const response = await teacherModel.findOne({ userId });
         if (response) {
             const isMatch = await bcrypt.compare(password, response.password);
-            
+
             if (isMatch) {
                 res.send({
                     status: true,
