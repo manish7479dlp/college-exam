@@ -4,18 +4,23 @@ import StudentRegistration from "../Components/Registration/StudentRegistration"
 import TeacherRegistration from "../Components/Registration/TeacherRegistration";
 import { toast } from "react-toastify";
 
+import NoDataFound from "../Components/noDataFound/NoDataFound"
+
 const AdminDashboard = () => {
-    const url = "http://localhost:8000/api/student";
+    const studentUrl = "http://localhost:8000/api/student";
+    const teacherUrl = "http://localhost:8000/api/teacher";
 
     const [activeTab, setActiveTab] = useState(1);
     const [studentData, setStudentData] = useState([]);
+    const [teachersData, setTeachersData] = useState([]);
+
 
     const editStudentDetails = () => {
          alert("This feature is not implemented yet. (just delete the details and register again)")
     }
 
     const deleteStudentDetails = async (id , year) => {
-        const deleteUrl = url + `/${id}`
+        const deleteUrl = studentUrl + `/${id}`
         const verify = window.confirm("Do you Really Want to delete the student Details.");
         if(verify) {
              const response = await fetch(deleteUrl , {
@@ -26,25 +31,66 @@ const AdminDashboard = () => {
 
              if(result.status) {
                 toast.success(result.message);
+                fetchStudentData(year)
              } else {
                 toast.error(result.message
                 )
              }
-        } else {
+        } 
+    }
 
-        }
+    const editTeacherDetails = () => {
+        alert("This feature is not implemented yet.. plz delete the current data and register again")
+    }
+
+    const deleteTeacherDetails = async (id , year) => {
+        const deleteUrl = teacherUrl + `/${id}`
+        const verify = window.confirm("Do you Really Want to delete the student Details.");
+        if(verify) {
+             const response = await fetch(deleteUrl , {
+                method: "DELETE"
+             })
+
+             const result = await response.json();
+
+             if(result.status) {
+                toast.success(result.message);
+                fetchTeachersData(year)
+             } else {
+                toast.error(result.message
+                )
+             }
+        } 
     }
 
     const fetchStudentData = async (year) => {
         try {
-            const response = await fetch(url);
+            const response = await fetch(studentUrl);
             const result = await response.json();
+            if(result.status) {
+                const data = result.response.filter((elm) => {
+                    return elm.year === year - 2;
+                });
+                setStudentData(data);
+            } else {
+                setStudentData([])
+            }
 
-            const data = result.response.filter((elm) => {
-                return elm.year === year - 2;
-            });
+        } catch (error) {
+            console.log(error);
+        }
+    };
 
-            setStudentData(data);
+    const fetchTeachersData = async () => {
+        try {
+            const response = await fetch(teacherUrl);
+            const result = await response.json();
+            if(result.status) {
+                setTeachersData(result.response);
+            } else {
+                setTeachersData([])
+            }
+
         } catch (error) {
             console.log(error);
         }
@@ -84,7 +130,13 @@ const AdminDashboard = () => {
 
     const logoutAdmin = () => {
         setActiveTab(8);
-    };
+    }; 
+
+    const showTeachersDetails = () => {
+        setActiveTab(9)
+        fetchTeachersData();
+        console.log(teachersData);
+    }
 
     return (
         <div className="adminDashboardContainer">
@@ -139,6 +191,13 @@ const AdminDashboard = () => {
                     </p>
 
                     <p
+                        className={activeTab === 9 ? "activeTab" : ""}
+                        onClick={showTeachersDetails}
+                    >
+                        Teachers Details
+                    </p>
+
+                    <p
                         className={activeTab === 7 ? "activeTab" : ""}
                         onClick={showStudentMarks}
                     >
@@ -161,7 +220,14 @@ const AdminDashboard = () => {
 
                 {/* first year student details */}
 
-                { (activeTab === 3 || activeTab === 4 || activeTab === 5 || activeTab === 6) &&
+                {
+                      ((activeTab === 3 || activeTab === 4 || activeTab === 5 || activeTab === 6 ) &&studentData.length === 0 ) && <NoDataFound/>
+                }
+
+                { ((activeTab === 3 || activeTab === 4 || activeTab === 5 || activeTab === 6) && studentData.length !== 0) &&
+                    
+                    
+                    
                     <div className="studentDetailsShowContainer">
 
                         {studentData.map((data, idx) => {
@@ -188,13 +254,53 @@ const AdminDashboard = () => {
                                             Edit
                                         </button>
                                         <button className="deleteButton" onClick={() => {deleteStudentDetails(data._id , data.year)}}>
-                                            delete
+                                            Delete
                                         </button>
                                     </div>
                                 </div>
                             );
                         })}
                     </div>
+                }
+
+                {(activeTab === 9 && teachersData.length === 0) && <NoDataFound/>}
+
+                {(activeTab === 9 && teachersData.length > 0) && 
+                
+                <div className="studentDetailsShowContainer">
+
+                {teachersData.map((data, idx) => {
+                    return (
+                        <div
+                            key={idx}
+                            className="eachStudentDetailSContainer"
+                        >
+                            <p>
+                                UserId: <span>{data.userId}</span>
+                            </p>
+                            <p>
+                                Name: <span>{data.name}</span>
+                            </p>
+                            <p>
+                                Department: <span>{data.department}</span>
+                            </p>
+                            <p>
+                                Subject: <span>{data.subject}</span>
+                            </p>
+
+                            <div className="operationButtonContainer">
+                                <button className="editButton" onClick={() => {editTeacherDetails(data._id)}}>
+                                    Edit
+                                </button>
+                                <button className="deleteButton" onClick={() => {deleteTeacherDetails(data._id , data.year)}}>
+                                    Delete
+                                </button>
+                            </div>
+                        </div>
+                    );
+                })}
+            </div>
+                
                 }
             </div>
         </div>

@@ -1,0 +1,10 @@
+.noDataFoundContent {
+    /* display: block; */
+    width: 80%;
+    font-size: 4rem;
+    color: red;
+    font-weight: 700; 
+    display: flex;   
+    justify-content: center;
+    align-items: center;
+}
