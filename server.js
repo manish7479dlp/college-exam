@@ -3,7 +3,8 @@ const cors = require("cors")
 require('dotenv').config();
 const app = express();
 const dbConfig = require("./config/dbConfig");
-const studentController = require("./controllers/studentController")
+const studentRoute = require("./Routes/Student/studentRoute")
+
 const port = process.env.PORT;
 const mongoDbUrl = process.env.MONGODB_URL;
 
@@ -16,16 +17,14 @@ dbConfig(mongoDbUrl)
 
 app.use(express.json());
 
+//integrate student routes
+app.use("/api" ,studentRoute )
+
 app.get("/" , (req , res) => {
     res.send("hlw from the other side...");
 })
 
-app.get("/student/:universityRoll", studentController.getParticularStudent)
-app.post("/student", studentController.registerStudent)
-app.get("/student", studentController.getAllStudentDetails)
-app.delete("/student/:_id", studentController.deleteParticularStudent)
-app.patch("/student/:_id", studentController.updateParticularStudent)
-app.post("/student-login" , studentController.studentLogIn)
+
 
 
 
