@@ -4,6 +4,7 @@ require("dotenv").config();
 const app = express();
 const dbConfig = require("./config/dbConfig");
 const studentRoutes = require("./Routes/Student/studentRoutes");
+const teacherRoutes = require("./Routes/Teacher/teacherRoutes");
 
 const port = process.env.PORT;
 const mongoDbUrl = process.env.MONGODB_URL;
@@ -18,6 +19,8 @@ app.use(express.json());
 
 //integrate student routes
 app.use("/api", studentRoutes);
+//integrate teacher routes
+app.use("/api", teacherRoutes);
 
 app.get("/", (req, res) => {
     res.send("hlw from the other side...");
