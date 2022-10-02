@@ -1,43 +1,52 @@
 import react, { useState } from "react";
-import {toast} from "react-toastify"
 import "./AdminDashboardStyle.css";
+import StudentRegistration from "../Components/Registration/StudentRegistration";
+import TeacherRegistration from "../Components/Registration/TeacherRegistration";
 
 const AdminDashboard = () => {
-    const initialData = {
-        name: "",
-        department: "",
-        year: "",
-        universityRoll: "",
-    };
+    const [activeTab, setActiveTab] = useState(1);
 
-    const [inputFieldData, setInputFieldData] = useState(initialData);
 
-    const onChangeHandler = (event) => {
-        setInputFieldData((preData) => {
-            return { ...preData, [event.target.name]: event.target.value };
-        });
-    };
 
-    const submitStudentDetails = async () => {
-        const url = "http://localhost:8000/api/student";
+    const studentRegistration = () => {
+        setActiveTab(1)
 
-        const response = await fetch(url, {
-            method: "POST",
-            headers: {
-                "Content-type": "application/json",
-            },
-            body: JSON.stringify(inputFieldData),
-        });
+    }
 
-        const result = await response.json();
+    const teacherRegistration = () => {
+        setActiveTab(2)
+    }
 
-        if (result.status) {
-            toast.success(result.message);
-            setInputFieldData(initialData);
-        } else {
-            toast.error(result.message);
-        }
-    };
+    const showFirstYearStudentDetails = () => {
+        setActiveTab(3)
+
+    }
+
+    const showSecondYearStudentDetails = () => {
+        setActiveTab(4)
+
+    }
+
+    const showThirdYearStudentDetails = () => {
+        setActiveTab(5)
+
+    }
+
+    const showFourthYearStudentDetails = () => {
+        setActiveTab(6)
+
+    }
+
+    const showStudentMarks = () => {
+        setActiveTab(7)
+
+    }
+
+    const logoutAdmin = () => {
+        setActiveTab(8)
+
+    }
+    
 
     return (
         <div className="adminDashboardContainer">
@@ -49,87 +58,35 @@ const AdminDashboard = () => {
 
             <div className="adminDashboardMainContantContainer">
                 <div className="adminNavbar">
-                    <p>Student Register</p>
-                    <p>Teacher Register</p>
-                    <p>First Year Student</p>
-                    <p>Second Year Student</p>
-                    <p>Third Year Student</p>
-                    <p>Fourth Year Student</p>
-                    <p>Student Marks</p>
-                    <p>Logout</p>
+                    <p className= {activeTab === 1 ? "activeTab" : ""} onClick={studentRegistration}>Student Registration</p>
+
+                    <p className= {activeTab === 2 ? "activeTab" : ""} onClick={teacherRegistration}>Teacher Registration</p>
+
+                    <p className= {activeTab === 3 ? "activeTab" : ""} onClick={showFirstYearStudentDetails}>First Year Student</p>
+
+                    <p className= {activeTab === 4 ? "activeTab" : ""} onClick={showSecondYearStudentDetails}>Second Year Student</p>
+
+                    <p className= {activeTab === 5 ? "activeTab" : ""} onClick={showThirdYearStudentDetails}>Third Year Student</p>
+
+                    <p className= {activeTab === 6 ? "activeTab" : ""} onClick={showFourthYearStudentDetails}>Fourth Year Student</p>
+
+                    <p className= {activeTab === 7 ? "activeTab" : ""} onClick={showStudentMarks}>Student Marks</p>
+
+                    <p className= {activeTab === 8 ? "activeTab" : ""} onClick={logoutAdmin}>Logout</p>
+
                 </div>
 
                 {/* student registration */}
-                <div className="studentRegistrationContainer">
-                    <div className="registrationInputFieldContainer">
-                        <h2>Student Registration</h2>
+                {
+                    activeTab === 1 && <StudentRegistration/>
+                }
 
-                        <div>
-                            <label>University Roll:</label>
-                            <br />
-                            <input
-                                type="number"
-                                name="universityRoll"
-                                value={inputFieldData.universityRoll}
-                                onChange={onChangeHandler}
-                            />
-                        </div>
+                {/* teacher registration */}
+                {
+                    activeTab === 2 && <TeacherRegistration/>
+                }
 
-                        <div>
-                            <label>Name:</label>
-                            <br />
-                            <input
-                                type="text"
-                                name="name"
-                                value={inputFieldData.name}
-                                onChange={onChangeHandler}
-                            />
-                        </div>
-
-                        <div>
-                            <label>Department:</label>
-                            <br />
-                            <select
-                                name="department"
-                                value={inputFieldData.department}
-                                onChange={onChangeHandler}
-                            >
-                                <option>**Choose**</option>
-                                <option value={"CE"}>CE</option>
-                                <option value={"EE"}>EE</option>
-                                <option value={"CSE"}>CSE</option>
-                                <option value={"ECE"}>ECE</option>
-                            </select>
-                        </div>
-
-                        <div>
-                            <label>Year:</label>
-                            <br />
-                            <select
-                                name="year"
-                                value={inputFieldData.year}
-                                onChange={onChangeHandler}
-                            >
-                                <option>**Choose**</option>
-                                <option value={1}>1st</option>
-                                <option value={2}>2nd</option>
-                                <option value={3}>3rd</option>
-                                <option value={4}>4th</option>
-                            </select>
-                        </div>
-
-                        <div id="submitButtonContainer">
-                            <button
-                                type="submit"
-                                onClick={submitStudentDetails}
-                            >
-                                Submit
-                            </button>
-                        </div>
-
-                        {/* <button type="submit">Submit</button> */}
-                    </div>
-                </div>
+                
             </div>
         </div>
     );

@@ -54,7 +54,7 @@ h1 {
 }
 
 .adminDashboardContainer .adminNavbar p {
-    font-size: 1.5em;
+    font-size: 1.4em;
     margin: 20px;
     color: white;
     font-weight: 500;
@@ -64,9 +64,15 @@ h1 {
 }
 
 .adminDashboardContainer .adminNavbar p:hover {
-    background-color: rgb(35, 138, 35);
+    background-color: rgb(196, 237, 48);
     padding: 8px 20px;
     border-radius: 10px;
+}
+
+.activeTab {
+    background-color: rgb(168, 39, 131);
+    padding: 8px 25px;
+    border-radius: 10px; 
 }
 
 /* studentRegistrationContainer css :start */
