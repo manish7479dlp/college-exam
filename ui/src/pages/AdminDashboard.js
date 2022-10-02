@@ -1,5 +1,26 @@
+import react , {useState} from "react"
 import "./AdminDashboardStyle.css";
+
 const AdminDashboard = () => {
+  const initialData = {
+    name : "",
+    department : "",
+    year : "",
+    universityRoll : ""
+  }
+
+  const [inputFieldData , setInputFieldData] = useState(initialData);
+
+  const onChangeHandler = (event) => {
+     setInputFieldData((preData) => {
+        return {...preData , [event.target.name] : event.target.value}
+     })
+  }
+
+  const submitStudentDetails = () => {
+    console.log(inputFieldData);
+  }
+    
     return (
         <div className="adminDashboardContainer">
             <div className="adminDashboardHeader">
@@ -28,41 +49,41 @@ const AdminDashboard = () => {
                         <div>
                             <label>University Roll:</label>
                             <br />
-                            <input type="number" />
+                            <input type="number" name = "universityRoll" value = {inputFieldData.universityRoll} onChange = {onChangeHandler}/>
                         </div>
 
                         <div>
                             <label>Name:</label>
                             <br />
-                            <input type="text" />
+                            <input type="text" name = "name" value = {inputFieldData.name} onChange = {onChangeHandler}/>
                         </div>
 
                         <div>
                             <label>Department:</label>
                             <br />
-                            <select>
+                            <select name = "department" value = {inputFieldData.department} onChange = {onChangeHandler}>
                                 <option>**Choose**</option>
-                                <option>CE</option>
-                                <option>EE</option>
-                                <option>CSE</option>
-                                <option>ECE</option>
+                                <option value={"CE"}>CE</option>
+                                <option value={"EE"}>EE</option>
+                                <option value={"CSE"}>CSE</option>
+                                <option value={"ECE"}>ECE</option>
                             </select>
                         </div>
 
                         <div>
                             <label>Year:</label>
                             <br />
-                            <select>
+                            <select name = "year" value = {inputFieldData.year} onChange = {onChangeHandler}>
                                 <option>**Choose**</option>
-                                <option>1st</option>
-                                <option>2nd</option>
-                                <option>3rd</option>
-                                <option>4th</option>
+                                <option value={1}>1st</option>
+                                <option value={2}>2nd</option>
+                                <option value={3}>3rd</option>
+                                <option value={4}>4th</option>
                             </select>
                         </div>
 
                         <div id = "submitButtonContainer">
-                            <button type="submit">Submit</button>
+                            <button type="submit" onClick={submitStudentDetails}>Submit</button>
                         </div>
 
                         {/* <button type="submit">Submit</button> */}
