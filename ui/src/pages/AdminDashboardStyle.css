@@ -13,7 +13,8 @@
     box-shadow: 1px 1px 8px 2px gray;
 }
 
-.adminDashboardContainer .adminDashboardHeader h3 ,h1{
+.adminDashboardContainer .adminDashboardHeader h3,
+h1 {
     color: white;
     font-size: 2rem;
     text-shadow: 3px 3px 5px purple;
@@ -22,8 +23,8 @@
 .adminDashboardContainer .adminDashboardHeader h1 {
     font-size: 3rem;
     text-shadow: 3px 3px 5px rgb(235, 44, 193);
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-
+    font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+        "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
 }
 
 .adminDashboardContainer .adminDashboardHeader input {
@@ -37,11 +38,15 @@
     font-size: 1.5rem;
 }
 
+.adminDashboardMainContantContainer {
+    display: flex;
+}
+
 .adminDashboardContainer .adminNavbar {
     width: 300px;
     height: calc(100vh - 80px);
     background-color: rgb(82, 156, 156);
-    text-align: left;
+    /* text-align: left; */
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -53,13 +58,102 @@
     margin: 20px;
     color: white;
     font-weight: 500;
-    transition: .3s;
+    transition: 0.3s;
     cursor: pointer;
-    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
 }
 
 .adminDashboardContainer .adminNavbar p:hover {
     background-color: rgb(35, 138, 35);
     padding: 8px 20px;
     border-radius: 10px;
+}
+
+/* studentRegistrationContainer css :start */
+
+.studentRegistrationContainer {
+    height: calc(100vh - 80px);
+    width: calc(100vw - 300px);
+    background-color: rgb(130, 188, 188);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.studentRegistrationContainer .registrationInputFieldContainer {
+    width: 700px;
+    padding: 20px 30px;
+    /* border: 2px solid red; */
+    box-shadow: 3px 2px 16px 5px rgb(100, 100, 100);
+    border-radius: 15px;
+}
+
+.studentRegistrationContainer .registrationInputFieldContainer div {
+    display: inline-block;
+    margin-left: 10px;
+}
+
+.studentRegistrationContainer .registrationInputFieldContainer h2 {
+    font-size: 2rem;
+    color: white;
+    margin-bottom: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 500;
+}
+
+.studentRegistrationContainer .registrationInputFieldContainer div label {
+    font-size: 1.6rem;
+    color: white;
+    /* font-weight: bold; */
+    font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+}
+
+.studentRegistrationContainer .registrationInputFieldContainer div input {
+    outline: none;
+    border: none;
+    padding: 6px 5px;
+    border-radius: 10px;
+    text-align: center;
+    font-size: 1.5rem;
+    margin-top: 8px;
+    margin-left: 5px;
+}
+
+.studentRegistrationContainer .registrationInputFieldContainer div select {
+    width: 300px;
+    outline: none;
+    border: none;
+    padding: 8px 5px;
+    border-radius: 15px;
+    text-align: center;
+    margin-top: 10px;
+    font-size: 1.3rem;
+}
+
+.studentRegistrationContainer
+    .registrationInputFieldContainer
+    #submitButtonContainer {
+    display: block;
+    text-align: center;
+    /* border: 2px solid red; */
+    margin-top: 12px;
+}
+
+.studentRegistrationContainer .registrationInputFieldContainer button {
+    width: 100px;
+    border: none;
+    padding: 8px2px;
+    padding: 8px 2px;
+    border-radius: 15px;
+    font-size: 1.3rem;
+    font-weight: bold;
+    margin-top: 10px;
+    cursor: pointer;
+    /* background-color: transparent; */
+    transition: .3s;
+}
+
+.studentRegistrationContainer .registrationInputFieldContainer button:hover {
+    background-color: green;
+    color: white;
 }
