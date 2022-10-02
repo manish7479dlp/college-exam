@@ -163,3 +163,83 @@ h1 {
     background-color: green;
     color: white;
 }
+
+
+/* studentDetailsShowContainer css start */
+
+.studentDetailsShowContainer {
+    width: calc(100vw - 300px);
+    height: calc(100vh - 80px);
+    background-color: rgb(154, 232, 232);
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    overflow: auto;
+}
+
+.studentDetailsShowContainer .eachStudentDetailSContainer {
+    width: 350px;
+    height: 250px;
+    border: 2px solid white;
+    padding: 8px 12px;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    margin: 10px 5px;
+}
+
+.studentDetailsShowContainer .eachStudentDetailSContainer p {
+    font-size: 1.3rem;
+    font-weight: 500;  
+    padding: 8px 2px;
+    color: white;
+    text-shadow: 1px 1px 5px magenta;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.studentDetailsShowContainer .eachStudentDetailSContainer span {
+    font-size: 1.2rem;
+    font-weight: 500;  
+    color: white;
+    text-shadow: 1px 1px 5px rgb(247, 149, 57);
+
+}
+
+.operationButtonContainer {
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 60px;
+    /* border: 2px solid black */
+}
+
+.operationButtonContainer .editButton , .operationButtonContainer .deleteButton {
+   padding: 6px 18px;
+   font-size: 1.2rem;
+   border: none;
+   border-radius: 15px;
+   /* text-transform: uppercase; */
+   font-weight: 600;
+   cursor: pointer;
+   margin-top: 12px;
+   transition: .4s;
+   color: white;
+
+}
+
+.operationButtonContainer .editButton {
+    background-color: rgb(234, 178, 25);
+}
+.operationButtonContainer .deleteButton {
+    background-color: rgb(237, 66, 66)
+}
+
+
+
+.operationButtonContainer .editButton:hover , .operationButtonContainer .deleteButton:hover {
+    background-color: green;
+}
