@@ -1,33 +1,28 @@
 const express = require("express");
-const cors = require("cors")
-require('dotenv').config();
+const cors = require("cors");
+require("dotenv").config();
 const app = express();
 const dbConfig = require("./config/dbConfig");
-const studentRoute = require("./Routes/Student/studentRoute")
+const studentRoutes = require("./Routes/Student/studentRoutes");
 
 const port = process.env.PORT;
 const mongoDbUrl = process.env.MONGODB_URL;
-
 
 // cors
 app.use(cors());
 
 //called dbConfig function
-dbConfig(mongoDbUrl)
+dbConfig(mongoDbUrl);
 
 app.use(express.json());
 
 //integrate student routes
-app.use("/api" ,studentRoute )
+app.use("/api", studentRoutes);
 
-app.get("/" , (req , res) => {
+app.get("/", (req, res) => {
     res.send("hlw from the other side...");
-})
+});
 
-
-
-
-
-app.listen(port , () => {
+app.listen(port, () => {
     console.log("Server is running...");
-})
+});
