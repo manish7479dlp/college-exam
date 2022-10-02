@@ -34,7 +34,7 @@ const getParticularStudent = async (req, res) => {
 //register new student
 const registerStudent = async (req, res) => {
     try {
-        const { semester, universityRoll, name, department } = req.body;
+        const { year, universityRoll, name, department } = req.body;
 
         // password = starting 4 digits of universtiy roll and first name of the student
         let password =
@@ -44,9 +44,9 @@ const registerStudent = async (req, res) => {
         // encrypt the password
         password = await bcrypt.hash(password, 10);
 
-        if (semester && universityRoll && name && department) {
+        if (year && universityRoll && name && department) {
             const response = new studentModel({
-                semester,
+                year,
                 universityRoll,
                 name,
                 department,
@@ -105,7 +105,7 @@ const deleteParticularStudent = async (req, res) => {
 //update particular student on the basis of id
 const updateParticularStudent = async (req, res) => {
     try {
-        const { semester, universityRoll, name, department } = req.body;
+        const { year, universityRoll, name, department } = req.body;
         const _id = req.params._id;
         // password = starting 4 digits of universtiy roll and first name of the student
         let password =
@@ -118,7 +118,7 @@ const updateParticularStudent = async (req, res) => {
             { _id },
             {
                 $set: {
-                    semester,
+                    year,
                     universityRoll,
                     name,
                     department,
