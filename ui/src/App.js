@@ -21,6 +21,9 @@ import QuestionDetailSection from "./Components/QuestionSetSection/QuestionDetai
 import Marks from "./Components/StudentMarks/Marks";
 import DailogBox from "./Components/DailogBox/DailogBox";
 
+
+import AdminDashboard from "./pages/AdminDashboard";
+
 // 404 page not fount
 import NotFound from "./Components/404";
 
@@ -30,6 +33,9 @@ function App() {
             <BrowserRouter>
                 <ToastContainer position="top-center" theme="colored" />
                 <Routes>
+                    <Route path="/admin-dashboard" element = {<AdminDashboard/>}/>
+                </Routes>
+                {/* <Routes>
                     <Route path="/" element={<Home />} />
                     <Route
                         path="/logindashboard"
@@ -69,7 +75,7 @@ function App() {
                         />
                     </Route>
                     <Route path="*" element={<NotFound />} />
-                </Routes>
+                </Routes> */}
             </BrowserRouter>
         </>
     );
