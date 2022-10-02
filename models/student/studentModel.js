@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 
 const StudentSchema = new mongoose.Schema({
-    semester: {
+    year: {
       type: Number,
       required: true
     },
