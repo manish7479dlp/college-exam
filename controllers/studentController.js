@@ -36,30 +36,42 @@ const registerStudent = async (req, res) => {
     try {
         const { year, universityRoll, name, department } = req.body;
 
-        // password = starting 4 digits of universtiy roll and first name of the student
-        let password =
-            req.body.universityRoll.toString().substring(0, 4) +
-            name.split(" ")[0].toLowerCase();
+        const validationCheck = await studentModel.findOne({ universityRoll });
 
-        // encrypt the password
-        password = await bcrypt.hash(password, 10);
-
-        if (year && universityRoll && name && department) {
-            const response = new studentModel({
-                year,
-                universityRoll,
-                name,
-                department,
-                password,
-            });
-            const result = await response.save();
-            console.log(result);
-            res.status(201).send({
-                status: true,
-                message: "Details Inserted Sucessfully",
+        if (validationCheck) {
+            res.send({
+                status: false,
+                message: "University Roll is already Used",
             });
         } else {
-            res.send({ status: false, message: "All fields are required." });
+            // password = starting 4 digits of universtiy roll and first name of the student
+            let password =
+                req.body.universityRoll.toString().substring(0, 4) +
+                name.split(" ")[0].toLowerCase();
+
+            // encrypt the password
+            password = await bcrypt.hash(password, 10);
+
+            if (year && universityRoll && name && department) {
+                const response = new studentModel({
+                    year,
+                    universityRoll,
+                    name,
+                    department,
+                    password,
+                });
+                const result = await response.save();
+                console.log(result);
+                res.status(201).send({
+                    status: true,
+                    message: "Details Inserted Sucessfully",
+                });
+            } else {
+                res.send({
+                    status: false,
+                    message: "All fields are required.",
+                });
+            }
         }
     } catch (error) {
         console.log(error);
@@ -149,7 +161,7 @@ const studentLogIn = async (req, res) => {
         const response = await studentModel.findOne({ universityRoll });
         if (response) {
             const isMatch = await bcrypt.compare(password, response.password);
-            
+
             if (isMatch) {
                 res.send({
                     status: true,
