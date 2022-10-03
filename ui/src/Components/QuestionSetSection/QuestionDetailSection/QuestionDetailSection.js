@@ -90,7 +90,7 @@ const QuestionDetailSection = ({changeTab}) => {
             if(result.status) {
                 toast.success(result.message);
                 setData(initialData)
-                sessionStorage.setItem(questionDetailsKey , Data);
+                sessionStorage.setItem(questionDetailsKey , JSON.stringify(Data));
                 changeTab(2)
             } else {
                 toast.error(result.message);
