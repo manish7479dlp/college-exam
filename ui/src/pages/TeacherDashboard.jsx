@@ -119,7 +119,7 @@ const TeacherDashboard = () => {
                     </p>
                 </div>
 
-                {activeTab === 1 && <QuestionDetailSection/>}
+                {activeTab === 1 && <QuestionDetailSection changeTab = {setActiveTab}/>}
 
                 {activeTab === 2 && <QuestionSetSection/>}
 
