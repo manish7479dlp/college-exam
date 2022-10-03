@@ -21,7 +21,6 @@ import QuestionDetailSection from "./Components/QuestionSetSection/QuestionDetai
 import Marks from "./Components/StudentMarks/Marks";
 import DailogBox from "./Components/DailogBox/DailogBox";
 
-
 import AdminDashboard from "./pages/AdminDashboard";
 
 // 404 page not fount
@@ -33,7 +32,19 @@ function App() {
             <BrowserRouter>
                 <ToastContainer position="top-center" theme="colored" />
                 <Routes>
-                    <Route path="/admin-dashboard" element = {<AdminDashboard/>}/>
+                    <Route
+                        path="/admin-dashboard"
+                        element={<AdminDashboard />}
+                    />
+                    <Route path="/" element={<Home />} />
+                    <Route
+                        path="/logindashboard"
+                        element={<LoginDashboard />}
+                    />
+                    <Route path="/studentlogin" element={<StudentLogin />} />
+                    <Route path="/teacherlogin" element={<TeacherLogin />} />
+                    <Route path="/adminlogin" element={<AdminLogin />} />
+                    
                 </Routes>
                 {/* <Routes>
                     <Route path="/" element={<Home />} />

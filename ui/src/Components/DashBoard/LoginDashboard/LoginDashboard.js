@@ -29,7 +29,7 @@ const LoginDashboard = () => {
           name={"Log in"}
           heading={"Teacher Log-in"}
           content={
-            "It is Teacher Login Section After Login, Teacher can Set Question's, Delete Question as Well as See The Marks of Examination."
+            "It is Teacher Login Section After Login, Teacher can Set Question's, Delete Question as Well as See The Marks of all Students of the Particular Examination."
           }
           onClick={onClick}
         />

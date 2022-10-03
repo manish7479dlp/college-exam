@@ -13,17 +13,7 @@ const AdminLogin = () => {
   const [display, setDisplay] = useState({ display: "none" });
 
   useEffect(() => {
-    // const loginCheck = localStorage.getItem("StudentDetail");
-    const auth = sessionStorage.getItem("AdminDetail");
 
-    if (auth !== null) {
-      // Navigate("/dailogbox");
-      if (display.display === "none") {
-        setDisplay((pre) => {
-          return { display: "flex" };
-        });
-      }
-    }
   });
   const initialData = {
     userId: "",
@@ -36,28 +26,7 @@ const AdminLogin = () => {
       const url = `${apibaseURL}/admin/${Data.userId}`;
       event.preventDefault();
 
-      // const response = await fetch(url, { method: "GET" }); // it also work find
-      const response = await fetch(url);
-      // This code return the response in array of object formate..
-      const finalData = await response.json();
-      // console.log(finalData[0].password); this code give the password which is get from api.
-      if (response.status !== 200) {
-        toast.error("Invalid UserId.");
-      } else {
-        if (finalData[0].password === Data.password) {
-          // localStorage.setItem("StudentDetail" , JSON.stringify(finalData[0]))
-          sessionStorage.setItem("AdminDetail", JSON.stringify(finalData[0]));
-          toast.success("Valid User.");
-          setData(initialData);
-          if (display.display === "none") {
-            setDisplay((pre) => {
-              return { display: "flex" };
-            });
-          }
-        } else {
-          toast.error("Invalid Password.");
-        }
-      }
+      
     } catch (error) {
       console.log(error);
     }
