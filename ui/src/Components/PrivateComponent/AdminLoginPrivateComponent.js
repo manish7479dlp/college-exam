@@ -1,6 +1,7 @@
 import { Outlet , Navigate } from "react-router-dom";
 const AdminLoginPrivateComponent = () => {
-    const auth = sessionStorage.getItem("AdminDetail");
+  const authCheckName = "admin"
+    const auth = sessionStorage.getItem(authCheckName);
     return auth ? <Outlet/> :< Navigate to ="/adminlogin" />
 }
 
