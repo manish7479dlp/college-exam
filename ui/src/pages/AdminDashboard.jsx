@@ -3,13 +3,15 @@ import "./AdminDashboardStyle.css";
 import StudentRegistration from "../Components/Registration/StudentRegistration";
 import TeacherRegistration from "../Components/Registration/TeacherRegistration";
 import { toast } from "react-toastify";
-
 import NoDataFound from "../Components/noDataFound/NoDataFound";
+import { useNavigate } from "react-router-dom";
 
 const AdminDashboard = () => {
     const authCheckName = "user";
     const studentUrl = "http://localhost:8000/api/student";
     const teacherUrl = "http://localhost:8000/api/teacher";
+
+    const Navigate = useNavigate();
 
     const [activeTab, setActiveTab] = useState(1);
     const [studentData, setStudentData] = useState([]);
@@ -134,6 +136,11 @@ const AdminDashboard = () => {
 
     const logoutAdmin = () => {
         setActiveTab(8);
+        const confirm = window.confirm("Do you really want to logout..");
+        if (confirm) {
+            sessionStorage.removeItem(authCheckName);
+            Navigate("/");
+        }
     };
 
     const showTeachersDetails = () => {
@@ -145,7 +152,9 @@ const AdminDashboard = () => {
     return (
         <div className="adminDashboardContainer">
             <div className="adminDashboardHeader">
-                <h3>{JSON.parse(sessionStorage.getItem(authCheckName)).name}</h3>
+                <h3>
+                    {JSON.parse(sessionStorage.getItem(authCheckName)).name}
+                </h3>
                 <h1>Admin Dashboard</h1>
                 <input type="text" placeholder="Searching" />
             </div>
