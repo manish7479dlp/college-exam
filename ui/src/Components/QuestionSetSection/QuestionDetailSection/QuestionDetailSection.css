@@ -24,10 +24,14 @@
 }
 
 .questionDetailSectionContainer .innerQuestionDetailSectionContainer select,
-input {
+.innerQuestionDetailSectionContainer input {
     font-size: 1.3rem;
     margin-bottom: 10px;
     text-align: center;
+    width: 250px;
+    padding: 8px;
+    border:none;
+    border-radius: 15px;
 }
 
 /* Responsive code start */

@@ -90,7 +90,7 @@ const QuestionDetailSection = () => {
 
     return (
         <>
-            <Header />
+            {/* <Header /> */}
             <div className="questionDetailSectionContainer">
                 <ContentName title={"Question Details Set Section"} />
                 <div className="innerQuestionDetailSectionContainer  ">
