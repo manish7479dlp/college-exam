@@ -8,6 +8,7 @@ import QuestionSetSection from "../Components/QuestionSetSection/QuestionSetSect
 //student marks
 import StudentMarks from "../Components/StudentMarks/Marks"
 import { Navigate, useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const TeacherDashboard = () => {
     const authCheckName = "teacher";
@@ -20,7 +21,8 @@ const TeacherDashboard = () => {
     }
     
     const setQuestion = () => {
-        setActiveTab(2);
+        // setActiveTab(2);
+        toast.warning("It is active automatically when you Enter Exam Details😊😊")
     }
 
     const previewQuestions = () => {
