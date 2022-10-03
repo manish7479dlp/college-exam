@@ -7,9 +7,13 @@ import QuestionDetailSection from "../Components/QuestionSetSection/QuestionDeta
 import QuestionSetSection from "../Components/QuestionSetSection/QuestionSetSection"
 //student marks
 import StudentMarks from "../Components/StudentMarks/Marks"
+import { Navigate, useNavigate } from "react-router-dom";
 
 const TeacherDashboard = () => {
+    const authCheckName = "teacher";
+
     const [activeTab, setActiveTab] = useState(1);
+    const Navigate = useNavigate();
 
     const setQuestionDetails = () => {
         setActiveTab(1);
@@ -29,6 +33,11 @@ const TeacherDashboard = () => {
 
     const logoutTeacher = () => {
         setActiveTab(5);
+        const confirm = window.confirm("Do you really want to logout..");
+        if(confirm) {
+            sessionStorage.removeItem(authCheckName);
+            Navigate("/")
+        }
     }
 
     return (

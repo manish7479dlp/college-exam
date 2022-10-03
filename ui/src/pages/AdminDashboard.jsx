@@ -7,7 +7,7 @@ import NoDataFound from "../Components/noDataFound/NoDataFound";
 import { useNavigate } from "react-router-dom";
 
 const AdminDashboard = () => {
-    const authCheckName = "user";
+    const authCheckName = "admin";
     const studentUrl = "http://localhost:8000/api/student";
     const teacherUrl = "http://localhost:8000/api/teacher";
 

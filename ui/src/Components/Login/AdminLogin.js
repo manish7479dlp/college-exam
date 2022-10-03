@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 import DailogBox from "../DailogBox/DailogBox";
 
 const AdminLogin = () => {
-  const authCheckName = "user"
+  const authCheckName = "admin"
   const apibaseURL = "http://localhost:8000/api";
 
   const Navigate = useNavigate();
