@@ -94,10 +94,10 @@ const Marks = () => {
     };
 
     return (
-        <>
-            <Header />
+        <div className="studentMarksMainContainer">
+            {/* <Header /> */}
 
-            <div className="postionFixed">
+            <div className="positionFixed">
                 <h1 className="studentMarksHeading">Student Marks</h1>
 
                 <div className="center marksFilter">
@@ -251,7 +251,7 @@ const Marks = () => {
                     </table>
                 </div>
             )}
-        </>
+        </div>
     );
 };
 

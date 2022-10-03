@@ -68,7 +68,7 @@ const QuestionSetSection = () => {
   };
   return (
     <>
-      <Header />
+      {/* <Header /> */}
       <div className=" questionSetSectionContainer center">
         <div className="questionSetSection">
           <h2 className="questionHeading">Question Set Section</h2>

@@ -3,6 +3,10 @@ import "./AdminDashboardStyle.css";
 import { useState } from "react";
 //exam details components
 import QuestionDetailSection from "../Components/QuestionSetSection/QuestionDetailSection/QuestionDetailSection"
+//question set component
+import QuestionSetSection from "../Components/QuestionSetSection/QuestionSetSection"
+//student marks
+import StudentMarks from "../Components/StudentMarks/Marks"
 
 const TeacherDashboard = () => {
     const [activeTab, setActiveTab] = useState(1);
@@ -107,6 +111,10 @@ const TeacherDashboard = () => {
                 </div>
 
                 {activeTab === 1 && <QuestionDetailSection/>}
+
+                {activeTab === 2 && <QuestionSetSection/>}
+
+                {activeTab === 4 &&  <StudentMarks/>}
             </div>
         </div>
     );
