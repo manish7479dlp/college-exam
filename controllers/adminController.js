@@ -34,11 +34,12 @@ const getParticularAdmin = async (req, res) => {
 //register admin
 const registerAdmin = async (req, res) => {
     try {
-        const { userId, password } = req.body;
+        const { userId, password , name } = req.body;
         const hashPassword = await bcrypt.hash(password, 10);
         const response = new adminModel({
             userId,
             password: hashPassword,
+            name
         });
         const result = await response.save();
         res.status(201).send({
@@ -54,7 +55,7 @@ const registerAdmin = async (req, res) => {
 const updateParticularAdmin = async (req, res) => {
     try {
         const id = req.params._id;
-        const { userId, password } = req.body;
+        const { userId, password , name} = req.body;
         const hashPassword = await bcrypt.hash(password, 10);
 
         await adminModel.findByIdAndUpdate(
@@ -63,6 +64,7 @@ const updateParticularAdmin = async (req, res) => {
                 $set: {
                     userId,
                     password: hashPassword,
+                    name
                 },
             }
         );
@@ -97,7 +99,7 @@ const adminLogIn = async (req, res) => {
                     response.password
                 );
                 if (isMatch) {
-                    res.send({ status: true, response: response });
+                    res.send({ status: true, message: "Login Sucessful", response: response });
                 } else {
                     res.send({
                         status: false,

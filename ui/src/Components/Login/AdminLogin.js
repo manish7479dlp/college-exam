@@ -7,14 +7,18 @@ import { useNavigate } from "react-router-dom";
 import DailogBox from "../DailogBox/DailogBox";
 
 const AdminLogin = () => {
-  const apibaseURL = process.env.REACT_APP_API_URL || "";
+  const authCheckName = "user"
+  const apibaseURL = "http://localhost:8000/api";
 
   const Navigate = useNavigate();
   const [display, setDisplay] = useState({ display: "none" });
 
   useEffect(() => {
-
-  });
+    const auth = sessionStorage.getItem(authCheckName);
+    if(auth) {
+      Navigate("/admin-dashboard")
+    }
+  },[]);
   const initialData = {
     userId: "",
     password: "",
@@ -23,10 +27,26 @@ const AdminLogin = () => {
 
   const onSubmit = async (event) => {
     try {
-      const url = `${apibaseURL}/admin/${Data.userId}`;
+      const url = `${apibaseURL}/admin-login`;
       event.preventDefault();
-
       
+      const response = await fetch(url , {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(Data)
+      })
+
+      const result = await response.json();
+      
+      if(result.status) {
+        toast.success(result.message)
+        sessionStorage.setItem(authCheckName , JSON.stringify(result.response));
+        Navigate("/admin-dashboard")
+      } else {
+        toast.error(result.message);
+      }
     } catch (error) {
       console.log(error);
     }
