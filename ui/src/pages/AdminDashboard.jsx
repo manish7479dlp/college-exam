@@ -1,4 +1,4 @@
-import react, { useState } from "react";
+import react, { useEffect, useState } from "react";
 import "./AdminDashboardStyle.css";
 import StudentRegistration from "../Components/Registration/StudentRegistration";
 import TeacherRegistration from "../Components/Registration/TeacherRegistration";
@@ -11,11 +11,13 @@ const AdminDashboard = () => {
     const studentUrl = "http://localhost:8000/api/student";
     const teacherUrl = "http://localhost:8000/api/teacher";
 
+
     const Navigate = useNavigate();
 
     const [activeTab, setActiveTab] = useState(1);
     const [studentData, setStudentData] = useState([]);
     const [teachersData, setTeachersData] = useState([]);
+
 
     const editStudentDetails = () => {
         alert(
