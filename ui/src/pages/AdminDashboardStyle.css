@@ -13,7 +13,7 @@
     box-shadow: 1px 1px 8px 2px gray;
 }
 
-.adminDashboardContainer .adminDashboardHeader h3,
+.adminDashboardContainer .adminDashboardHeader h3, .adminDashboardContainer .adminDashboardHeader
 h1 {
     color: white;
     font-size: 2rem;

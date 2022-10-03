@@ -25,6 +25,7 @@ import AdminDashboard from "./pages/AdminDashboard";
 
 // 404 page not fount
 import NotFound from "./Components/404";
+import TeacherDashboard from "./pages/TeacherDashboard";
 
 function App() {
     return (
@@ -36,6 +37,7 @@ function App() {
                         path="/admin-dashboard"
                         element={<AdminDashboard />}
                     />
+                    <Route path="/teacher-dashboard" element = {<TeacherDashboard/>}/>
                     <Route path="/" element={<Home />} />
                     <Route
                         path="/logindashboard"
