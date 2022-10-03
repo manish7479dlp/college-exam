@@ -33,11 +33,6 @@ function App() {
             <BrowserRouter>
                 <ToastContainer position="top-center" theme="colored" />
                 <Routes>
-                    <Route
-                        path="/admin-dashboard"
-                        element={<AdminDashboard />}
-                    />
-                    <Route path="/teacher-dashboard" element = {<TeacherDashboard/>}/>
                     <Route path="/" element={<Home />} />
                     <Route
                         path="/logindashboard"
@@ -46,7 +41,27 @@ function App() {
                     <Route path="/studentlogin" element={<StudentLogin />} />
                     <Route path="/teacherlogin" element={<TeacherLogin />} />
                     <Route path="/adminlogin" element={<AdminLogin />} />
-                    
+
+                    <Route element={<AdminLoginPrivateComponent />}>
+                        <Route
+                            path="/admin-dashboard"
+                            element={<AdminDashboard />}
+                        />
+                    </Route>
+
+                    <Route element={<TeacherLoginPrivateComponent />}>
+                        <Route
+                            path="/teacher-dashboard"
+                            element={<TeacherDashboard />}
+                        />
+                    </Route>
+
+                    {/* <Route element={<StudentLoginPrivateComponent />}>
+                        <Route
+                            path="/admin-dashboard"
+                            element={<AdminDashboard />}
+                        />
+                    </Route> */}
                 </Routes>
                 {/* <Routes>
                     <Route path="/" element={<Home />} />
