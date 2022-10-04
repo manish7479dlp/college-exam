@@ -1,0 +1,70 @@
+.QuestionItemContainer {
+    display: block;
+    /* border: 1px solid gray; */
+    padding: 10px;
+    border-radius: 20px;
+    margin-top: 20px;
+    /* text-align: center; */
+    box-shadow: 2px 2px 5px 2px rgb(132, 132, 132);
+    margin: 25px;
+}
+
+.QuestionItemContainer .actualQuestion {
+    font-size: 2rem;
+    /* margin-left: 20px; */
+}
+
+.QuestionItemContainer .actualQuestionOption {
+    margin-left: 25px;
+    font-size: 1.3rem;
+    margin-top: 5px;
+    /* text-align: left; */
+}
+
+.QuestionItemContainer .actualQuestion , .QuestionItemContainer .actualQuestionOption {
+   padding-left: 20px;
+}
+
+.QuestionItemContainer .actualQuestionOption span {
+    margin-right: 5px;
+}
+
+.QuestionItemContainer .correctOption {
+    border: 2px solid blueviolet;
+    display: inline-block;
+    padding: 8px 12px;
+    border-radius: 10px;
+    margin: 10px;
+    margin-left: 30px;
+    font-size: 1.5rem;
+    text-transform: capitalize;
+    color: red;
+    font-weight: 700;
+}
+
+.QuestionItemOperationContainer {
+    background-color: rgb(242, 241, 241);
+    border-radius: 10px;
+}
+
+.QuestionItemOperationContainer button {
+    margin: 8px 30px;
+    border: none;
+    font-size: 1.3rem;
+    padding: 8px 23px;
+    border-radius: 10px;
+    font-weight: 500;
+    color: white;
+    cursor: pointer;
+}
+
+.QuestionItemOperationContainer .deleteBtn {
+    background-color: rgb(203, 6, 6);
+}
+.QuestionItemOperationContainer .editBtn {
+    background-color: rgb(4, 170, 4);
+}
+
+.QuestionItemOperationContainer button:hover {
+    box-shadow: 2px 2px 8px 7px rgb(154, 154, 154);
+}
