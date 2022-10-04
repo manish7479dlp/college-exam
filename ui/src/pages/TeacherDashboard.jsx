@@ -46,7 +46,7 @@ const TeacherDashboard = () => {
         <div className="adminDashboardContainer">
             <div className="adminDashboardHeader">
                 <h3>
-                   Manish Kumar
+                   {JSON.parse(sessionStorage.getItem(authCheckName)).name}
                 </h3>
                 <h1>Teacher Dashboard</h1>
                 <input type="text" placeholder="Searching" />
