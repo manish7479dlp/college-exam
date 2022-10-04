@@ -45,7 +45,7 @@ const QuestionPreview = ({display}) => {
             for (let i = 0; i < subject.length; i++) {
                 let ch = subject.charAt(i);
                 if (ch === " ") {
-                    res += "_";
+                    res += "-";
                 } else {
                     res += ch;
                 }
@@ -187,7 +187,7 @@ const QuestionPreview = ({display}) => {
         try {
             setLoading(true);
             let subject = subjectNameConverter(subjectName);
-            subject = subject + "_question";
+            subject = subject + "-question";
 
             const url = `${apibaseURL}/${subject}`;
 
