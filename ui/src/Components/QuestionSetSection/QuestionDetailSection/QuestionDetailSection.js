@@ -209,7 +209,7 @@ const QuestionDetailSection = ({changeTab}) => {
                         {Data.semester === "5" && (
                             <optgroup label="5th-Sem-Subject">
                                 <option value={"CA"}>CA</option>
-                                <option value={"Automata"}>Automata</option>
+                                <option value={"oops"}>OOPS</option>
                             </optgroup>
                         )}
 

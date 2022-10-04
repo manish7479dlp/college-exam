@@ -17,6 +17,7 @@ const QuestionSetSection = () => {
     };
 
     function subjectNameConverter(subject) {
+        subject = subject.trim();
         subject = subject.toLowerCase();
         let res = "";
         for (let i = 0; i < subject.length; i++) {
@@ -50,13 +51,11 @@ const QuestionSetSection = () => {
             });
             // console.log("Status code is : " + response.status);
             const result = await response.json();
-            console.log(result);
-            if (response.status !== 200) {
-                toast.warning("Question is not Added..");
-                console.log(response);
+            if(result.status) {
+                toast.success(result.message);
+                setData(initialData)
             } else {
-                toast.success("Question Added Successfully.");
-                setData(initialData);
+                toast.error(result.message);
             }
         } catch (error) {
             console.log(error);

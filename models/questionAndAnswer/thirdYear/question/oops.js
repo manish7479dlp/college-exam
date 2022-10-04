@@ -28,4 +28,4 @@ const oopsSchema = new mongoose.Schema({
     }
 
 })
-module.exports = new mongoose.model("OOPS-Questions", oopsSchema);
+module.exports = new mongoose.model("OopsQuestions", oopsSchema);
