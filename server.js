@@ -8,6 +8,9 @@ const teacherRoutes = require("./Routes/Teacher/teacherRoutes");
 const adminRoutes = require("./Routes/Admin/adminRoutes")
 const examDetailsRoutes = require("./Routes/ExamDetails/examDetailsRoute")
 
+//oops Question routes
+const oopsQuestionRoutes = require("./Routes/Question/thirdYear/question/oopsQuestionRoutes")
+
 const port = process.env.PORT;
 const mongoDbUrl = process.env.MONGODB_URL;
 
@@ -27,6 +30,8 @@ app.use("/api", teacherRoutes);
 app.use("/api", adminRoutes);
 //integrate exam Details routes
 app.use("/api", examDetailsRoutes);
+//integrate oops question routes
+app.use("/api" , oopsQuestionRoutes)
 
 app.get("/", (req, res) => {
     res.send("hlw from the other side...");
