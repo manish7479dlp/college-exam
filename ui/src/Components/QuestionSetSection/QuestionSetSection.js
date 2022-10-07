@@ -4,7 +4,7 @@ import Header from "../Heading/Header";
 import "./QuestionSetSection.css";
 
 const QuestionSetSection = () => {
-    const apibaseURL = "http://localhost:8000/api";
+    const apibaseURL = `${process.env.REACT_APP_BASE_URL}`;
     const questionDetailsKey = "examDetails";
 
     const initialData = {
