@@ -8,8 +8,11 @@ import { useNavigate } from "react-router-dom";
 
 const AdminDashboard = () => {
     const authCheckName = "admin";
-    const studentUrl = "http://localhost:8000/api/student";
-    const teacherUrl = "http://localhost:8000/api/teacher";
+    const studentUrl = `${process.env.REACT_APP_BASE_URL}/student`;
+    const teacherUrl = `${process.env.REACT_APP_BASE_URL}/teacher`;
+
+    console.log(studentUrl);
+
 
 
     const Navigate = useNavigate();
