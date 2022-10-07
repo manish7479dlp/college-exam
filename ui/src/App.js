@@ -26,6 +26,7 @@ import AdminDashboard from "./pages/AdminDashboard";
 // 404 page not fount
 import NotFound from "./Components/404";
 import TeacherDashboard from "./pages/TeacherDashboard";
+import PreviewExamDetails from "./Components/previewExamDetails/PreviewExamDetails";
 
 function App() {
     return (
@@ -56,12 +57,7 @@ function App() {
                         />
                     </Route>
 
-                    {/* <Route element={<StudentLoginPrivateComponent />}>
-                        <Route
-                            path="/admin-dashboard"
-                            element={<AdminDashboard />}
-                        />
-                    </Route> */}
+                    <Route path="/preview-exam-details" element = {<PreviewExamDetails/>}/>
                 </Routes>
                 {/* <Routes>
                     <Route path="/" element={<Home />} />
