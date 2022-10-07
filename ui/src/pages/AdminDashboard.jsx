@@ -11,7 +11,6 @@ const AdminDashboard = () => {
     const studentUrl = `${process.env.REACT_APP_BASE_URL}/student`;
     const teacherUrl = `${process.env.REACT_APP_BASE_URL}/teacher`;
 
-    console.log(studentUrl);
 
 
 
@@ -151,7 +150,6 @@ const AdminDashboard = () => {
     const showTeachersDetails = () => {
         setActiveTab(9);
         fetchTeachersData();
-        console.log(teachersData);
     };
 
     return (
