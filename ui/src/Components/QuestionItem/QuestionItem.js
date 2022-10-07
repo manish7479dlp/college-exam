@@ -2,12 +2,6 @@ import "./QuestionItem.css";
 const QuestionItem = (props) => {
     const { question, opt1, opt2, opt3, opt4 , answer} = props.data;
 
-   
-
-    const editQuestion = () => {
-        alert("Hlw from the other side..");
-    };
-
 
     return (
         <div className="QuestionItemContainer">
@@ -24,7 +18,7 @@ const QuestionItem = (props) => {
                 <span>C.)</span> {opt3}
             </p>
             <p className="actualQuestionOption">
-                <span>C.)</span> {opt4}
+                <span>D.)</span> {opt4}
             </p>
             <p className="correctOption">{answer}</p>
 

@@ -9,6 +9,7 @@ import QuestionSetSection from "../Components/QuestionSetSection/QuestionSetSect
 import StudentMarks from "../Components/StudentMarks/Marks"
 import { Navigate, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import QuestionPreview from "../Components/QuestionPreview/QuestionPreview";
 
 const TeacherDashboard = () => {
     const authCheckName = "teacher";
@@ -124,6 +125,8 @@ const TeacherDashboard = () => {
                 {activeTab === 1 && <QuestionDetailSection changeTab = {setActiveTab}/>}
 
                 {activeTab === 2 && <QuestionSetSection/>}
+
+                {activeTab === 3 && <QuestionPreview/>}
 
                 {activeTab === 4 &&  <StudentMarks/>}
             </div>
