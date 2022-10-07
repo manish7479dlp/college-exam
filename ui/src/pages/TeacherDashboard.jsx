@@ -10,6 +10,7 @@ import StudentMarks from "../Components/StudentMarks/Marks"
 import { Navigate, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import QuestionPreview from "../Components/QuestionPreview/QuestionPreview";
+import PreviewExamDetails from "../Components/previewExamDetails/PreviewExamDetails";
 
 const TeacherDashboard = () => {
     const authCheckName = "teacher";
@@ -35,8 +36,12 @@ const TeacherDashboard = () => {
         setActiveTab(4);
     }
 
-    const logoutTeacher = () => {
+    const previewExamDetails = async () => {
         setActiveTab(5);
+    }
+
+    const logoutTeacher = () => {
+        setActiveTab(6);
         const confirm = window.confirm("Do you really want to logout..");
         if(confirm) {
             sessionStorage.removeItem(authCheckName);
@@ -85,16 +90,18 @@ const TeacherDashboard = () => {
                         Preview Marks
                     </p>
 
+                    <p
+                        className={activeTab === 5 ? "activeTab" : ""}
+                        onClick={previewExamDetails}
+                    >
+                        Preview Exam Details
+                    </p>
+
                     
 
                     {/* 
 
-                    <p
-                        className={activeTab === 5 ? "activeTab" : ""}
-                        onClick={showThirdYearStudentDetails}
-                    >
-                        Third Year Student
-                    </p>
+                    
 
                     <p
                         className={activeTab === 6 ? "activeTab" : ""}
@@ -118,7 +125,7 @@ const TeacherDashboard = () => {
                     </p> */}
 
                     <p
-                        className={activeTab === 5 ? "activeTab" : ""}
+                        className={activeTab === 6 ? "activeTab" : ""}
                         onClick={logoutTeacher}
                     >
                         Logout
@@ -132,6 +139,8 @@ const TeacherDashboard = () => {
                 {activeTab === 3 && <QuestionPreview/>}
 
                 {activeTab === 4 &&  <StudentMarks/>}
+
+                {activeTab === 5 &&  <PreviewExamDetails/>}
             </div>
         </div>
     );

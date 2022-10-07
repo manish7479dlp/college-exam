@@ -2,7 +2,7 @@
 .previewExamDetailsMainContainer {
     width: calc(100vw - 300px);
     height: calc(100vh - 80px);
-    border: 2px solid brown;
+    /* border: 2px solid brown; */
     display: flex;
     justify-content: space-evenly;
     align-items: center;
@@ -10,9 +10,9 @@
 }
 
 .eachExamDetailsContainer {
-    width: 300px;
+    width: 320px;
     height: 280px;
-    border: 1px solid rgb(216, 150, 6);
+    border: 2px solid white;
     border-radius: 10px;
     display: flex;
     justify-content: center;
