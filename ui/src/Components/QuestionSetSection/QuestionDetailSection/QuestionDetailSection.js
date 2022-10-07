@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 
 const QuestionDetailSection = ({changeTab}) => {
-    const apibaseURL = "http://localhost:8000/api/exam-details";
+    const apibaseURL = `${process.env.REACT_APP_BASE_URL}/exam-details`
     const questionDetailsKey = "examDetails"
 
     const studentDetails = JSON.parse(sessionStorage.getItem("StudentDetail"));
