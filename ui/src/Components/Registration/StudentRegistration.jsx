@@ -19,7 +19,7 @@ const StudentRegistration = () => {
     };
 
     const submitStudentDetails = async () => {
-        const url = "http://localhost:8000/api/student";
+        const url = `${process.env.REACT_APP_BASE_URL}/student`;
 
         const response = await fetch(url, {
             method: "POST",

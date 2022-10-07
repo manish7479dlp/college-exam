@@ -19,7 +19,8 @@ const TeacherRegistration = () => {
     };
 
     const submitStudentDetails = async () => {
-        const url = "http://localhost:8000/api/teacher";
+        const url = `${process.env.REACT_APP_BASE_URL}/teacher`;
+
 
         const response = await fetch(url, {
             method: "POST",
