@@ -5,7 +5,7 @@ const getAllExamDetails = async (req, res) => {
     try {
         const response = await examDetailsModel.find();
         if (response.length === 0) {
-            res.send({ status: true, message: "No Data Found" });
+            res.send({ status: false, message: "No Data Found" });
         } else {
             res.send({ status: true, response: response });
         }
