@@ -13,6 +13,7 @@ import QuestionPreview from "../Components/QuestionPreview/QuestionPreview";
 
 const TeacherDashboard = () => {
     const authCheckName = "teacher";
+    const questionDetailsKey = "examDetails"
 
     const [activeTab, setActiveTab] = useState(1);
     const Navigate = useNavigate();
@@ -67,13 +68,15 @@ const TeacherDashboard = () => {
                     >
                         Set Questions
                     </p>
-
-                    <p
+                    
+                    {/* question details is added then only this nav is display  */}
+                    
+                    {sessionStorage.getItem(questionDetailsKey) && <p
                         className={activeTab === 3 ? "activeTab" : ""}
                         onClick={previewQuestions}
                     >
                         Preview Questions
-                    </p>
+                    </p>}
 
                     <p
                         className={activeTab === 4 ? "activeTab" : ""}
