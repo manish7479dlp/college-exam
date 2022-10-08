@@ -7,15 +7,16 @@ import { useNavigate } from "react-router-dom";
 
 const StudentLogin = () => {
   const apibaseURL = process.env.REACT_APP_BASE_URL || '';
-  const StudentDetails = "studentDetails"
+  const authCheckName = "student";
+
 
   const Navigate = useNavigate();
 
   useEffect(() => {
     // const loginCheck = localStorage.getItem("StudentDetail");
-    const auth = sessionStorage.getItem(StudentDetails);
+    const auth = sessionStorage.getItem(authCheckName);
     if (auth !== null) {
-      // Navigate("/exam-starter-page");
+      Navigate("/exam-starter-page");
     }
   },[]);
   const initialData = {
@@ -41,7 +42,8 @@ const StudentLogin = () => {
 
       if(result.status) {
         toast.success(result.message);
-        sessionStorage.setItem(StudentDetails , JSON.stringify(result.response))
+        sessionStorage.setItem(authCheckName , JSON.stringify(result.response));
+      Navigate("/exam-starter-page");
       } else {
         toast.error(result.message);
       }

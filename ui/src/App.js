@@ -57,7 +57,14 @@ function App() {
                         />
                     </Route>
 
-                    <Route path="/preview-exam-details" element = {<PreviewExamDetails/>}/>
+                    <Route element={<StudentLoginPrivateComponent />}>
+                        <Route
+                            path="/exam-starter-page"
+                            element={<ExamStarterPage />}
+                        />
+                        <Route path="/question" element={<Question />} />
+                    </Route>
+
                 </Routes>
                 {/* <Routes>
                     <Route path="/" element={<Home />} />
