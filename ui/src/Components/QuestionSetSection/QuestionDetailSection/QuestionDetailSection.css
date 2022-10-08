@@ -6,7 +6,7 @@
     /* justify-content: start; */
     /* border: 2px solid brown; */
 }
-.questionDetailSectionContainer div label {
+.questionDetailSectionContainer div label{
     font-size: 1.5rem;
     margin: 15px !important;
     font-weight: 700;
@@ -32,6 +32,16 @@
     padding: 8px;
     border:none;
     border-radius: 15px;
+}
+
+/* this is edit exam details exam name container css */
+.eidtExamDetailsSubjectName {
+    display: inline-block;
+    width: 270px;
+    color: red;
+    font-weight: bold;
+    padding: 10px;
+    text-align: center;
 }
 
 /* Responsive code start */

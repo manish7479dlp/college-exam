@@ -1,23 +1,26 @@
 import Button from "../Buttons/Button";
 import ContentName from "../Heading/ContentName";
-import "./QuestionDetailSection.css";
+import "../QuestionSetSection/QuestionDetailSection/QuestionDetailSection.css";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 
-const EditExamDetails = ({changeTab}) => {
+const EditExamDetails = (props) => {
     const apibaseURL = `${process.env.REACT_APP_BASE_URL}/exam-details`
     const questionDetailsKey = "examDetails"
 
-    const [isDisable, setDisable] = useState(true);
+    const [isDisable, setDisable] = useState(false);
+
+    
+    const {_id , semester , subject , examDate, examStartTime , examDuration} = props.editQuestionData;
 
     const Navigate = useNavigate();
     const initialData = {
-        semester: "",
-        subject: "",
-        examStartTime: "",
-        examDuration: "",
-        examDate: "",
+        semester,
+        subject,
+        examStartTime,
+        examDuration,
+        examDate,
     };
     const [Data, setData] = useState(initialData);
 
@@ -37,7 +40,6 @@ const EditExamDetails = ({changeTab}) => {
                 toast.success(result.message);
                 setData(initialData)
                 sessionStorage.setItem(questionDetailsKey , JSON.stringify(Data));
-                changeTab(2)
             } else {
                 toast.error(result.message);
             }
@@ -87,99 +89,8 @@ const EditExamDetails = ({changeTab}) => {
                     <br />
 
                     <label>Subject Name: </label>
-                    <select
-                        name="subject"
-                        value={Data.subject}
-                        onChange={onChange}
-                        disabled={isDisable}
-                    >
-                        <option value="#">***Choose Any One***</option>
-
-                        {Data.semester === "1" && (
-                            <optgroup label="1st-Sem-Subject">
-                                <option value={"Physics"}>Physics</option>
-                                <option value={"Maths"}>Maths</option>
-                                <option value={"Basic Electrical Engineering"}>
-                                    Basic Electrical
-                                </option>
-                            </optgroup>
-                        )}
-                        {Data.semester === "2" && (
-                            <optgroup label="2nd-Sem-Subject">
-                                <option value={"Chemistry"}>Chemistry</option>
-                                <option value={"Maths"}>Maths</option>
-                                <option value={"English"}>English</option>
-                                <option value={"C Language"}>C Language</option>
-                            </optgroup>
-                        )}
-
-                        {Data.semester === "3" && (
-                            <optgroup label="3rd-Sem-Subject">
-                                <option value={"Maths"}>Maths</option>
-                                <option value={"Data Structure and Algorithm"}>
-                                    DSA
-                                </option>
-                                <option value={"Economics"}>Economics</option>
-                                <option value={"Digital Electronics"}>
-                                    Digital Electronics
-                                </option>
-                                <option value={"Computer Organization"}>
-                                    Computer Organization
-                                </option>
-                            </optgroup>
-                        )}
-
-                        {Data.semester === "4" && (
-                            <optgroup label="4th-Sem-Subject">
-                                <option value={"Environmental Science"}>
-                                    EVS
-                                </option>
-                                <option value={"Biology"}>Biology</option>
-                                <option
-                                    value={"Design and Analysis for Algorithm"}
-                                >
-                                    DAA
-                                </option>
-                                <option value={"Automata Theory"}>
-                                    Automata Theory
-                                </option>
-                                <option value={"Computer Architecture"}>
-                                    Computer Architecture
-                                </option>
-                                <option value={"Discrete Mathematics"}>
-                                    Discrete Mathematics
-                                </option>
-                            </optgroup>
-                        )}
-
-                        {Data.semester === "5" && (
-                            <optgroup label="5th-Sem-Subject">
-                                <option value={"CA"}>CA</option>
-                                <option value={"oops"}>OOPS</option>
-                            </optgroup>
-                        )}
-
-                        {Data.semester === "6" && (
-                            <optgroup label="6th-Sem-Subject">
-                                <option value={"CA"}>CA</option>
-                            </optgroup>
-                        )}
-
-                        {Data.semester === "7" && (
-                            <optgroup label="7th-Sem-Subject">
-                                <option value={"Biology"}>Biology</option>
-                                <option value={"Automata"}>Automata</option>
-                            </optgroup>
-                        )}
-
-                        {Data.semester === "8" && (
-                            <optgroup label="8th-Sem-Subject">
-                                <option value={"Environmental Science"}>
-                                    EVS
-                                </option>
-                            </optgroup>
-                        )}
-                    </select>
+                    
+                    <h2 className="eidtExamDetailsSubjectName">{Data.subject.toUpperCase()}</h2>
 
                     <br />
 
@@ -230,4 +141,4 @@ const EditExamDetails = ({changeTab}) => {
     );
 };
 
-export default QuestionDetailSection;
+export default EditExamDetails;
