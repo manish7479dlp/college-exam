@@ -25,7 +25,6 @@ const TeacherDashboard = () => {
 
     const setQuestion = () => {
         setActiveTab(2);
-        
     };
 
     const previewQuestions = () => {
@@ -45,6 +44,7 @@ const TeacherDashboard = () => {
         const confirm = window.confirm("Do you really want to logout..");
         if (confirm) {
             sessionStorage.removeItem(authCheckName);
+            sessionStorage.removeItem(questionDetailsKey)
             Navigate("/");
         }
     };
@@ -61,12 +61,14 @@ const TeacherDashboard = () => {
 
             <div className="adminDashboardMainContantContainer">
                 <div className="adminNavbar">
-                    <p
-                        className={activeTab === 1 ? "activeTab" : ""}
-                        onClick={setQuestionDetails}
-                    >
-                        Set Exam Details
-                    </p>
+                    {!sessionStorage.getItem(questionDetailsKey) && (
+                        <p
+                            className={activeTab === 1 ? "activeTab" : ""}
+                            onClick={setQuestionDetails}
+                        >
+                            Set Exam Details
+                        </p>
+                    )}
                     {sessionStorage.getItem(questionDetailsKey) && (
                         <p
                             className={activeTab === 2 ? "activeTab" : ""}
