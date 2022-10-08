@@ -6,17 +6,18 @@ import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 
 const StudentLogin = () => {
-  const apibaseURL = process.env.REACT_APP_API_URL || '';
+  const apibaseURL = process.env.REACT_APP_BASE_URL || '';
+  const StudentDetails = "studentDetails"
 
   const Navigate = useNavigate();
 
   useEffect(() => {
     // const loginCheck = localStorage.getItem("StudentDetail");
-    const auth = sessionStorage.getItem("StudentDetail");
+    const auth = sessionStorage.getItem(StudentDetails);
     if (auth !== null) {
-      Navigate("/examstarterpage");
+      // Navigate("/exam-starter-page");
     }
-  });
+  },[]);
   const initialData = {
     universityRoll: "",
     password: "",
@@ -25,27 +26,26 @@ const StudentLogin = () => {
 
   const onSubmit = async (event) => {
     try {
-      const url = `${apibaseURL}/student/${Data.universityRoll}`;
+      const url = `${apibaseURL}/student-login`;
       event.preventDefault();
-      console.log(url);
-      // const response = await fetch(url, { method: "GET" }); // it also work find
-      const response = await fetch(url);
-      // This code return the response in array of object formate..
-      const finalData = await response.json();
-      // console.log(finalData[0].password); this code give the password which is get from api.
-      if (response.status !== 200) {
-        toast.error("Invalid UniversityRoll.");
+
+      const response = await fetch(url , {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(Data)
+      })
+
+      const result = await response.json();
+
+      if(result.status) {
+        toast.success(result.message);
+        sessionStorage.setItem(StudentDetails , JSON.stringify(result.response))
       } else {
-        if (finalData[0].password === Data.password) {
-          // localStorage.setItem("StudentDetail" , JSON.stringify(finalData[0]))
-          sessionStorage.setItem("StudentDetail", JSON.stringify(finalData[0]));
-          toast.success("Valid User.");
-          setData(initialData);
-          Navigate("/examstarterpage");
-        } else {
-          toast.error("Invalid Password.");
-        }
+        toast.error(result.message);
       }
+      
 
     } catch (error) {
       console.log(error);

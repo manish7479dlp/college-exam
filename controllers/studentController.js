@@ -165,7 +165,7 @@ const studentLogIn = async (req, res) => {
             if (isMatch) {
                 res.send({
                     status: true,
-                    messgae: "Valid User",
+                    message: "Valid User",
                     response: response,
                 });
             } else {
