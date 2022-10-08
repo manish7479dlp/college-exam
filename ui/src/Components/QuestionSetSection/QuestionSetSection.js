@@ -8,6 +8,7 @@ const QuestionSetSection = () => {
     const questionDetailsKey = "examDetails";
 
     const initialData = {
+        questionNumber: "1",
         question: "",
         opt1: "",
         opt2: "",
@@ -53,7 +54,7 @@ const QuestionSetSection = () => {
             const result = await response.json();
             if(result.status) {
                 toast.success(result.message);
-                setData(initialData)
+                setData({...initialData  ,questionNumber : (result.totalQuestion + 1)})
             } else {
                 toast.error(result.message);
             }
@@ -76,7 +77,7 @@ const QuestionSetSection = () => {
                     <h2 className="questionHeading">{JSON.parse(sessionStorage.getItem(questionDetailsKey)).subject.toUpperCase()} Question</h2>
 
                     <form onSubmit={onSubmit}>
-                        <label>Question:</label>
+                        <label>Q{data.questionNumber} ):</label>
                         <br></br>
                         <input
                             className="question"

@@ -1,12 +1,10 @@
 const mongoose = require("mongoose");
 const oopsModel = require("../../../../models/questionAndAnswer/thirdYear/question/oops");
 
-
-
 //Insert new Question
 const registerQuestion = async (req, res) => {
     try {
-        const { question, opt1, opt2, opt3 , opt4 , answer } = req.body;
+        const { question, opt1, opt2, opt3, opt4, answer } = req.body;
 
         const validationCheck = await oopsModel.findOne({ question });
 
@@ -16,21 +14,21 @@ const registerQuestion = async (req, res) => {
                 message: "This question is already Present.",
             });
         } else {
-            
-
-            if (question && opt1 && opt2 && opt3 && opt4 && answer ) {
+            if (question && opt1 && opt2 && opt3 && opt4 && answer) {
                 const response = new oopsModel({
                     question,
                     opt1,
                     opt2,
                     opt3,
                     opt4,
-                    answer
+                    answer,
                 });
                 const result = await response.save();
+                const totalQuestionCount = await oopsModel.find().count();
                 res.status(201).send({
                     status: true,
                     message: "Question Added Sucessfully",
+                    totalQuestion: totalQuestionCount,
                 });
             } else {
                 res.send({
@@ -83,9 +81,9 @@ const deleteParticularQuestion = async (req, res) => {
 //update particular question on the basis of id
 const updateParticularQuestion = async (req, res) => {
     try {
-        const { question, opt1, opt2, opt3 , opt4 , answer } = req.body;
+        const { question, opt1, opt2, opt3, opt4, answer } = req.body;
         const _id = req.params._id;
-       
+
         const response = await oopsModel.findByIdAndUpdate(
             { _id },
             {
@@ -95,7 +93,7 @@ const updateParticularQuestion = async (req, res) => {
                     opt2,
                     opt3,
                     opt4,
-                    answer
+                    answer,
                 },
             }
         );
@@ -115,21 +113,26 @@ const updateParticularQuestion = async (req, res) => {
 };
 
 //delete all question
-const deleteAllQuestion =  async(req , res) => {
+const deleteAllQuestion = async (req, res) => {
     try {
-      const response = await oopsModel.deleteMany({department : "CSE"})
-      
-      if(response) {
-        res.send({status: true , message: "All Question Deleted Sucessfylly."})
-      } else {
-        res.send({status: false , message: "Question is not Delted due to some Technical issues."})
-      }
+        const response = await oopsModel.deleteMany({ department: "CSE" });
+
+        if (response) {
+            res.send({
+                status: true,
+                message: "All Question Deleted Sucessfylly.",
+            });
+        } else {
+            res.send({
+                status: false,
+                message: "Question is not Delted due to some Technical issues.",
+            });
+        }
     } catch (error) {
-      console.log(error);
-      res.send(error);
-      
+        console.log(error);
+        res.send(error);
     }
-  }
+};
 
 module.exports = {
     registerQuestion,
