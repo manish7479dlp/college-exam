@@ -6,9 +6,10 @@ import "./ExamStarterPage.css";
 import ErrorHandling from "../../404/index";
 
 const ExamStarterPage = () => {
-    const apibaseURL = process.env.REACT_APP_API_URL || "";
-    const studentDetails = JSON.parse(sessionStorage.getItem("StudentDetail"));
-
+    const apibaseURL = process.env.REACT_APP_BASE_URL || "";
+    const authCheckName = "student";
+    const studentDetails = JSON.parse(sessionStorage.getItem(authCheckName));
+    // const examDetails = "examDetails";
     const Navigate = useNavigate();
     const [examDetails, setExamDetails] = useState();
     const [loading, setLoading] = useState(true);
@@ -16,15 +17,9 @@ const ExamStarterPage = () => {
 
     useEffect(() => {
         fetchExamDetails();
-
-        // examDetails && fetchExamAuth();
     }, []);
 
-    useEffect(() => {
-        fetchExamAuth();
-    }, [examDetails]);
 
-    console.log(examAuth);
 
     function subjectNameConverter(subject) {
         subject = subject.toLowerCase();
@@ -32,7 +27,7 @@ const ExamStarterPage = () => {
         for (let i = 0; i < subject.length; i++) {
             let ch = subject.charAt(i);
             if (ch === " ") {
-                res += "_";
+                res += "-";
             } else {
                 res += ch;
             }
@@ -41,35 +36,53 @@ const ExamStarterPage = () => {
         return res;
     }
 
-    const fetchExamAuth = async () => {
-        try {
-            
-                const subjectName =
-                    subjectNameConverter(examDetails.subject) + "_answer";
-                const url = `${apibaseURL}/${subjectName}/${studentDetails.universityRoll}`;
-                const response = await fetch(url);
-                const result = await response.json();
-                console.log();
-                setExamAuth(result);
-            
-        } catch (error) {
-            console.log(error);
+    // const fetchExamAuth = async () => {
+    //     try {
+    //         const subjectName =
+    //             subjectNameConverter(examDetails[0].subject) + "_answer";
+    //         const url = `${apibaseURL}/${subjectName}/${studentDetails.universityRoll}`;
+    //         const response = await fetch(url);
+    //         const result = await response.json();
+    //         console.log();
+    //         setExamAuth(result);
+    //     } catch (error) {
+    //         console.log(error);
+    //     }
+    // };
+
+    function yearToSemester(year) {
+        if(year === 1 && new Date().getMonth() >= 7) {
+            return 1;
+        } else if(year === 1 && new Date().getMonth() <= 6) {
+            return 2;
+        } else if(year === 2 && new Date().getMonth() >= 7) {
+            return 3;
+        } else if(year === 2 && new Date().getMonth() <= 6) {
+            return 4;
+        } else if(year === 3 && new Date().getMonth() >= 7) {
+            return 5;
+        } else if(year === 3 && new Date().getMonth() <= 6) {
+            return 6;
+        } else if(year === 4 && new Date().getMonth() >= 7) {
+            return 7;
+        } else if(year === 4 && new Date().getMonth() <= 6) {
+            return 8;
         }
-    };
+    }
 
     const fetchExamDetails = async () => {
         try {
             setLoading(true);
-            const url = `${apibaseURL}/${"exam_details"}/${
-                studentDetails.department
-            }/${studentDetails.semester}`;
-            // console.log(url);
+            const url = `${apibaseURL}/is-any-exam-today/${yearToSemester(studentDetails.year)}`;
             const response = await fetch(url);
             const result = await response.json();
-            // console.log(result);
-
-            setExamDetails(result[0]);
-
+            
+            if(result.status) {
+                setExamDetails(result.response);
+            } else {
+                setExamDetails([]);
+            }
+            // sessionStorage.setItem(examDetails , JSON.stringify(result))
             setLoading(false);
         } catch (err) {
             setLoading(false);
@@ -77,35 +90,58 @@ const ExamStarterPage = () => {
         }
     };
 
-    const getCurrentTime = () => {
-        const DateObject = new Date();
-        let hour = DateObject.getHours();
-        let minute = DateObject.getMinutes();
+    // const getCurrentTime = () => {
+    //     const DateObject = new Date();
+    //     let hour = DateObject.getHours();
+    //     let minute = DateObject.getMinutes();
 
-        hour = hour >= 1 && hour <= 9 ? "0" + hour : hour;
-        minute = minute >= 1 && minute <= 9 ? "0" + minute : minute;
+    //     hour = hour >= 1 && hour <= 9 ? "0" + hour : hour;
+    //     minute = minute >= 1 && minute <= 9 ? "0" + minute : minute;
 
-        const result = hour + ":" + minute;
+    //     const result = hour + ":" + minute;
 
-        return result;
-    };
+    //     return result;
+    // };
 
+    // const startExam = () => {
+    //     sessionStorage.setItem(
+    //         "subjectName",
+    //         JSON.stringify(examDetails.subject)
+    //     );
+    //     sessionStorage.setItem("QuestionDetails", JSON.stringify(examDetails));
+    //     const currTime = getCurrentTime();
+
+    //     if (currTime >= examDetails.examStartTime) {
+    //         Navigate("/question");
+    //     } else {
+    //         toast.error("Exam is not start yet");
+    //     }
+
+    //     // Navigate("/question");
+    // };
+
+    // const startExam = () => {
+    //     sessionStorage.setItem(
+    //         "subjectName",
+    //         JSON.stringify(examDetails.subject)
+    //     );
+    //     sessionStorage.setItem("QuestionDetails", JSON.stringify(examDetails));
+    //     const currTime = getCurrentTime();
+
+    //     if (currTime >= examDetails.examStartTime) {
+    //         Navigate("/question");
+    //     } else {
+    //         toast.error("Exam is not start yet");
+    //     }
+
+    //     // Navigate("/question");
+    // };
+   
     const startExam = () => {
-        sessionStorage.setItem(
-            "subjectName",
-            JSON.stringify(examDetails.subject)
-        );
-        sessionStorage.setItem("QuestionDetails", JSON.stringify(examDetails));
-        const currTime = getCurrentTime();
-
-        if (currTime >= examDetails.examStartTime) {
-            Navigate("/question");
-        } else {
-            toast.error("Exam is not start yet");
-        }
-
-        // Navigate("/question");
-    };
+        const examSubjectName = "examName";
+        sessionStorage.setItem(examSubjectName , JSON.stringify(examDetails[0].subject));
+        Navigate("/question")
+    }
 
     const backToHome = () => {
         Navigate("/");
@@ -113,7 +149,7 @@ const ExamStarterPage = () => {
 
     if (loading) {
         return <h1>Loading...</h1>;
-    } else if (examDetails == null) {
+    } else if (examDetails.length === 0) {
         return (
             <>
                 <ErrorHandling
@@ -159,11 +195,11 @@ const ExamStarterPage = () => {
                     <div className="examInformationContainer">
                         <h3>Exam Information</h3>
 
-                        <p>Examination: {examDetails.subject}</p>
+                        <p>Examination: {examDetails[0].subject.toUpperCase()}</p>
                         <p>Current User: {studentDetails.name}</p>
-                        <p>Total Screen/Questions: {20}</p>
-                        <p>Total Duration: {30} Minutes</p>
-                        <p>Marks: {20}</p>
+                        <p>Total Screen/Questions: {20 + "*"}</p>
+                        <p>Total Duration: {examDetails[0].examDuration} Minutes</p>
+                        <p>Marks: {20 + "*"}</p>
                         {examAuth.length !== 0 && (
                             <p className="examAuth">
                                 Exam Status:{" "}
