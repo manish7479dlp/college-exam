@@ -98,10 +98,42 @@ const deleteParticularExamDetails = async (req, res) => {
     }
 };
 
+//check today is any exam.
+const isAnyExamToday = async (req, res) => {
+    try {
+        const { semester } = req.params;
+        const now = new Date();
+        const month = now.getMonth() + 1;
+        const date = now.getDate();
+        //generate today date in yyyy-mm-dd formate
+        const toDayDate = `${now.getFullYear()}-${
+            month >= 1 && month <= 9 ? "0" + month : month
+        }-${date >= 1 && date <= 9 ? "0" + date : date}`;
+        const response = await examDetailsModel.find({ semester });
+
+        if (response.length === 0) {
+            res.send({ status: false, message: "Exam Details not Found." });
+        } else {
+            const result = response.filter((data) => {
+                return data.examDate === toDayDate;
+            });
+
+            if (result.length === 0) {
+                res.send({ status: false, message: "Today There is No Exam" });
+            } else {
+                res.send({ status: true, response: result });
+            }
+        }
+    } catch (error) {
+        res.send(error);
+    }
+};
+
 module.exports = {
     getAllExamDetails,
     getParticularExamDetails,
     deleteParticularExamDetails,
     updateParticularExamDetails,
     registerExamDetails,
+    isAnyExamToday,
 };
