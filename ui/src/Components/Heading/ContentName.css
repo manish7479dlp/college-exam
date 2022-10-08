@@ -4,12 +4,14 @@
     padding: 10px;
     border-radius: 30px;
     box-shadow: 1px 1px 1px 1px gray;
+    /* background-color: gray; */
 }
 .contentNameContainer h1 {
     font-size: 2.5rem;
     color: white;
     text-shadow: 2px 2px 4px rgb(107, 184, 40);
     text-align: center;
+    color: rgb(117, 20, 137);
 }
 
 /* Responsive code start */
