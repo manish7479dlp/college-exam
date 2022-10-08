@@ -1,14 +1,14 @@
 import { useEffect, useState } from "react";
 import "./PreviewExamDetailsStyle.css";
 import { toast } from "react-toastify";
-import EditExamDetails from "../editExamDetails/EditExamDetails"
+import EditExamDetails from "../editExamDetails/EditExamDetails";
 
-const PreviewExamDetails = (props) => {
+const PreviewExamDetails = () => {
     const baseUrl = `${process.env.REACT_APP_BASE_URL}/exam-details`;
     const [examDetails, setExamDetails] = useState([]);
     const [loading, setLoading] = useState(true);
     const [enableEditExamDetails, setEnableEditExamDetails] = useState(false);
-    const [editData , setEditData] = useState({})
+    const [editData, setEditData] = useState({});
     const fetchExamDetails = async () => {
         try {
             setLoading(true);
@@ -32,8 +32,11 @@ const PreviewExamDetails = (props) => {
     }, []);
 
     const editQuestion = async (data) => {
-        setEnableEditExamDetails(true);
-        setEditData(data);
+        const confirm = window.confirm("Do you really want to Edit.");
+        if (confirm) {
+            setEnableEditExamDetails(true);
+            setEditData(data);
+        }
         // alert("This feature is not implemente yet..");
     };
 
@@ -60,7 +63,9 @@ const PreviewExamDetails = (props) => {
         <div className="previewExamDetailsMainContainer">
             {loading && <h1>Loading</h1>}
 
-            {!enableEditExamDetails && !loading && examDetails.length === 0 && <h1>No Data Found</h1>}
+            {!enableEditExamDetails && !loading && examDetails.length === 0 && (
+                <h1>No Data Found</h1>
+            )}
 
             {!enableEditExamDetails &&
                 examDetails.map((data, idx) => {
@@ -111,7 +116,13 @@ const PreviewExamDetails = (props) => {
                     );
                 })}
 
-            {enableEditExamDetails && <EditExamDetails editQuestionData = {editData}/>}
+            {enableEditExamDetails && (
+                <EditExamDetails
+                    fetchExamDetails={fetchExamDetails}
+                    setEnableEditExamDetails={setEnableEditExamDetails}
+                    editQuestionData={editData}
+                />
+            )}
         </div>
     );
 };

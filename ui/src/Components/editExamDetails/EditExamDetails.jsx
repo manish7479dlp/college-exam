@@ -8,9 +8,6 @@ import { toast } from "react-toastify";
 const EditExamDetails = (props) => {
     const apibaseURL = `${process.env.REACT_APP_BASE_URL}/exam-details`
     const questionDetailsKey = "examDetails"
-
-    const [isDisable, setDisable] = useState(false);
-
     
     const {_id , semester , subject , examDate, examStartTime , examDuration} = props.editQuestionData;
 
@@ -26,8 +23,10 @@ const EditExamDetails = (props) => {
 
     const onClick = async () => {
         try {
-            const response = await fetch(apibaseURL , {
-                method: "POST",
+            const url = `${apibaseURL}/${_id}`
+            console.log(url);
+            const response = await fetch(url , {
+                method: "PATCH",
                 headers: {
                     "Content-Type": "application/json"
                 },
@@ -39,7 +38,10 @@ const EditExamDetails = (props) => {
             if(result.status) {
                 toast.success(result.message);
                 setData(initialData)
-                sessionStorage.setItem(questionDetailsKey , JSON.stringify(Data));
+                props.fetchExamDetails();
+                props.setEnableEditExamDetails((pre) => {
+                    return (!pre)
+                })
             } else {
                 toast.error(result.message);
             }
@@ -50,13 +52,6 @@ const EditExamDetails = (props) => {
 
     const onChange = (event) => {
         const { name, value } = event.target;
-
-        if (value >= "0" && value <= "9") {
-            //   toast.warning("Select the Subject Name..");
-            setDisable(false);
-        } else {
-            setDisable(true);
-        }
 
         setData((pre) => {
             return { ...pre, [name]: value };
@@ -74,6 +69,7 @@ const EditExamDetails = (props) => {
                         name="semester"
                         value={Data.semester}
                         onChange={onChange}
+                        disabled = {true}
                     >
                         <option value="#">***Choose Any One***</option>
                         <option value={1}>1</option>
