@@ -65,7 +65,7 @@ const TeacherDashboard = () => {
                         className={activeTab === 1 ? "activeTab" : ""}
                         onClick={setQuestionDetails}
                     >
-                        Set Question Details
+                        Set Exam Details
                     </p>
                     <p
                         className={activeTab === 2 ? "activeTab" : ""}
