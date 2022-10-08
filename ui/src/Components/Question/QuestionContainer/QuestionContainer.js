@@ -8,7 +8,9 @@ import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 
 const QuestionContainer = () => {
-    const apibaseURL = process.env.REACT_APP_API_URL || "";
+    const apibaseURL = process.env.REACT_APP_BASE_URL || "";
+  const authCheckName = "student";
+
 
     const [data, setData] = useState([]);
     const [loading, setLoading] = useState(true);
@@ -17,15 +19,17 @@ const QuestionContainer = () => {
     const [examDurationLeft, setExamDurationLeft] = useState(-1);
 
     const Navigate = useNavigate();
-    let StudentDetail = sessionStorage.getItem("StudentDetail");
+    let StudentDetail = sessionStorage.getItem(authCheckName);
     StudentDetail = JSON.parse(StudentDetail);
 
     useEffect(() => {
-        setSubjectName(JSON.parse(sessionStorage.getItem("subjectName")));
+        const examSubjectName = "examName";
+
+        setSubjectName(JSON.parse(sessionStorage.getItem(examSubjectName)));
 
         if (subjectName) {
             fetchQuestion();
-            fetchExamDuration();
+            // fetchExamDuration();
         } else {
             setLoading(false);
         }
@@ -47,37 +51,43 @@ const QuestionContainer = () => {
 
 
 
-    const fetchExamDuration = async () => {
-        try {
-            const studentDetails = JSON.parse(
-                sessionStorage.getItem("StudentDetail")
-            );
-            const url = `${apibaseURL}/${"exam_duration_left"}/${
-                studentDetails.department
-            }/${studentDetails.semester}`;
-            // console.log(url);
-            const response = await fetch(url);
-            const result = await response.json();
-            // console.log(result.edl);
-            setExamDurationLeft(result.edl * 60); // edl = examDurationLeft
-        } catch (error) {
-            console.log(error);
-        }
-    };
+    // const fetchExamDuration = async () => {
+    //     try {
+    //         const studentDetails = JSON.parse(
+    //             sessionStorage.getItem("StudentDetail")
+    //         );
+    //         const url = `${apibaseURL}/${"exam_duration_left"}/${
+    //             studentDetails.department
+    //         }/${studentDetails.semester}`;
+    //         // console.log(url);
+    //         const response = await fetch(url);
+    //         const result = await response.json();
+    //         // console.log(result.edl);
+    //         setExamDurationLeft(result.edl * 60); // edl = examDurationLeft
+    //     } catch (error) {
+    //         console.log(error);
+    //     }
+    // };
 
     const fetchQuestion = async () => {
         try {
             setLoading(true);
             let subject = subjectNameConverter(subjectName);
-            subject = subject + "_question";
+            subject = subject + "-question";
 
             // console.log(subject);
 
             const url = `${apibaseURL}/${subject}`;
 
+            console.log(url);
+
             const response = await fetch(url);
             const result = await response.json();
-            setData(result);
+            if(result.status) {
+                setData(result.response);
+            } else {
+                setData([]);
+            }
             setLoading(false);
         } catch (error) {
             setLoading(false);
@@ -91,7 +101,7 @@ const QuestionContainer = () => {
         for (let i = 0; i < subject.length; i++) {
             let ch = subject.charAt(i);
             if (ch === " ") {
-                res += "_";
+                res += "-";
             } else {
                 res += ch;
             }
@@ -171,7 +181,7 @@ const QuestionContainer = () => {
 
     if (loading) {
         return <h1>Loading..</h1>;
-    } else if (data.length === 0 || !JSON.parse(sessionStorage.getItem("QuestionDetails"))) {
+    } else if (data.length === 0 ) {
         return <h1>No Question Found..</h1>;
     } else {
         const preQuestion = () => {
@@ -232,15 +242,13 @@ const QuestionContainer = () => {
                     </div>
                 </div>
                 <div className="questionContainer">
-                    <ContentName title={subjectName} />
+                    <ContentName title={subjectName.toUpperCase()} />
 
                     <div className="center examInfo">
                         <p className="examDuration">
                             Exam Duration:{" "}
                             {
-                                JSON.parse(
-                                    sessionStorage.getItem("QuestionDetails")
-                                ).examDuration
+                                "xyz"
                             }{" "}
                             Min
                         </p>
