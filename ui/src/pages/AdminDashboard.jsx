@@ -41,7 +41,8 @@ const AdminDashboard = () => {
 
             if (result.status) {
                 toast.success(result.message);
-                fetchStudentData(year);
+                // setActiveTab(year + 2)
+                fetchStudentData(year + 2);
             } else {
                 toast.error(result.message);
             }
