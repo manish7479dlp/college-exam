@@ -24,10 +24,8 @@ const TeacherDashboard = () => {
     };
 
     const setQuestion = () => {
-        // setActiveTab(2);
-        toast.warning(
-            "It is active automatically when you Enter Exam Details😊😊"
-        );
+        setActiveTab(2);
+        
     };
 
     const previewQuestions = () => {
