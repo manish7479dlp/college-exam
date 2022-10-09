@@ -9,8 +9,7 @@ import { useNavigate } from "react-router-dom";
 
 const QuestionContainer = () => {
     const apibaseURL = process.env.REACT_APP_BASE_URL || "";
-  const authCheckName = "student";
-
+    const authCheckName = "student";
 
     const [data, setData] = useState([]);
     const [loading, setLoading] = useState(true);
@@ -35,9 +34,8 @@ const QuestionContainer = () => {
         }
     }, [subjectName]);
 
-
     // this code is used to make time left counter but there is bug...
-    
+
     // useEffect(() => {
     //     const interval = setInterval(() => {
     //         setExamDurationLeft((pre) => {
@@ -48,8 +46,6 @@ const QuestionContainer = () => {
 
     //     return () => clearInterval(interval);
     // }, [examDurationLeft]);
-
-
 
     // const fetchExamDuration = async () => {
     //     try {
@@ -83,7 +79,7 @@ const QuestionContainer = () => {
 
             const response = await fetch(url);
             const result = await response.json();
-            if(result.status) {
+            if (result.status) {
                 setData(result.response);
             } else {
                 setData([]);
@@ -136,19 +132,31 @@ const QuestionContainer = () => {
         return marksSheet;
     };
 
-    const sumitMarks = async (marksSheet) => {
+    const generateAnswerSheet = () => {
+        let answerSheet = { name: "Manish Kumar", universityRoll: 10600120008 };
+        let marks = {}
+        for (let i = 1; i <= data.length; i++) {
+            const res = JSON.parse(localStorage.getItem(i));
+            marks = { ...marks, [i]: res.answer };
+        }
+        answerSheet = {...answerSheet ,"marks": marks}
+        return answerSheet;
+    };
+
+    const sumitMarks = async () => {
         try {
+            const anserSheet = generateAnswerSheet();
             let subject = subjectNameConverter(subjectName);
-            subject = subject + "_answer";
+            subject = subject + "-result";
             const answernUrl = `${apibaseURL}/${subject}`;
             const response = await fetch(answernUrl, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
                 },
-                body: JSON.stringify(marksSheet),
+                body: JSON.stringify(anserSheet),
             });
-            console.log(response);
+            console.log(await response.json());
         } catch (error) {
             console.log(error);
         }
@@ -161,8 +169,7 @@ const QuestionContainer = () => {
     const onOptionChange = (event) => {
         const studentAnswerDetail = {
             questionNumber: quesNumber,
-            universal: "everi" + data[quesNumber - 1].answer + "nning",
-            predict: "everi" + event.target.id + "nning",
+            answer: event.target.id,
         };
 
         localStorage.setItem(quesNumber, JSON.stringify(studentAnswerDetail));
@@ -175,13 +182,12 @@ const QuestionContainer = () => {
         console.log(marksSheet);
         sumitMarks(marksSheet);
         toast.success("Answer Submitted Successfully.");
-        Navigate("/examstarterpage");
+        Navigate("/exam-starter-page");
     }
-    
 
     if (loading) {
         return <h1>Loading..</h1>;
-    } else if (data.length === 0 ) {
+    } else if (data.length === 0) {
         return <h1>No Question Found..</h1>;
     } else {
         const preQuestion = () => {
@@ -204,11 +210,11 @@ const QuestionContainer = () => {
                         "Do you really want to submit the Questions."
                     )
                 ) {
-                    const marksSheet = onAnswerCheck();
-                    console.log(marksSheet);
-                    sumitMarks(marksSheet);
+                    // const marksSheet = onAnswerCheck();
+                    // console.log(marksSheet);
+                    sumitMarks();
                     toast.success("Answer Submitted Successfully.");
-                    Navigate("/examstarterpage");
+                    Navigate("/exam-starter-page");
                 }
             }
         };
@@ -246,11 +252,7 @@ const QuestionContainer = () => {
 
                     <div className="center examInfo">
                         <p className="examDuration">
-                            Exam Duration:{" "}
-                            {
-                                "xyz"
-                            }{" "}
-                            Min
+                            Exam Duration: {"xyz"} Min
                         </p>
                         <p className="examTimeLeft">
                             Time Left: {parseInt(examDurationLeft / 60)} :{" "}

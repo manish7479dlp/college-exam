@@ -1,5 +1,5 @@
 const oopsResultModel = require("../../../../models/questionAndAnswer/thirdYear/result/oops");
-
+const oopsQuestion = require("../../../../models/questionAndAnswer/thirdYear/question/oops");
 //get all student result.
 const getAllStudentResult = async (req, res) => {
     try {
@@ -14,11 +14,29 @@ const getAllStudentResult = async (req, res) => {
     }
 };
 
-//add result
+const calcMarks = async (marks) => {
+    try {
+        const response = await oopsQuestion.find();
+        let result = 0;
+        for (let i = 0; i < response.length; i++) {
+            if (marks[i + 1] === response[i].answer.toLowerCase()) {
+                result++;
+            }
+        }
+        return result;
+    } catch (error) {
+        console.log(error);
+    }
+};
 
+//add result
 const submitResult = async (req, res) => {
     try {
-        const response = await oopsResultModel(req.body);
+        const universityRoll = req.body.universityRoll;
+        const marks = await calcMarks(req.body.marks);
+        const name = req.body.name;
+
+        const response = await oopsResultModel({ universityRoll, marks, name });
         const result = await response.save();
 
         if (result.length === 0) {
