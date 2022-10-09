@@ -7,6 +7,7 @@ const studentRoutes = require("./Routes/Student/studentRoutes");
 const teacherRoutes = require("./Routes/Teacher/teacherRoutes");
 const adminRoutes = require("./Routes/Admin/adminRoutes")
 const examDetailsRoutes = require("./Routes/ExamDetails/examDetailsRoute")
+const oopsResultRouters = require("./Routes/Answer/ThirdYear/oopsResultRoutes")
 
 //oops Question routes
 const oopsQuestionRoutes = require("./Routes/Question/thirdYear/question/oopsQuestionRoutes")
@@ -32,6 +33,8 @@ app.use("/api", adminRoutes);
 app.use("/api", examDetailsRoutes);
 //integrate oops question routes
 app.use("/api" , oopsQuestionRoutes)
+//integrate oops result routes
+app.use("/api" , oopsResultRouters)
 
 app.get("/", (req, res) => {
     res.send("hlw from the other side...");
