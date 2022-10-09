@@ -129,6 +129,53 @@ const isAnyExamToday = async (req, res) => {
     }
 };
 
+const getCurrentTime = () => {
+    const now = new Date();
+    const minute = now.getMinutes();
+    const hour = now.getHours();
+
+    const currTime = `${hour >= 1 && hour <= 9 ? "0" + hour : hour}:${
+        minute >= 1 && minute <= 9 ? "0" + minute : minute
+    }`;
+
+    return currTime;
+};
+
+const calExamEndtime = (examStartTime, examDuration) => {
+    const now = new Date();
+    let minute = now.getMinutes();
+    minute = minute >= 1 && minute <= 9 ? "0" + minute : minute;
+    let hour = now.getHours();
+    hour = hour >= 1 && hour <= 9 ? "0" + hour : hour;
+
+    const currTime = `${hour}:${minute}`;
+    console.log(now);
+};
+
+
+
+const mayStartExam = async (req, res) => {
+    try {
+        const _id = req.params._id;
+        const nowTime = getCurrentTime();
+        const response = await examDetailsModel.findById({ _id });
+        const examEndTime = calExamEndtime(
+            response.examStartTime,
+            response.examDuration
+        );
+
+
+
+        if (response.examStartTime <= nowTime && nowTime >= examEndTime) {
+            res.send({ status: true });
+        } else {
+            res.send({ status: false, message: "Exam is not Started" });
+        }
+    } catch (error) {
+        res.send(error);
+    }
+};
+
 module.exports = {
     getAllExamDetails,
     getParticularExamDetails,
@@ -136,4 +183,5 @@ module.exports = {
     updateParticularExamDetails,
     registerExamDetails,
     isAnyExamToday,
+    mayStartExam,
 };
