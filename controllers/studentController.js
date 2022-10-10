@@ -89,7 +89,6 @@ const getAllStudentDetails = async (req, res) => {
             res.status(200).send({ status: true, response: response });
         }
     } catch (error) {
-        console.log(err);
         res.send(error);
     }
 };
