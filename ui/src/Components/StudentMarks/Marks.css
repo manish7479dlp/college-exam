@@ -37,6 +37,12 @@
 .marksFilter select {
     text-align: center;
     font-size: 1.5rem;
+    padding: 8px;
+    font-weight: 600;
+    /* border: 1px solid; */
+    border-radius: 26px;
+    background: transparent;
+    border: 2px solid #6e6767;
 }
 .marksFilter select option {
     /* text-align: center !important; */
@@ -50,7 +56,8 @@
     text-align: center;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items:flex-start;
+    height: 66vh;
 }
 
 .marksContainer table th {

@@ -65,6 +65,7 @@ const Marks = () => {
 
             setLoading(false);
         } catch (error) {
+            setMarks([]);
             setLoading(false);
             console.log(error);
         }
@@ -107,7 +108,6 @@ const Marks = () => {
     return (
         <div className="studentMarksMainContainer">
             {/* <Header /> */}
-
             <div className="positionFixed">
                 <h1 className="studentMarksHeading">Student Marks</h1>
 
@@ -241,19 +241,27 @@ const Marks = () => {
                         </select>
                     </div>
 
-                    {
-                        !sessionStorage.getItem(authCheckName) && <button className="removeMarksBtn" onClick={removeMarks}>
-                        Remove Marks
-                    </button>
-                    }
+                    {!sessionStorage.getItem(authCheckName) && (
+                        <button
+                            className="removeMarksBtn"
+                            onClick={removeMarks}
+                        >
+                            Remove Marks
+                        </button>
+                    )}
                 </div>
             </div>
-
-            {loading === true ? (
-                <h1 className="center" style={{ color: "red" }}>
+            {!loading && Marks.length === 0 && (
+                <h1 className="center" style={{ color: "red", marginTop: 80, fontSize: 80 }}>
+                    No Result Found
+                </h1>
+            )}
+            {loading === true && (
+                <h1 className="center" style={{ color: "red", marginTop: 80, fontSize: 80 }}>
                     Loading...
                 </h1>
-            ) : (
+            )}
+            {!loading && Marks.length > 0 && (
                 <div className="marksContainer">
                     <table>
                         <tbody>
