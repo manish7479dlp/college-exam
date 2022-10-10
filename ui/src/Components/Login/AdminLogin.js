@@ -29,7 +29,8 @@ const AdminLogin = () => {
     try {
       const url = `${apibaseURL}/admin-login`;
       event.preventDefault();
-
+      
+      console.log(apibaseURL);
       console.log(url);
       
       const response = await fetch(url , {
