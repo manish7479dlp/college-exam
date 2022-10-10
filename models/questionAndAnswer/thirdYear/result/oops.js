@@ -17,6 +17,11 @@ const oopsResultSchema = new mongoose.Schema(
             type: Number,
             require: true,
             trim: true
+        },
+        department: {
+            type: String,
+            required: true,
+            trim: true
         }
     }
 )
