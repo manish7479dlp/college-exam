@@ -13,7 +13,7 @@ const oopsResultRouters = require("./Routes/Answer/ThirdYear/oopsResultRoutes")
 //oops Question routes
 const oopsQuestionRoutes = require("./Routes/Question/thirdYear/question/oopsQuestionRoutes")
 
-const port = process.env.PORT;
+const port = process.env.PORT || 8000;
 const mongoDbUrl = process.env.MONGODB_URL;
 
 var publicFolder = path.resolve(__dirname, "./ui/build");
