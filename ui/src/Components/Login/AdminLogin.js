@@ -7,8 +7,8 @@ import { useNavigate } from "react-router-dom";
 import DailogBox from "../DailogBox/DailogBox";
 
 const AdminLogin = () => {
-  const authCheckName = process.env.REACT_APP_ADMIN_AUTH || ""
-  const apibaseURL = process.env.REACT_APP_BASE_URL || ""
+  const authCheckName = process.env.REACT_APP_ADMIN_AUTH;
+  const apibaseURL = process.env.REACT_APP_BASE_URL;
 
   const Navigate = useNavigate();
   const [display, setDisplay] = useState({ display: "none" });
@@ -30,6 +30,7 @@ const AdminLogin = () => {
       const url = `${apibaseURL}/admin-login`;
       event.preventDefault();
       
+      console.log(authCheckName);
       console.log(apibaseURL);
       console.log(url);
       
