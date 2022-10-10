@@ -8,7 +8,7 @@ import { useNavigate } from "react-router-dom";
 import Marks from "../Components/StudentMarks/Marks";
 
 const AdminDashboard = () => {
-    const authCheckName = "admin";
+    const authCheckName = process.env.REACT_APP_ADMIN_AUTH || "";
     const studentUrl = `${process.env.REACT_APP_BASE_URL}/student`;
     const teacherUrl = `${process.env.REACT_APP_BASE_URL}/teacher`;
 

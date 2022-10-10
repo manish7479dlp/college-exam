@@ -13,8 +13,8 @@ import QuestionPreview from "../Components/QuestionPreview/QuestionPreview";
 import PreviewExamDetails from "../Components/previewExamDetails/PreviewExamDetails";
 
 const TeacherDashboard = () => {
-    const authCheckName = "teacher";
-    const questionDetailsKey = "examDetails";
+    const authCheckName = process.env.REACT_APP_TEACHER_AUTH || "";
+    const questionDetailsKey = process.env.REACT_APP_EXAMDETAILS_AUTH || "";
 
     const [activeTab, setActiveTab] = useState(1);
     const Navigate = useNavigate();

@@ -8,7 +8,7 @@ import { toast } from "react-toastify";
 
 const QuestionDetailSection = ({changeTab}) => {
     const apibaseURL = `${process.env.REACT_APP_BASE_URL}/exam-details`
-    const questionDetailsKey = "examDetails"
+    const questionDetailsKey = process.env.REACT_APP_EXAMDETAILS_AUTH || "";
 
     const studentDetails = JSON.parse(sessionStorage.getItem("StudentDetail"));
     const [isDisable, setDisable] = useState(true);

@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import "./Marks.css";
 
 const Marks = () => {
-    const authCheckName = "teacher";
+    const authCheckName = process.env.REACT_APP_TEACHER_AUTH || "";
     const apibaseURL = process.env.REACT_APP_BASE_URL || "";
     const initialData = { semester: "", subject: "" };
     const [Data, setData] = useState(initialData);

@@ -4,8 +4,8 @@ import QuestionItem from "../QuestionItem/QuestionItem";
 import { toast } from "react-toastify";
 
 const QuestionPreview = () => {
-    const apiUrl = "http://localhost:8000/api";
-    const questionDetailsKey = "examDetails";
+    const apiUrl = process.env.REACT_APP_BASE_URL;
+    const questionDetailsKey = process.env.REACT_APP_EXAMDETAILS_AUTH;
     let subject = JSON.parse(
         sessionStorage.getItem(questionDetailsKey)
     ).subject;

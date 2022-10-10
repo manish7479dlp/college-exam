@@ -9,7 +9,7 @@ import { useNavigate } from "react-router-dom";
 
 const QuestionContainer = () => {
     const apibaseURL = process.env.REACT_APP_BASE_URL || "";
-    const authCheckName = "student";
+    const authCheckName = process.env.REACT_APP_STUDENT_AUTH || "";
 
     const [data, setData] = useState([]);
     const [loading, setLoading] = useState(true);

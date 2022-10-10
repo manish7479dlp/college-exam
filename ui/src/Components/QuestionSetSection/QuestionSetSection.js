@@ -5,7 +5,7 @@ import "./QuestionSetSection.css";
 
 const QuestionSetSection = () => {
     const apibaseURL = `${process.env.REACT_APP_BASE_URL}`;
-    const questionDetailsKey = "examDetails";
+    const questionDetailsKey = process.env.REACT_APP_EXAMDETAILS_AUTH || ""
 
     const initialData = {
         questionNumber: "1",

@@ -6,8 +6,8 @@ import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 
 const StudentLogin = () => {
-  const apibaseURL = process.env.REACT_APP_BASE_URL || '';
-  const authCheckName = "student";
+  const apibaseURL = process.env.REACT_APP_BASE_URL || "";
+  const authCheckName = process.env.REACT_APP_STUDENT_AUTH || "";
 
 
   const Navigate = useNavigate();
