@@ -5,6 +5,7 @@ import TeacherRegistration from "../Components/Registration/TeacherRegistration"
 import { toast } from "react-toastify";
 import NoDataFound from "../Components/noDataFound/NoDataFound";
 import { useNavigate } from "react-router-dom";
+import Marks from "../Components/StudentMarks/Marks";
 
 const AdminDashboard = () => {
     const authCheckName = "admin";
@@ -298,6 +299,8 @@ const AdminDashboard = () => {
                             })}
                         </div>
                     )}
+
+                    {activeTab === 7 && <Marks/>}
 
                 {activeTab === 9 && teachersData.length === 0 && (
                     <NoDataFound />
