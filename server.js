@@ -7,7 +7,7 @@ const dbConfig = require("./config/dbConfig");
 const studentRoutes = require("./Routes/Student/studentRoutes");
 const teacherRoutes = require("./Routes/Teacher/TeacherRoutes");
 const adminRoutes = require("./Routes/Admin/adminRoutes")
-const examDetailsRoutes = require("./Routes/ExamDetails/examDetailsRoute")
+const examDetailsRoutes = require("./Routes/ExamDetails/ExamDetailsRoute")
 const oopsResultRouters = require("./Routes/Answer/ThirdYear/oopsResultRoutes")
 
 //oops Question routes
