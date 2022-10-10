@@ -35,8 +35,9 @@ const submitResult = async (req, res) => {
         const universityRoll = req.body.universityRoll;
         const marks = await calcMarks(req.body.marks);
         const name = req.body.name;
+        const department = req.body.department
 
-        const response = await oopsResultModel({ universityRoll, marks, name });
+        const response = await oopsResultModel({ universityRoll, marks, name , department});
         const result = await response.save();
 
         if (result.length === 0) {
