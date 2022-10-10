@@ -4,20 +4,22 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+
 import LoginDashboard from "./Components/DashBoard/LoginDashboard/LoginDashboard";
 import Home from "./Components/Pages/Home.js";
 import StudentLogin from "./Components/Login/StudentLogin";
 import TeacherLogin from "./Components/Login/TeacherLogin";
 import AdminLogin from "./Components/Login/AdminLogin";
 import Question from "./Components/Question/QuestionContainer/QuestionContainer";
-import StudentInfoDetails from "./Components/DetailsEntry/StudentDetails/StudentInfoDetails";
-import TeacherDetails from "./Components/DetailsEntry/TeacherDetails/TeacherDetails";
-import QuestionSetSection from "./Components/QuestionSetSection/QuestionSetSection";
 import StudentLoginPrivateComponent from "./Components/PrivateComponent/StudentLoginPrivateComponent";
 import TeacherLoginPrivateComponent from "./Components/PrivateComponent/TeacherLoginPrivateComponent";
 import AdminLoginPrivateComponent from "./Components/PrivateComponent/AdminLoginPrivateComponent";
 import ExamStarterPage from "./Components/Question/ExamStarterPage/ExamStarterPage";
+
 import QuestionDetailSection from "./Components/QuestionSetSection/QuestionDetailSection/QuestionDetailSection";
+import StudentInfoDetails from "./Components/DetailsEntry/StudentDetails/StudentInfoDetails";
+import TeacherDetails from "./Components/DetailsEntry/TeacherDetails/TeacherDetails";
+import QuestionSetSection from "./Components/QuestionSetSection/QuestionSetSection";
 import Marks from "./Components/StudentMarks/Marks";
 import DailogBox from "./Components/DailogBox/DailogBox";
 
