@@ -31,6 +31,7 @@ const Marks = () => {
 
                     if (result.status) {
                         toast.success(result.message);
+                        setMarks([])
                     } else {
                         toast.error(result.message);
                     }
