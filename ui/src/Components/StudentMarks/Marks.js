@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import "./Marks.css";
 
 const Marks = () => {
+    const authCheckName = "teacher";
     const apibaseURL = process.env.REACT_APP_BASE_URL || "";
     const initialData = { semester: "", subject: "" };
     const [Data, setData] = useState(initialData);
@@ -13,7 +14,7 @@ const Marks = () => {
     const [Marks, setMarks] = useState([]);
     const Navigate = useNavigate();
 
-    const removeMarks = async() => {
+    const removeMarks = async () => {
         if (Marks.length === 0) {
             toast.error("No Marks Found..");
         } else {
@@ -31,7 +32,7 @@ const Marks = () => {
 
                     if (result.status) {
                         toast.success(result.message);
-                        setMarks([])
+                        setMarks([]);
                     } else {
                         toast.error(result.message);
                     }
@@ -240,9 +241,11 @@ const Marks = () => {
                         </select>
                     </div>
 
-                    <button className="removeMarksBtn" onClick={removeMarks}>
+                    {
+                        !sessionStorage.getItem(authCheckName) && <button className="removeMarksBtn" onClick={removeMarks}>
                         Remove Marks
                     </button>
+                    }
                 </div>
             </div>
 
