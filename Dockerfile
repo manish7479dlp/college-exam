@@ -12,4 +12,4 @@ WORKDIR /app
 COPY . .
 RUN npm install
 COPY --from=frontend /frontend/build /app/ui/build
-CMD ["node", "index.js"]
+CMD ["node", "server.js"]
