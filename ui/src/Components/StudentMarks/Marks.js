@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import "./Marks.css";
 
 const Marks = () => {
-    const apibaseURL = process.env.REACT_APP_API_URL || "";
+    const apibaseURL = process.env.REACT_APP_BASE_URL || "";
     const initialData = { semester: "", subject: "" };
     const [Data, setData] = useState(initialData);
     const [isDisable, setDisable] = useState(true);
@@ -13,27 +13,30 @@ const Marks = () => {
     const [Marks, setMarks] = useState([]);
     const Navigate = useNavigate();
 
-    const removeMarks = () => {
+    const removeMarks = async() => {
         if (Marks.length === 0) {
             toast.error("No Marks Found..");
         } else {
-            const inputPassword = window.prompt("Enter Your Password.");
-            const tDeatils = JSON.parse(
-                sessionStorage.getItem("TeacherDetail")
+            const confirmation = window.confirm(
+                "Do you really want to delete the marks.."
             );
-            if (inputPassword === tDeatils.password) {
+
+            if (confirmation) {
                 try {
                     let subject = subjectNameConverter(Data.subject);
-                    subject = subject + "_answer";
+                    subject = subject + "-result";
                     const url = `${apibaseURL}/${subject}`;
-                    const response = fetch(url, { method: "DELETE" });
-                    setMarks([]);
-                    toast.info("Successfully Deleted.");
+                    const response = await fetch(url, { method: "DELETE" });
+                    const result = await response.json();
+
+                    if (result.status) {
+                        toast.success(result.message);
+                    } else {
+                        toast.error(result.message);
+                    }
                 } catch {
                     toast.warning("Some Technical Problem Found..");
                 }
-            } else {
-                toast.warning("Incorrect Password.");
             }
         }
     };
@@ -42,7 +45,7 @@ const Marks = () => {
         try {
             setLoading(true);
             let subject = subjectNameConverter(subjectName);
-            subject = subject + "_answer";
+            subject = subject + "-result";
 
             console.log(subject);
 
@@ -51,7 +54,13 @@ const Marks = () => {
             const response = await fetch(url);
             const result = await response.json();
 
-            setMarks(result);
+            if (result.status) {
+                setMarks(result.response);
+            } else {
+                toast.warning("unable to fetch result.");
+                setMarks([]);
+            }
+
             setLoading(false);
         } catch (error) {
             setLoading(false);
@@ -65,7 +74,7 @@ const Marks = () => {
         for (let i = 0; i < subject.length; i++) {
             let ch = subject.charAt(i);
             if (ch === " ") {
-                res += "_";
+                res += "-";
             } else {
                 res += ch;
             }
@@ -132,32 +141,22 @@ const Marks = () => {
 
                             {Data.semester === "1" && (
                                 <optgroup label="1st-Sem-Subject">
+                                    <option value={"Physics"}>Physics</option>
+                                    <option value={"Maths"}>Maths</option>
                                     <option
-                                        value={"Physics"}
+                                        value={"Basic Electrical Engineering"}
                                     >
-                                        Physics
-                                    </option>
-                                    <option value={"Maths"}>
-                                        Maths
-                                    </option>
-                                    <option value={"Basic Electrical Engineering"}>
-                                        Basic Electrical 
+                                        Basic Electrical
                                     </option>
                                 </optgroup>
                             )}
                             {Data.semester === "2" && (
                                 <optgroup label="2nd-Sem-Subject">
-                                    <option
-                                        value={"Chemistry"}
-                                    >
+                                    <option value={"Chemistry"}>
                                         Chemistry
                                     </option>
-                                    <option value={"Maths"}>
-                                        Maths
-                                    </option>
-                                    <option value={"English"}>
-                                        English
-                                    </option>
+                                    <option value={"Maths"}>Maths</option>
+                                    <option value={"English"}>English</option>
                                     <option value={"C Language"}>
                                         C Language
                                     </option>
@@ -167,28 +166,52 @@ const Marks = () => {
                             {Data.semester === "3" && (
                                 <optgroup label="3rd-Sem-Subject">
                                     <option value={"Maths"}>Maths</option>
-                                    <option value={"Data Structure and Algorithm"}>DSA</option>
-                                    <option value={"Economics"}>Economics</option>
-                                    <option value={"Digital Electronics"}>Digital Electronics</option>
-                                    <option value={"Computer Organization"}>Computer Organization</option>
+                                    <option
+                                        value={"Data Structure and Algorithm"}
+                                    >
+                                        DSA
+                                    </option>
+                                    <option value={"Economics"}>
+                                        Economics
+                                    </option>
+                                    <option value={"Digital Electronics"}>
+                                        Digital Electronics
+                                    </option>
+                                    <option value={"Computer Organization"}>
+                                        Computer Organization
+                                    </option>
                                 </optgroup>
                             )}
 
                             {Data.semester === "4" && (
                                 <optgroup label="4th-Sem-Subject">
-                                    <option value={"Environmental Science"}>EVS</option>
+                                    <option value={"Environmental Science"}>
+                                        EVS
+                                    </option>
                                     <option value={"Biology"}>Biology</option>
-                                    <option value={"Design and Analysis for Algorithm"}>DAA</option>
-                                    <option value={"Automata Theory"}>Automata Theory</option>
-                                    <option value={"Computer Architecture"}>Computer Architecture</option>
-                                    <option value={"Discrete Mathematics"}>Discrete Mathematics</option>
-
+                                    <option
+                                        value={
+                                            "Design and Analysis for Algorithm"
+                                        }
+                                    >
+                                        DAA
+                                    </option>
+                                    <option value={"Automata Theory"}>
+                                        Automata Theory
+                                    </option>
+                                    <option value={"Computer Architecture"}>
+                                        Computer Architecture
+                                    </option>
+                                    <option value={"Discrete Mathematics"}>
+                                        Discrete Mathematics
+                                    </option>
                                 </optgroup>
                             )}
 
                             {Data.semester === "5" && (
                                 <optgroup label="5th-Sem-Subject">
                                     <option value={"CA"}>CA</option>
+                                    <option value={"oops"}>OOPS</option>
                                     <option value={"Automata"}>Automata</option>
                                 </optgroup>
                             )}
