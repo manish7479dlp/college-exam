@@ -133,7 +133,7 @@ const QuestionContainer = () => {
     };
 
     const generateAnswerSheet = () => {
-        let answerSheet = { name: StudentDetail.name, universityRoll: StudentDetail.universityRoll };
+        let answerSheet = { name: StudentDetail.name, universityRoll: StudentDetail.universityRoll , department: StudentDetail.department};
         let marks = {}
         for (let i = 1; i <= data.length; i++) {
             const res = JSON.parse(localStorage.getItem(i));
