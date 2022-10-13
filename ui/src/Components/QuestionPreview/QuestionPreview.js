@@ -89,7 +89,7 @@ const QuestionPreview = () => {
         <div className="questionPreviewContainer">
             {loading && <h1>Loading...</h1>}
 
-            {question.length === 0 && <h1>No Question Found</h1>}
+            {question.length === 0 && !loading && <h1>No Question Found</h1>}
 
             {question.length > 0 &&
                 !loading &&
