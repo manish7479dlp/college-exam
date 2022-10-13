@@ -67,7 +67,7 @@
 .questionDetailsContainer {
     flex-direction: column;
     justify-content: space-evenly;
-    width: 28vw;
+    width: 22vw;
     height: calc(100vh - 70px);
     position: absolute;
     left: 0px;
