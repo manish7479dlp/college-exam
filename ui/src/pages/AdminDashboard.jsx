@@ -12,15 +12,12 @@ const AdminDashboard = () => {
     const studentUrl = `${process.env.REACT_APP_BASE_URL}/student`;
     const teacherUrl = `${process.env.REACT_APP_BASE_URL}/teacher`;
 
-
-
-
     const Navigate = useNavigate();
 
     const [activeTab, setActiveTab] = useState(1);
     const [studentData, setStudentData] = useState([]);
     const [teachersData, setTeachersData] = useState([]);
-
+    const [loading, setLoading] = useState(true);
 
     const editStudentDetails = () => {
         alert(
@@ -62,23 +59,28 @@ const AdminDashboard = () => {
             "Do you Really Want to delete the student Details."
         );
         if (verify) {
-            const response = await fetch(deleteUrl, {
-                method: "DELETE",
-            });
+            try {
+                const response = await fetch(deleteUrl, {
+                    method: "DELETE",
+                });
 
-            const result = await response.json();
+                const result = await response.json();
 
-            if (result.status) {
-                toast.success(result.message);
-                fetchTeachersData(year);
-            } else {
-                toast.error(result.message);
+                if (result.status) {
+                    toast.success(result.message);
+                    fetchTeachersData(year);
+                } else {
+                    toast.error(result.message);
+                }
+            } catch (error) {
+                console.log(error);
             }
         }
     };
 
     const fetchStudentData = async (year) => {
         try {
+            setLoading(true);
             const response = await fetch(studentUrl);
             const result = await response.json();
             if (result.status) {
@@ -89,13 +91,16 @@ const AdminDashboard = () => {
             } else {
                 setStudentData([]);
             }
+            setLoading(false);
         } catch (error) {
+            setLoading(false);
             console.log(error);
         }
     };
 
     const fetchTeachersData = async () => {
         try {
+            setLoading(true);
             const response = await fetch(teacherUrl);
             const result = await response.json();
             if (result.status) {
@@ -103,7 +108,9 @@ const AdminDashboard = () => {
             } else {
                 setTeachersData([]);
             }
+            setLoading(false);
         } catch (error) {
+            setLoading(false);
             console.log(error);
         }
     };
@@ -242,7 +249,13 @@ const AdminDashboard = () => {
                     activeTab === 4 ||
                     activeTab === 5 ||
                     activeTab === 6) &&
-                    studentData.length === 0 && <NoDataFound />}
+                    studentData.length === 0 && loading && <h1 className="noDataFoundContent">Loading...</h1>}
+
+                {(activeTab === 3 ||
+                    activeTab === 4 ||
+                    activeTab === 5 ||
+                    activeTab === 6) &&
+                    studentData.length === 0  && !loading && <NoDataFound />}
 
                 {(activeTab === 3 ||
                     activeTab === 4 ||
@@ -300,9 +313,13 @@ const AdminDashboard = () => {
                         </div>
                     )}
 
-                    {activeTab === 7 && <Marks/>}
+                {activeTab === 7 && <Marks />}
 
-                {activeTab === 9 && teachersData.length === 0 && (
+                {activeTab === 9 && teachersData.length === 0 && loading && (
+                    <h1 className="noDataFoundContent">Loading...</h1>
+                )}
+
+                {activeTab === 9 && !loading && teachersData.length === 0 && (
                     <NoDataFound />
                 )}
 
