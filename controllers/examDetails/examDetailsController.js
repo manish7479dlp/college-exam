@@ -142,16 +142,27 @@ const getCurrentTime = () => {
 };
 
 const calExamEndtime = (examStartTime, examDuration) => {
-    const now = new Date();
-    let minute = now.getMinutes();
+    // const now = new Date();
+    let minute = examStartTime.substring(3, 5);
+    let hour = examStartTime.substring(0, 2);
+
+    minute = parseInt(minute);
+    examDuration = parseInt(examDuration);
+
+    const temp = examDuration + minute;
+
+    if (temp > 59) {
+        hour = parseInt(hour) + parseInt(temp / 60);
+        minute = temp % 60;
+    } else {
+        minute = temp;
+    }
+
     minute = minute >= 1 && minute <= 9 ? "0" + minute : minute;
-    let hour = now.getHours();
-    hour = hour >= 1 && hour <= 9 ? "0" + hour : hour;
+    // hour = hour >= 1 && hour <= 9 ? "0" + hour : hour;
 
-    const currTime = `${hour}:${minute}`;
-    console.log(now);
+    return `${hour}:${minute}`;
 };
-
 
 
 const mayStartExam = async (req, res) => {
@@ -163,8 +174,6 @@ const mayStartExam = async (req, res) => {
             response.examStartTime,
             response.examDuration
         );
-
-
 
         if (response.examStartTime <= nowTime && nowTime >= examEndTime) {
             res.send({ status: true });
