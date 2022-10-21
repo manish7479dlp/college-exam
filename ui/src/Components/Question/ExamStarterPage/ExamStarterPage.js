@@ -19,20 +19,39 @@ const ExamStarterPage = () => {
         fetchExamDetails();
     }, []);
 
+    function subjectNameConverter(subject) {
+        subject = subject.toLowerCase();
+        let res = "";
+        for (let i = 0; i < subject.length; i++) {
+            let ch = subject.charAt(i);
+            if (ch === " ") {
+                res += "-";
+            } else {
+                res += ch;
+            }
+        }
 
-    // const fetchExamAuth = async () => {
-    //     try {
-    //         const subjectName =
-    //             subjectNameConverter(examDetails[0].subject) + "_answer";
-    //         const url = `${apibaseURL}/${subjectName}/${studentDetails.universityRoll}`;
-    //         const response = await fetch(url);
-    //         const result = await response.json();
-    //         console.log();
-    //         setExamAuth(result);
-    //     } catch (error) {
-    //         console.log(error);
-    //     }
-    // };
+        return res;
+    }
+
+    const fetchExamAuth = async () => {
+        try {
+            const subjectName =
+                subjectNameConverter(examDetails[0].subject) + "-result";
+            const url = `${apibaseURL}/${subjectName}/${studentDetails.universityRoll}`;
+            const response = await fetch(url);
+            const result = await response.json();
+            if (result.status) {
+                setExamAuth(result.response);
+            }
+        } catch (error) {
+            console.log(error);
+        }
+    };
+
+    if (examDetails) {
+        fetchExamAuth();
+    }
 
     function yearToSemester(year) {
         if (year === 1 && new Date().getMonth() >= 7) {
@@ -76,10 +95,8 @@ const ExamStarterPage = () => {
         }
     };
 
-
-
     const startExam = async () => {
-        const url = `${apibaseURL}/start-exam/${examDetails[0]._id}`
+        const url = `${apibaseURL}/start-exam/${examDetails[0]._id}`;
         try {
             const examSubjectName = "examName";
             sessionStorage.setItem(
@@ -89,8 +106,7 @@ const ExamStarterPage = () => {
             const response = await fetch(url);
             const result = await response.json();
 
-            if(result.status) {
-
+            if (result.status) {
                 Navigate("/question");
             } else {
                 toast.warning(result.message);
