@@ -16,8 +16,8 @@ const getAllStudentResult = async (req, res) => {
 
 const getParticularStudentResult = async (req , res) => {
     try {
-        const _id = req.params._id;
-        const response = await oopsResultModel.findById({_id});
+        const universityRoll = req.params.universityRoll;
+        const response = await oopsResultModel.find({universityRoll});
         if (response.length === 0) {
             res.send({ status: false, message: "No Result Found." });
         } else {
