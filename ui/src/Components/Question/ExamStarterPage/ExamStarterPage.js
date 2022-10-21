@@ -19,8 +19,6 @@ const ExamStarterPage = () => {
         fetchExamDetails();
     }, []);
 
-
-
     function subjectNameConverter(subject) {
         subject = subject.toLowerCase();
         let res = "";
@@ -51,21 +49,21 @@ const ExamStarterPage = () => {
     // };
 
     function yearToSemester(year) {
-        if(year === 1 && new Date().getMonth() >= 7) {
+        if (year === 1 && new Date().getMonth() >= 7) {
             return 1;
-        } else if(year === 1 && new Date().getMonth() <= 6) {
+        } else if (year === 1 && new Date().getMonth() <= 6) {
             return 2;
-        } else if(year === 2 && new Date().getMonth() >= 7) {
+        } else if (year === 2 && new Date().getMonth() >= 7) {
             return 3;
-        } else if(year === 2 && new Date().getMonth() <= 6) {
+        } else if (year === 2 && new Date().getMonth() <= 6) {
             return 4;
-        } else if(year === 3 && new Date().getMonth() >= 7) {
+        } else if (year === 3 && new Date().getMonth() >= 7) {
             return 5;
-        } else if(year === 3 && new Date().getMonth() <= 6) {
+        } else if (year === 3 && new Date().getMonth() <= 6) {
             return 6;
-        } else if(year === 4 && new Date().getMonth() >= 7) {
+        } else if (year === 4 && new Date().getMonth() >= 7) {
             return 7;
-        } else if(year === 4 && new Date().getMonth() <= 6) {
+        } else if (year === 4 && new Date().getMonth() <= 6) {
             return 8;
         }
     }
@@ -73,11 +71,13 @@ const ExamStarterPage = () => {
     const fetchExamDetails = async () => {
         try {
             setLoading(true);
-            const url = `${apibaseURL}/is-any-exam-today/${yearToSemester(studentDetails.year)}`;
+            const url = `${apibaseURL}/is-any-exam-today/${yearToSemester(
+                studentDetails.year
+            )}`;
             const response = await fetch(url);
             const result = await response.json();
-            
-            if(result.status) {
+
+            if (result.status) {
                 setExamDetails(result.response);
             } else {
                 setExamDetails([]);
@@ -136,12 +136,19 @@ const ExamStarterPage = () => {
 
     //     // Navigate("/question");
     // };
-   
-    const startExam = () => {
-        const examSubjectName = "examName";
-        sessionStorage.setItem(examSubjectName , JSON.stringify(examDetails[0].subject));
-        Navigate("/question")
-    }
+
+    const startExam = async () => {
+        try {
+            const examSubjectName = "examName";
+            sessionStorage.setItem(
+                examSubjectName,
+                JSON.stringify(examDetails[0].subject)
+            );
+            Navigate("/question");
+        } catch (error) {
+            console.log(error);
+        }
+    };
 
     const backToHome = () => {
         Navigate("/");
@@ -195,10 +202,15 @@ const ExamStarterPage = () => {
                     <div className="examInformationContainer">
                         <h3>Exam Information</h3>
 
-                        <p>Examination: {examDetails[0].subject.toUpperCase()}</p>
+                        <p>
+                            Examination: {examDetails[0].subject.toUpperCase()}
+                        </p>
                         <p>Current User: {studentDetails.name}</p>
                         <p>Total Screen/Questions: {20 + "*"}</p>
-                        <p>Total Duration: {examDetails[0].examDuration} Minutes</p>
+                        <p>
+                            Total Duration: {examDetails[0].examDuration}{" "}
+                            Minutes
+                        </p>
                         <p>Marks: {20 + "*"}</p>
                         {examAuth.length !== 0 && (
                             <p className="examAuth">
