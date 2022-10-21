@@ -138,13 +138,22 @@ const ExamStarterPage = () => {
     // };
 
     const startExam = async () => {
+        const url = `${apibaseURL}/start-exam/${examDetails[0]._id}`
         try {
             const examSubjectName = "examName";
             sessionStorage.setItem(
                 examSubjectName,
                 JSON.stringify(examDetails[0].subject)
             );
-            Navigate("/question");
+            const response = await fetch(url);
+            const result = await response.json();
+
+            if(result.status) {
+
+                Navigate("/question");
+            } else {
+                toast.warning(result.message);
+            }
         } catch (error) {
             console.log(error);
         }
