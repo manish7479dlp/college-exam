@@ -19,20 +19,6 @@ const ExamStarterPage = () => {
         fetchExamDetails();
     }, []);
 
-    function subjectNameConverter(subject) {
-        subject = subject.toLowerCase();
-        let res = "";
-        for (let i = 0; i < subject.length; i++) {
-            let ch = subject.charAt(i);
-            if (ch === " ") {
-                res += "-";
-            } else {
-                res += ch;
-            }
-        }
-
-        return res;
-    }
 
     // const fetchExamAuth = async () => {
     //     try {
@@ -90,52 +76,7 @@ const ExamStarterPage = () => {
         }
     };
 
-    // const getCurrentTime = () => {
-    //     const DateObject = new Date();
-    //     let hour = DateObject.getHours();
-    //     let minute = DateObject.getMinutes();
 
-    //     hour = hour >= 1 && hour <= 9 ? "0" + hour : hour;
-    //     minute = minute >= 1 && minute <= 9 ? "0" + minute : minute;
-
-    //     const result = hour + ":" + minute;
-
-    //     return result;
-    // };
-
-    // const startExam = () => {
-    //     sessionStorage.setItem(
-    //         "subjectName",
-    //         JSON.stringify(examDetails.subject)
-    //     );
-    //     sessionStorage.setItem("QuestionDetails", JSON.stringify(examDetails));
-    //     const currTime = getCurrentTime();
-
-    //     if (currTime >= examDetails.examStartTime) {
-    //         Navigate("/question");
-    //     } else {
-    //         toast.error("Exam is not start yet");
-    //     }
-
-    //     // Navigate("/question");
-    // };
-
-    // const startExam = () => {
-    //     sessionStorage.setItem(
-    //         "subjectName",
-    //         JSON.stringify(examDetails.subject)
-    //     );
-    //     sessionStorage.setItem("QuestionDetails", JSON.stringify(examDetails));
-    //     const currTime = getCurrentTime();
-
-    //     if (currTime >= examDetails.examStartTime) {
-    //         Navigate("/question");
-    //     } else {
-    //         toast.error("Exam is not start yet");
-    //     }
-
-    //     // Navigate("/question");
-    // };
 
     const startExam = async () => {
         const url = `${apibaseURL}/start-exam/${examDetails[0]._id}`
