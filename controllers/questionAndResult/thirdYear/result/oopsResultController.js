@@ -14,6 +14,20 @@ const getAllStudentResult = async (req, res) => {
     }
 };
 
+const getParticularStudentResult = async (req , res) => {
+    try {
+        const _id = req.params._id;
+        const response = await oopsResultModel.findById({_id});
+        if (response.length === 0) {
+            res.send({ status: false, message: "No Result Found." });
+        } else {
+            res.send({ status: true, response });
+        }
+    } catch (error) {
+        res.send(error);
+    }
+}
+
 const calcMarks = async (marks) => {
     try {
         const response = await oopsQuestion.find();
@@ -72,4 +86,4 @@ const deleteAllResult = async (req, res) => {
     }
 };
 
-module.exports = { getAllStudentResult, deleteAllResult, submitResult };
+module.exports = { getAllStudentResult, deleteAllResult, submitResult,getParticularStudentResult };
