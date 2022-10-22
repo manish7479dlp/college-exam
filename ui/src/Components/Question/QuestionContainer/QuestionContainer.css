@@ -194,6 +194,9 @@
     .questionContainer .examInfo {
         width: 100%;
     }
+    .toggleDetail,.questionDetailsContainer {
+        display: none;
+    }
 }
 
 @media screen and (max-width: 310px) {
