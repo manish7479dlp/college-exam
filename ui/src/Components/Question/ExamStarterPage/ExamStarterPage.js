@@ -108,6 +108,7 @@ const ExamStarterPage = () => {
 
             if (result.status) {
                 Navigate("/question");
+                sessionStorage.setItem("timeLeft" , result.timeLeft);
             } else {
                 toast.warning(result.message);
             }

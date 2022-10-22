@@ -204,7 +204,7 @@ const mayStartExam = async (req, res) => {
         } else if(examStartConfirmation > response.examDuration){
             res.send({ status: false, message: "Exam is not Started" });
         } else {
-            res.send({status: true})
+            res.send({status: true, timeLeft : examStartConfirmation})
         }
     } catch (error) {
         res.send(error);
