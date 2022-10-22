@@ -147,7 +147,7 @@ const Marks = () => {
                                     {data.subjectName.firstYear.firstSemester.map(
                                         (subject, idx) => {
                                             return (
-                                                <option value={subject}>
+                                                <option key={idx} value={subject}>
                                                     {subject}
                                                 </option>
                                             );
@@ -160,7 +160,7 @@ const Marks = () => {
                                     {data.subjectName.firstYear.secondSemester.map(
                                         (subject, idx) => {
                                             return (
-                                                <option value={subject}>
+                                                <option key={idx} value={subject}>
                                                     {subject}
                                                 </option>
                                             );
@@ -174,7 +174,7 @@ const Marks = () => {
                                     {data.subjectName.secondYear.thirdSemester.map(
                                         (subject, idx) => {
                                             return (
-                                                <option value={subject}>
+                                                <option key={idx} value={subject}>
                                                     {subject}
                                                 </option>
                                             );
@@ -188,7 +188,7 @@ const Marks = () => {
                                     {data.subjectName.secondYear.fourthSemester.map(
                                         (subject, idx) => {
                                             return (
-                                                <option value={subject}>
+                                                <option key={idx} value={subject}>
                                                     {subject}
                                                 </option>
                                             );
@@ -202,7 +202,7 @@ const Marks = () => {
                                     {data.subjectName.thirdYear.fifthSemester.map(
                                         (subject, idx) => {
                                             return (
-                                                <option value={subject}>
+                                                <option key={idx} value={subject}>
                                                     {subject}
                                                 </option>
                                             );
@@ -216,7 +216,7 @@ const Marks = () => {
                                     {data.subjectName.thirdYear.sixthSemester.map(
                                         (subject, idx) => {
                                             return (
-                                                <option value={subject}>
+                                                <option key={idx} value={subject}>
                                                     {subject}
                                                 </option>
                                             );
@@ -230,7 +230,7 @@ const Marks = () => {
                                     {data.subjectName.fourthYear.seventhSemester.map(
                                         (subject, idx) => {
                                             return (
-                                                <option value={subject}>
+                                                <option key={idx} value={subject}>
                                                     {subject}
                                                 </option>
                                             );
@@ -244,7 +244,7 @@ const Marks = () => {
                                     {data.subjectName.fourthYear.eightSemester.map(
                                         (subject, idx) => {
                                             return (
-                                                <option value={subject}>
+                                                <option key={idx} value={subject}>
                                                     {subject}
                                                 </option>
                                             );

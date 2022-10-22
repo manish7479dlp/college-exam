@@ -159,7 +159,10 @@ const QuestionDetailSection = ({ changeTab }) => {
                                     {data.subjectName.firstYear.firstSemester.map(
                                         (subject, idx) => {
                                             return (
-                                                <option value={subject}>
+                                                <option
+                                                    key={idx}
+                                                    value={subject}
+                                                >
                                                     {subject}
                                                 </option>
                                             );
@@ -172,7 +175,10 @@ const QuestionDetailSection = ({ changeTab }) => {
                                     {data.subjectName.firstYear.secondSemester.map(
                                         (subject, idx) => {
                                             return (
-                                                <option value={subject}>
+                                                <option
+                                                    key={idx}
+                                                    value={subject}
+                                                >
                                                     {subject}
                                                 </option>
                                             );
@@ -186,7 +192,10 @@ const QuestionDetailSection = ({ changeTab }) => {
                                     {data.subjectName.secondYear.thirdSemester.map(
                                         (subject, idx) => {
                                             return (
-                                                <option value={subject}>
+                                                <option
+                                                    key={idx}
+                                                    value={subject}
+                                                >
                                                     {subject}
                                                 </option>
                                             );
@@ -200,7 +209,10 @@ const QuestionDetailSection = ({ changeTab }) => {
                                     {data.subjectName.secondYear.fourthSemester.map(
                                         (subject, idx) => {
                                             return (
-                                                <option value={subject}>
+                                                <option
+                                                    key={idx}
+                                                    value={subject}
+                                                >
                                                     {subject}
                                                 </option>
                                             );
@@ -214,7 +226,10 @@ const QuestionDetailSection = ({ changeTab }) => {
                                     {data.subjectName.thirdYear.fifthSemester.map(
                                         (subject, idx) => {
                                             return (
-                                                <option value={subject}>
+                                                <option
+                                                    key={idx}
+                                                    value={subject}
+                                                >
                                                     {subject}
                                                 </option>
                                             );
@@ -228,7 +243,10 @@ const QuestionDetailSection = ({ changeTab }) => {
                                     {data.subjectName.thirdYear.sixthSemester.map(
                                         (subject, idx) => {
                                             return (
-                                                <option value={subject}>
+                                                <option
+                                                    key={idx}
+                                                    value={subject}
+                                                >
                                                     {subject}
                                                 </option>
                                             );
@@ -242,7 +260,10 @@ const QuestionDetailSection = ({ changeTab }) => {
                                     {data.subjectName.fourthYear.seventhSemester.map(
                                         (subject, idx) => {
                                             return (
-                                                <option value={subject}>
+                                                <option
+                                                    key={idx}
+                                                    value={subject}
+                                                >
                                                     {subject}
                                                 </option>
                                             );
@@ -256,7 +277,10 @@ const QuestionDetailSection = ({ changeTab }) => {
                                     {data.subjectName.fourthYear.eightSemester.map(
                                         (subject, idx) => {
                                             return (
-                                                <option value={subject}>
+                                                <option
+                                                    key={idx}
+                                                    value={subject}
+                                                >
                                                     {subject}
                                                 </option>
                                             );
