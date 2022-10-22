@@ -197,6 +197,9 @@
     .toggleDetail,.questionDetailsContainer {
         display: none;
     }
+    .examDuration {
+        display: none;
+    }
 }
 
 @media screen and (max-width: 310px) {
