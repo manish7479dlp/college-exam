@@ -35,17 +35,6 @@ h1 {
         "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
 }
 
-.adminDashboardContainer .adminDashboardHeader input {
-    outline: none;
-    border: 1px solid rgb(137, 135, 135);
-    padding: 7px 5px;
-    border-radius: 20px;
-    background-color: transparent;
-    text-align: center;
-    color: white;
-    font-size: 1.5rem;
-}
-
 .adminDashboardMainContantContainer {
     display: flex;
 }
