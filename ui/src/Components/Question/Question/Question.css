@@ -111,6 +111,13 @@
     .questionNavigationBtn button {
         font-weight: 550;
     }
+
+    .mainQuestionContainer {
+        box-shadow: 1px 1px 5px 3px rgb(237, 249, 255);
+        margin-top: 17px;
+    }
+
+
 }
 
 @media screen and (max-width : 340px) {
