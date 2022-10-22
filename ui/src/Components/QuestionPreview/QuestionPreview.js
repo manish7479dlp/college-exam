@@ -87,9 +87,16 @@ const QuestionPreview = () => {
 
     return (
         <div className="questionPreviewContainer">
-            {loading && <h1>Loading...</h1>}
+            {loading && <h1 className="center" style={{ height: "80vh", color: "red", fontSize: 80 }}>Loading...</h1>}
 
-            {question.length === 0 && !loading && <h1>No Question Found</h1>}
+            {/* <h1
+                    className="center"
+                    style={{ color: "red", marginTop: 80, fontSize: 80 }}
+                >
+                    Loading...
+                </h1> */}
+
+            {question.length === 0 && !loading && <h1 className="center" style={{ height: "80vh", color: "red", fontSize: 80 }}>No Question Found</h1>}
 
             {question.length > 0 &&
                 !loading &&
