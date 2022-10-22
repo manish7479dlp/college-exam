@@ -148,8 +148,8 @@ const QuestionContainer = () => {
             const anserSheet = generateAnswerSheet();
             let subject = subjectNameConverter(subjectName);
             subject = subject + "-result";
-            const answernUrl = `${apibaseURL}/${subject}`;
-            const response = await fetch(answernUrl, {
+            const answerUrl = `${apibaseURL}/${subject}`;
+            const response = await fetch(answerUrl, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",

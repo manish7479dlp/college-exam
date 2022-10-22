@@ -49,7 +49,7 @@ const ExamStarterPage = () => {
         }
     };
 
-    if (examDetails) {
+    if (examDetails && examDetails.length > 0) {
         fetchExamAuth();
     }
 
