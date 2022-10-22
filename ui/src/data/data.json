@@ -1,0 +1,49 @@
+{
+    "subjectName" : {
+        "firstYear" : {
+            "firstSemester": [
+                "Physic",
+                "Basic Electrical Engineering",
+                "Mathematics I"
+
+            ],
+            "secondSemester":[
+                "Chemistry",
+                "Mathematics II",
+                "C Programming"
+                
+            ]
+        },
+        "secondYear": {
+            "thirdSemester":[
+                "Data Structure and Algorithms",
+                "Computer Organization",
+                "Mathematics III",
+                "Economics",
+                "Digital Electronics"
+            ],
+            "fourthSemester":[
+                "Design and Analysic of Algorithms",
+                "Computer Architecture",
+                "Environmental Science",
+                "Discrete Mathematics",
+                "Formal Language and Automata"
+            ]
+        },
+        "thirdYear": {
+            "fifthSemester": [
+                "Software Engineering",
+                "Operating System",
+                "Object Oriented Programming",
+                "Compiler Desing",
+                "Artificial Intelligence",
+                "Industrial Management"
+            ],
+            "sixthSemester":[]
+        },
+        "fourthYear":{
+            "seventhSemester":[],
+            "eightSemester":[]
+        }
+    }
+}
