@@ -5,9 +5,10 @@ import "./QuestionDetailSection.css";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import data from "../../../data/data.json";
 
-const QuestionDetailSection = ({changeTab}) => {
-    const apibaseURL = `${process.env.REACT_APP_BASE_URL}/exam-details`
+const QuestionDetailSection = ({ changeTab }) => {
+    const apibaseURL = `${process.env.REACT_APP_BASE_URL}/exam-details`;
     const questionDetailsKey = process.env.REACT_APP_EXAMDETAILS_AUTH || "";
 
     const studentDetails = JSON.parse(sessionStorage.getItem("StudentDetail"));
@@ -77,28 +78,31 @@ const QuestionDetailSection = ({changeTab}) => {
 
     const onClick = async () => {
         try {
-            const response = await fetch(apibaseURL , {
+            const response = await fetch(apibaseURL, {
                 method: "POST",
                 headers: {
-                    "Content-Type": "application/json"
+                    "Content-Type": "application/json",
                 },
-                body: JSON.stringify(Data)
-            })
+                body: JSON.stringify(Data),
+            });
 
             const result = await response.json();
 
-            if(result.status) {
+            if (result.status) {
                 toast.success(result.message);
-                setData(initialData)
-                sessionStorage.setItem(questionDetailsKey , JSON.stringify(Data));
-                changeTab(2)
+                setData(initialData);
+                sessionStorage.setItem(
+                    questionDetailsKey,
+                    JSON.stringify(Data)
+                );
+                changeTab(2);
             } else {
                 toast.error(result.message);
             }
         } catch (error) {
             console.log(error);
         }
-    }
+    };
 
     const onChange = (event) => {
         const { name, value } = event.target;
@@ -140,100 +144,128 @@ const QuestionDetailSection = ({changeTab}) => {
 
                     <br />
 
-                    <label>Subject Name: </label>
-                    <select
-                        name="subject"
-                        value={Data.subject}
-                        onChange={onChange}
-                        disabled={isDisable}
-                    >
-                        <option value="#">***Choose Any One***</option>
+                    <div>
+                        <label>Subject Name: </label>
+                        <select
+                            name="subject"
+                            value={Data.subject}
+                            onChange={onChange}
+                            disabled={isDisable}
+                        >
+                            <option value="#">***Choose Any One***</option>
 
-                        {Data.semester === "1" && (
-                            <optgroup label="1st-Sem-Subject">
-                                <option value={"Physics"}>Physics</option>
-                                <option value={"Maths"}>Maths</option>
-                                <option value={"Basic Electrical Engineering"}>
-                                    Basic Electrical
-                                </option>
-                            </optgroup>
-                        )}
-                        {Data.semester === "2" && (
-                            <optgroup label="2nd-Sem-Subject">
-                                <option value={"Chemistry"}>Chemistry</option>
-                                <option value={"Maths"}>Maths</option>
-                                <option value={"English"}>English</option>
-                                <option value={"C Language"}>C Language</option>
-                            </optgroup>
-                        )}
+                            {Data.semester === "1" && (
+                                <optgroup label="1st-Sem-Subject">
+                                    {data.subjectName.firstYear.firstSemester.map(
+                                        (subject, idx) => {
+                                            return (
+                                                <option value={subject}>
+                                                    {subject}
+                                                </option>
+                                            );
+                                        }
+                                    )}
+                                </optgroup>
+                            )}
+                            {Data.semester === "2" && (
+                                <optgroup label="2nd-Sem-Subject">
+                                    {data.subjectName.firstYear.secondSemester.map(
+                                        (subject, idx) => {
+                                            return (
+                                                <option value={subject}>
+                                                    {subject}
+                                                </option>
+                                            );
+                                        }
+                                    )}
+                                </optgroup>
+                            )}
 
-                        {Data.semester === "3" && (
-                            <optgroup label="3rd-Sem-Subject">
-                                <option value={"Maths"}>Maths</option>
-                                <option value={"Data Structure and Algorithm"}>
-                                    DSA
-                                </option>
-                                <option value={"Economics"}>Economics</option>
-                                <option value={"Digital Electronics"}>
-                                    Digital Electronics
-                                </option>
-                                <option value={"Computer Organization"}>
-                                    Computer Organization
-                                </option>
-                            </optgroup>
-                        )}
+                            {Data.semester === "3" && (
+                                <optgroup label="3rd-Sem-Subject">
+                                    {data.subjectName.secondYear.thirdSemester.map(
+                                        (subject, idx) => {
+                                            return (
+                                                <option value={subject}>
+                                                    {subject}
+                                                </option>
+                                            );
+                                        }
+                                    )}
+                                </optgroup>
+                            )}
 
-                        {Data.semester === "4" && (
-                            <optgroup label="4th-Sem-Subject">
-                                <option value={"Environmental Science"}>
-                                    EVS
-                                </option>
-                                <option value={"Biology"}>Biology</option>
-                                <option
-                                    value={"Design and Analysis for Algorithm"}
-                                >
-                                    DAA
-                                </option>
-                                <option value={"Automata Theory"}>
-                                    Automata Theory
-                                </option>
-                                <option value={"Computer Architecture"}>
-                                    Computer Architecture
-                                </option>
-                                <option value={"Discrete Mathematics"}>
-                                    Discrete Mathematics
-                                </option>
-                            </optgroup>
-                        )}
+                            {Data.semester === "4" && (
+                                <optgroup label="4th-Sem-Subject">
+                                    {data.subjectName.secondYear.fourthSemester.map(
+                                        (subject, idx) => {
+                                            return (
+                                                <option value={subject}>
+                                                    {subject}
+                                                </option>
+                                            );
+                                        }
+                                    )}
+                                </optgroup>
+                            )}
 
-                        {Data.semester === "5" && (
-                            <optgroup label="5th-Sem-Subject">
-                                <option value={"CA"}>CA</option>
-                                <option value={"oops"}>OOPS</option>
-                            </optgroup>
-                        )}
+                            {Data.semester === "5" && (
+                                <optgroup label="5th-Sem-Subject">
+                                    {data.subjectName.thirdYear.fifthSemester.map(
+                                        (subject, idx) => {
+                                            return (
+                                                <option value={subject}>
+                                                    {subject}
+                                                </option>
+                                            );
+                                        }
+                                    )}
+                                </optgroup>
+                            )}
 
-                        {Data.semester === "6" && (
-                            <optgroup label="6th-Sem-Subject">
-                                <option value={"CA"}>CA</option>
-                            </optgroup>
-                        )}
+                            {Data.semester === "6" && (
+                                <optgroup label="6th-Sem-Subject">
+                                    {data.subjectName.thirdYear.sixthSemester.map(
+                                        (subject, idx) => {
+                                            return (
+                                                <option value={subject}>
+                                                    {subject}
+                                                </option>
+                                            );
+                                        }
+                                    )}
+                                </optgroup>
+                            )}
 
-                        {Data.semester === "7" && (
-                            <optgroup label="7th-Sem-Subject">
-                                <option value={"Biology"}>Biology</option>
-                                <option value={"Automata"}>Automata</option>
-                            </optgroup>
-                        )}
+                            {Data.semester === "7" && (
+                                <optgroup label="7th-Sem-Subject">
+                                    {data.subjectName.fourthYear.seventhSemester.map(
+                                        (subject, idx) => {
+                                            return (
+                                                <option value={subject}>
+                                                    {subject}
+                                                </option>
+                                            );
+                                        }
+                                    )}
+                                </optgroup>
+                            )}
 
-                        {Data.semester === "8" && (
-                            <optgroup label="8th-Sem-Subject">
-                                <option value={"Environmental Science"}>
-                                    EVS
-                                </option>
-                            </optgroup>
-                        )}
-                    </select>
+                            {Data.semester === "8" && (
+                                <optgroup label="8th-Sem-Subject">
+                                    {data.subjectName.fourthYear.eightSemester.map(
+                                        (subject, idx) => {
+                                            return (
+                                                <option value={subject}>
+                                                    {subject}
+                                                </option>
+                                            );
+                                        }
+                                    )}
+                                </optgroup>
+                            )}
+                        </select>
+                    </div>
 
                     <br />
 
