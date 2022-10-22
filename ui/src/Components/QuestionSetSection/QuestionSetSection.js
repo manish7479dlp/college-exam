@@ -74,7 +74,7 @@ const QuestionSetSection = () => {
             {/* <Header /> */}
             <div className=" questionSetSectionContainer center">
                 <div className="questionSetSection">
-                    <h2 className="questionHeading">{JSON.parse(sessionStorage.getItem(questionDetailsKey)).subject.toUpperCase()} Question</h2>
+                    <h2 className="questionHeading">{JSON.parse(sessionStorage.getItem(questionDetailsKey)).subject} Question</h2>
 
                     <form onSubmit={onSubmit}>
                         <label>Q{data.questionNumber} ):</label>
