@@ -168,7 +168,6 @@ const AdminDashboard = () => {
                     {JSON.parse(sessionStorage.getItem(authCheckName)).name}
                 </h3>
                 <h1>Admin Dashboard</h1>
-                <input type="text" placeholder="Searching" />
             </div>
 
             <div className="adminDashboardMainContantContainer">
