@@ -75,10 +75,7 @@ const PreviewExamDetails = () => {
                                 <span>Semester: </span> {data.semester}
                             </p>
 
-                            <p>
-                                <span>Subject: </span>{" "}
-                                {data.subject.toUpperCase()}
-                            </p>
+                            
 
                             <p>
                                 <span>Exam Date: </span> {data.examDate}
@@ -92,6 +89,11 @@ const PreviewExamDetails = () => {
                             <p>
                                 <span>Exam Duration: </span> {data.examDuration}{" "}
                                 Minutes
+                            </p>
+
+                            <p>
+                                <span>Subject: </span>{" "}
+                                {data.subject}
                             </p>
 
                             <div className="center QuestionItemOperationContainer">
