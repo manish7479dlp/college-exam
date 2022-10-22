@@ -92,12 +92,9 @@ const TeacherRegistration = () => {
                             onChange={onChangeHandler}
                         >
                             <option>**Choose**</option>
-                            <option>Oops</option>
-                            <option>Operating System</option>
-                            <option>Compiler Design</option>
-                            <option>Software Engineering</option>
-                            <option>Aritficial Intelligence</option>
-                            <option>Industrial Management</option>
+                            <option>Generic</option>
+                            <option>None</option>
+                            
                         </select>
                     </div>
 
