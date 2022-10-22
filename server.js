@@ -8,34 +8,15 @@ const studentRoutes = require("./Routes/Student/studentRoutes");
 const teacherRoutes = require("./Routes/Teacher/TeacherRoutes");
 const adminRoutes = require("./Routes/Admin/adminRoutes")
 const examDetailsRoutes = require("./Routes/ExamDetails/ExamDetailsRoute")
-const oopsResultRouters = require("./Routes/Answer/ThirdYear/oopsResultRoutes")
+const oopsResultRoutes = require("./Routes/Answer/ThirdYear/oopsResultRoutes")
 
-// integrate  frontend route start
-
-
-// const LoginDashboard = require( "./Components/DashBoard/LoginDashboard/LoginDashboard");
-// const Home = require( "./Components/Pages/Home.js");
-// const StudentLogin = require( "./Components/Login/StudentLogin");
-// const TeacherLogin = require( "./Components/Login/TeacherLogin");
-// const AdminLogin = require( "./Components/Login/AdminLogin");
-// const Question = require( "./Components/Question/QuestionContainer/QuestionContainer");
-// const StudentLoginPrivateComponent = require( "./Components/PrivateComponent/StudentLoginPrivateComponent");
-// const TeacherLoginPrivateComponent = require( "./Components/PrivateComponent/TeacherLoginPrivateComponent");
-// const AdminLoginPrivateComponent = require( "./Components/PrivateComponent/AdminLoginPrivateComponent");
-// const ExamStarterPage = require( "./Components/Question/ExamStarterPage/ExamStarterPage");
-
-// app.use(LoginDashboard)
-// app.use(Home)
-// app.use(StudentLogin)
-// app.use(TeacherLogin)
-// app.use(AdminLogin)
-// app.use(Question)
-// app.use(StudentLogin)
-
-// integration frontend route complete
 
 //oops Question routes
 const oopsQuestionRoutes = require("./Routes/Question/thirdYear/question/oopsQuestionRoutes")
+//software Engineering question routes.
+const softwareEngineeringQuestionRoutes = require("./Routes/Question/thirdYear/question/softwareEngineeringQuestionRoutes")
+//software engineering answer routes.
+const softwareEngineeringResultRoutes = require("./Routes/Answer/ThirdYear/softwareEngineeringResultRoutes")
 
 const port = process.env.PORT || 8000;
 const mongoDbUrl = process.env.MONGODB_URL;
@@ -65,7 +46,11 @@ app.use("/api", examDetailsRoutes);
 //integrate oops question routes
 app.use("/api" , oopsQuestionRoutes)
 //integrate oops result routes
-app.use("/api" , oopsResultRouters)
+app.use("/api" , oopsResultRoutes)
+//integrate software Engineering question routes
+app.use("/api" , softwareEngineeringQuestionRoutes)
+//integrate oops result routes
+app.use("/api" , softwareEngineeringResultRoutes)
 
 // Serve frontend
 app.all("/*", function (req, res) {
