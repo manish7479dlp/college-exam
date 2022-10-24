@@ -25,6 +25,7 @@ const QuestionContainer = () => {
         const examSubjectName = "examName";
 
         setSubjectName(JSON.parse(sessionStorage.getItem(examSubjectName)));
+        setExamDurationLeft(JSON.parse(sessionStorage.getItem("timeLeft")));
 
         if (subjectName) {
             fetchQuestion();
@@ -33,6 +34,7 @@ const QuestionContainer = () => {
             setLoading(false);
         }
     }, [subjectName]);
+
 
     // this code is used to make time left counter but there is bug...
 

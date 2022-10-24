@@ -8,15 +8,40 @@ const studentRoutes = require("./Routes/Student/studentRoutes");
 const teacherRoutes = require("./Routes/Teacher/TeacherRoutes");
 const adminRoutes = require("./Routes/Admin/adminRoutes")
 const examDetailsRoutes = require("./Routes/ExamDetails/ExamDetailsRoute")
-const oopsResultRoutes = require("./Routes/Answer/ThirdYear/oopsResultRoutes")
 
 
-//oops Question routes
-const oopsQuestionRoutes = require("./Routes/Question/thirdYear/question/oopsQuestionRoutes")
-//software Engineering question routes.
-const softwareEngineeringQuestionRoutes = require("./Routes/Question/thirdYear/question/softwareEngineeringQuestionRoutes")
-//software engineering answer routes.
-const softwareEngineeringResultRoutes = require("./Routes/Answer/ThirdYear/softwareEngineeringResultRoutes")
+// third year CSE question routes
+
+
+const compilerDesignQuestionRoutes = require("./Routes/Question/thirdYear/question/compilerDesignQuestionRoutes");
+
+const industrialManagementQuestionRoutes = require("./Routes/Question/thirdYear/question/industrialManagementQuestionRoutes");
+
+const oopsQuestionRoutes = require("./Routes/Question/thirdYear/question/oopsQuestionRoutes");
+
+const softwareEngineeringQuestionRoutes = require("./Routes/Question/thirdYear/question/softwareEngineeringQuestionRoutes");
+
+const operatingSystemQuestionRoutes = require("./Routes/Question/thirdYear/question/operatingSystemQuestionRoutes");
+
+const artificialIntelligenceQuestionRoutes = require("./Routes/Question/thirdYear/question/artificialIntelligenceQuestionRoutes")
+
+// third year CSE answer routes
+
+const compilerDesignAnswerRoutes = require("./Routes/Answer/ThirdYear/compilerDesingResultRoutes")
+
+const oopsAnswerRoutes = require("./Routes/Answer/ThirdYear/oopsResultRoutes")
+
+const softwareEngineeringAnswerRoutes = require("./Routes/Answer/ThirdYear/softwareEngineeringResultRoutes")
+
+const artificialIntelligenceAnswerRoutes = require("./Routes/Answer/ThirdYear/artificialIntelligenceResultRoutes")
+
+const operatingSystemAnswerRoutes = require("./Routes/Answer/ThirdYear/operatingSystemResultRoutes")
+
+const industrialManagementAnswerRoutes = require("./Routes/Answer/ThirdYear/industrialManagementResultRoutes")
+
+
+
+
 
 const port = process.env.PORT || 8000;
 const mongoDbUrl = process.env.MONGODB_URL;
@@ -43,14 +68,26 @@ app.use("/api", teacherRoutes);
 app.use("/api", adminRoutes);
 //integrate exam Details routes
 app.use("/api", examDetailsRoutes);
-//integrate oops question routes
+
+// third year CSE question routes integration 
 app.use("/api" , oopsQuestionRoutes)
-//integrate oops result routes
-app.use("/api" , oopsResultRoutes)
-//integrate software Engineering question routes
+app.use("/api" , compilerDesignQuestionRoutes)
+app.use("/api" , operatingSystemQuestionRoutes)
+app.use("/api" , artificialIntelligenceQuestionRoutes)
+app.use("/api" , industrialManagementQuestionRoutes)
 app.use("/api" , softwareEngineeringQuestionRoutes)
-//integrate oops result routes
-app.use("/api" , softwareEngineeringResultRoutes)
+
+// third year CSE answer routes integration
+
+app.use("/api" ,oopsAnswerRoutes)
+app.use("/api" ,compilerDesignAnswerRoutes)
+app.use("/api" ,operatingSystemAnswerRoutes)
+app.use("/api" ,artificialIntelligenceAnswerRoutes)
+app.use("/api" ,industrialManagementAnswerRoutes)
+app.use("/api" ,softwareEngineeringAnswerRoutes)
+
+
+
 
 // Serve frontend
 app.all("/*", function (req, res) {
