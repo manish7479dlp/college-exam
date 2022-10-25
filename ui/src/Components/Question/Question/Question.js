@@ -1,7 +1,16 @@
+import { useEffect } from "react";
 import "./Question.css";
 
 const Question = (props) => { 
     const { question, opt1, opt2, opt3, opt4} = props.data;
+    let preCheckedOption = JSON.parse(localStorage.getItem(props.questionNumber));
+
+    if(preCheckedOption) {
+      preCheckedOption = preCheckedOption.answer;
+    }
+
+  
+    
 
     const onChange = () => {
       // defalutChecked();
@@ -17,15 +26,7 @@ const Question = (props) => {
         </p>
         <div className="optionContainer">
           <ol >
-              <input
-                type="radio"
-                // id="x"
-                name="option"
-                // onClick={props.onOptionChange}
-                checked
-                onChange = {()=>{}}
-                style = {{display : "none"}} 
-              />
+              
           
             <li>
               <input
@@ -33,6 +34,8 @@ const Question = (props) => {
                 id="a"
                 name="option"
                 onClick={props.onOptionChange}
+                checked = {preCheckedOption === "a" ? true : !preCheckedOption ? true : false}
+                onChange = {() => {}}
               />
               <label htmlFor="a">{opt1}</label>
             </li>
@@ -42,6 +45,8 @@ const Question = (props) => {
                 id="b"
                 name="option"
                 onClick={props.onOptionChange}
+                checked = {preCheckedOption === "b" ? true : !preCheckedOption ? true : false}
+                onChange = {() => {}}
               />
               <label htmlFor="b">{opt2}</label>
             </li>
@@ -51,6 +56,8 @@ const Question = (props) => {
                 id="c"
                 name="option"
                 onClick={props.onOptionChange}
+                checked = {preCheckedOption === "c" ? true : !preCheckedOption ? true : false}
+                onChange = {() => {}}
               />
               <label htmlFor="c">{opt3}</label>
             </li>
@@ -60,9 +67,21 @@ const Question = (props) => {
                 id="d"
                 name="option"
                 onClick={props.onOptionChange}
+                checked = {preCheckedOption === "d" ? true : !preCheckedOption ? true : false}
+                onChange = {() => {}}
               />
               <label htmlFor="d">{opt4}</label>
             </li>
+
+            <input
+                type="radio"
+                // id="x"
+                name="option"
+                // onClick={props.onOptionChange}
+                checked = {!preCheckedOption ? true : false}
+                onChange = {()=>{}}
+                style = {{display : "none"}} 
+              />
           </ol>
         </div>
 
