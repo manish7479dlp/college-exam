@@ -215,6 +215,10 @@ const QuestionContainer = () => {
                     // const marksSheet = onAnswerCheck();
                     // console.log(marksSheet);
                     sumitMarks();
+
+                    for(let questionNum = 1; questionNum <= data.length; questionNum++) {
+                        localStorage.removeItem(questionNum);
+                    }
                     toast.success("Answer Submitted Successfully.");
                     Navigate("/exam-starter-page");
                 }
